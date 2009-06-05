@@ -70,6 +70,8 @@
 - (void)createYahooSession
 {
 	// create session with consumer key, secret and application id
+	// set up a new app here: https://developer.yahoo.com/dashboard/createKey.html
+	// because the default values here won't work
 	self.session = [YOSSession sessionWithConsumerKey:@"YOUR_CONSUMER_KEY" 
 									andConsumerSecret:@"YOUR_CONSUMER_SECRET" 
 									 andApplicationId:@"YOUR_APP_ID"];
