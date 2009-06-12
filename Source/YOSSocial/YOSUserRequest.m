@@ -116,7 +116,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 
 - (void)fetchStatusWithDelegate:(id)delegate
 {
-	NSString *method = [NSString stringWithFormat:@"presence/presence"];
+	NSString *method = [NSString stringWithFormat:@"profile/status"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@",self.baseUrl,self.apiVersion,@"user",self.user.guid,method];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
@@ -243,24 +243,21 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[updateData setObject:@"app" forKey:@"class"];
 	[updateData setObject:@"appActivity" forKey:@"type"];
 	
-	NSMutableArray *updateDataWrapper = [[NSMutableArray alloc] initWithCapacity:1];
-	[updateDataWrapper addObject:updateData];
+	NSArray *updateDataWrapper = [NSArray arrayWithObject:updateData];
 	
-	NSMutableDictionary *updatesDataPayload = [[NSMutableDictionary alloc] initWithCapacity:1];
+	NSMutableDictionary *updatesDataPayload = [NSMutableDictionary dictionary];
 	[updatesDataPayload setObject:updateDataWrapper forKey:@"updates"];
 	
 	NSString *jsonUpdatesPayload = [self serializeDictionary:updatesDataPayload];
 	NSData *updatesHTTPBody = [jsonUpdatesPayload dataUsingEncoding:NSUTF8StringEncoding];
 	
 	[updateData release];
-	[updateDataWrapper release];
-	[updatesDataPayload release];
 	
 	NSString *method = [NSString stringWithFormat:@"updates"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@/%@", baseUrl, apiVersion, @"user", user.guid, method, updateSource, aSuid];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
-	NSMutableDictionary *requestHeaders = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary *requestHeaders = [NSMutableDictionary dictionary];
 	[requestHeaders setObject:@"application/json" forKey:@"Content-Type"];
 	
 	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
@@ -275,7 +272,6 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
 	
 	[client release];
-	[requestHeaders release];
 	
 	if(!response.data) {
 		return FALSE;
@@ -321,24 +317,28 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	return (httpStatusCode == 200);
 }
 
-- (BOOL)setStatus:(NSString *)theStatus
+- (BOOL)setStatus:(NSString *)theMessage
 {
-	if(![user isSessionedUser]) {
+	if(![user isSessionedUser] || theMessage == nil) {
 		return FALSE;
 	}
 	
-	NSString *method = [NSString stringWithFormat:@"presence/presence"];
+	NSString *method = [NSString stringWithFormat:@"profile/status"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@",baseUrl,apiVersion,@"user",user.guid,method];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
-	NSMutableDictionary *requestHeaders = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary *requestHeaders = [NSMutableDictionary dictionary];
 	[requestHeaders setObject:@"application/json" forKey:@"Content-Type"];
 	
-	NSMutableDictionary *statusData = [[NSMutableDictionary alloc] init];
-	[statusData setObject:theStatus forKey:@"status"];
+	NSMutableDictionary *messageDicationary = [NSMutableDictionary dictionary];
+	[messageDicationary setObject:theMessage forKey:@"message"];
 	
-	NSString *jsonStatusPayload = [self serializeDictionary:statusData];
-	NSData *statusHTTPBody = [jsonStatusPayload dataUsingEncoding:NSUTF8StringEncoding];
+	NSMutableDictionary *statusDictionary = [NSMutableDictionary dictionary];
+	[statusDictionary setObject:messageDicationary forKey:@"status"];
+	
+	NSData *statusHTTPBody = [[self serializeDictionary:statusDictionary] dataUsingEncoding:NSUTF8StringEncoding];
+	
+	[statusDictionary release];
 	
 	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
 																 andToken:[self tokenForRequest]];
@@ -351,7 +351,6 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
 	
-	[requestHeaders release];
 	[client release];
 	
 	if(!response.data) {
@@ -361,12 +360,12 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	return (httpStatusCode == 200);
 }
 
-- (BOOL)setSmallView:(NSString *)content
+- (BOOL)setSmallViewWithContents:(NSString *)content
 {	
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@",kYAPBaseUrl,apiVersion,@"cache/view/small",self.user.guid];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
-	NSMutableDictionary *requestHeaders = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary *requestHeaders = [NSMutableDictionary dictionary];
 	[requestHeaders setObject:@"text/html;charset=utf-8" forKey:@"Content-Type"];
 	
 	NSData *smallViewContentHTTPBody = [content dataUsingEncoding:NSUTF8StringEncoding];
@@ -382,7 +381,6 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
 	
-	[requestHeaders release];
 	[client release];
 	
 	if(!response.data) {
