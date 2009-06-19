@@ -271,6 +271,8 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
 	
+	// NSLog(@"%d", httpStatusCode);
+	
 	[client release];
 	
 	if(!response.data) {
@@ -308,6 +310,8 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
 	
+	// NSLog(@"%d", httpStatusCode);
+	
 	[client release];
 	
 	if(!response.data) {
@@ -338,8 +342,6 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	
 	NSData *statusHTTPBody = [[self serializeDictionary:statusDictionary] dataUsingEncoding:NSUTF8StringEncoding];
 	
-	[statusDictionary release];
-	
 	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
 																 andToken:[self tokenForRequest]];
 	
@@ -351,13 +353,15 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
 	
+	// NSLog(@"%d", httpStatusCode);
+	
 	[client release];
 	
 	if(!response.data) {
 		return FALSE;
 	}
 	
-	return (httpStatusCode == 200);
+	return (httpStatusCode == 200 || httpStatusCode == 204);
 }
 
 - (BOOL)setSmallViewWithContents:(NSString *)content
@@ -382,6 +386,8 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
 	
 	[client release];
+	
+	// NSLog(@"%d", httpStatusCode);
 	
 	if(!response.data) {
 		return FALSE;
