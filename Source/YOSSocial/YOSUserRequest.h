@@ -116,7 +116,7 @@
  * @param content	A string containing text, HTML and YML. 
  * @return				A boolean, true if the request was successful.
  */
-- (BOOL)setSmallView:(NSString *)content;
+- (BOOL)setSmallViewWithContents:(NSString *)content;
 
 /**
  * Creates a unique string (SUID) usable for inserting an update.
