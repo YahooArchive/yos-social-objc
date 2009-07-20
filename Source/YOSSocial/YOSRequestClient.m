@@ -98,18 +98,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.3";
 	[urlRequest setTimeoutInterval:self.timeoutInterval];
 	[urlRequest setValue:self.userAgentHeaderValue forHTTPHeaderField:@"User-Agent"];
 	
-	if([self.HTTPMethod isEqualToString:@"GET"] || [self.HTTPMethod isEqualToString:@"DELETE"])
-	{
-		NSDictionary *queryParameters = (oauthRequest && [oauthParamsLocation isEqualToString:OAUTH_PARAMS_IN_QUERY_STRING]) 
-		? [oauthRequest allRequestParametersAsDictionary] 
-		: requestParameters; 
-		
-		NSString *requestAbsoluteURLString = [NSString stringWithFormat:@"%@?%@", [self.requestUrl absoluteString], [queryParameters QueryString]];
-		NSURL *url = [NSURL URLWithString:requestAbsoluteURLString];
-		
-		[urlRequest setURL:url];
-	}
-	else if([self.HTTPMethod isEqualToString:@"POST"])
+	if([self.HTTPMethod isEqualToString:@"POST"])
 	{
 		NSString *requestAbsoluteURLString = [self.requestUrl absoluteString];
 		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", requestAbsoluteURLString]];
@@ -122,13 +111,19 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.3";
 		NSData *postData = [postDataQueryString dataUsingEncoding: NSASCIIStringEncoding];
 		[urlRequest setHTTPBody:postData];
 	}
-	else if([self.HTTPMethod isEqualToString:@"PUT"])
-	{
-		NSString *requestAbsoluteURLString = [requestUrl absoluteString];
-		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", requestAbsoluteURLString]];
+	else {
+		NSDictionary *queryParameters = (oauthRequest && [oauthParamsLocation isEqualToString:OAUTH_PARAMS_IN_QUERY_STRING]) 
+		? [oauthRequest allRequestParametersAsDictionary] 
+		: requestParameters; 
+		
+		NSString *requestAbsoluteURLString = [NSString stringWithFormat:@"%@?%@", [self.requestUrl absoluteString], [queryParameters QueryString]];
+		NSURL *url = [NSURL URLWithString:requestAbsoluteURLString];
 		
 		[urlRequest setURL:url];
-		[urlRequest setHTTPBody:self.HTTPBody];
+		
+		if ([self.HTTPMethod isEqualToString:@"PUT"]) {
+			[urlRequest setHTTPBody:self.HTTPBody];
+		}
 	}
 	
 	if(oauthRequest) {
