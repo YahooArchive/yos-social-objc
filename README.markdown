@@ -126,8 +126,7 @@ To work with the response data object, parse the response text
 	   YOSUserRequest *request = [YOSUserRequest requestWithSession:session];
 	   
 	   // fetch the user's profile data
-	   YOSResponseData *userProfileResponse = [request 
-                                               fetchProfileWithDelegate:self];
+	   YOSResponseData *userProfileResponse = [request fetchProfileWithDelegate:self];
 	}
 
 	- (void)requestDidFinishLoading:(YOSResponseData *)data {
@@ -158,11 +157,11 @@ to their activity stream.
 
 Status:
 
-   // get the logged-in user
-   YOSUserRequest *request = [YOSUserRequest requestWithSession:session];
+	// get the logged-in user
+	YOSUserRequest *request = [YOSUserRequest requestWithSession:session];
    
-   // set the user's current status message
-   [request setStatus:@"is hacking"];
+	// set the user's current status message
+	[request setStatus:@"is hacking"];
 
 Updates:
 
@@ -180,11 +179,10 @@ Updates:
 	   YQLQueryRequest *request = [YQLQueryRequest   
 	                                 requestWithSession:self.session];  
 	   
-	   NSString *structuredProfileLocationQuery = [NSString   
+	   NSString *structuredLocationQuery = [NSString   
 	            stringWithFormat:@"select * from geo.places where text=\"sfo\""];  
 	   
-	   [request query:structuredProfileLocationQuery  
-	   withDelegate:self];  
+	   [request query:structuredLocationQuery withDelegate:self];  
 	}  
   
 	- (void)requestDidFinishLoading:(YOSResponseData *)data {  
