@@ -34,11 +34,63 @@ static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
 
 - (void)query:(NSString *)aQuery withDelegate:(id)delegate
 {
+	YOSRequestClient *client = [self generateRequest:aQuery];
+
+	[client setHTTPMethod:@"GET"];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
+	[client sendAsyncRequestWithDelegate:delegate];
+	
+	[client release];
+}
+
+
+- (YOSResponseData *)query:(NSString *)aQuery
+{	
+	YOSRequestClient *client = [self generateRequest:aQuery];
+	
+	[client setHTTPMethod:@"GET"];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
+	
+	YOSResponseData *response = [client sendSynchronousRequest];
+
+	[client release];
+	
+	if(!response.didSucceed) {
+		return nil;
+	}
+	
+	return response;
+}
+
+- (BOOL *)updateQuery:(NSString *)aQuery
+{	
+	YOSRequestClient *client = [self generateRequest:aQuery];
+	
+	[client setHTTPMethod:@"PUT"];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
+	
+	YOSResponseData *response = [client sendSynchronousRequest];
+	
+	[client release];
+	
+	if(!response.didSucceed) {
+		return nil;
+	}
+	
+	return YES;
+}
+
+
+#pragma mark -
+#pragma mark private
+
+- (YOSRequestClient *)generateRequest:(NSString *)aQuery
+{
 	// If a consumer is not available, we can assume public tables are being used
 	// and we'll use the public yql endpoint. 
 	NSString *requestUrl = ([self consumerForRequest] != nil)
-		? [NSString stringWithFormat:@"%@/%@/%@",kYQLBaseUrl,self.apiVersion,@"yql"]
-		: [NSString stringWithFormat:@"%@/%@/%@/%@",kYQLBaseUrl,self.apiVersion,@"public",@"yql"];
+		?[NSString stringWithFormat:@"%@/%@/%@",kYQLBaseUrl,self.apiVersion,@"yql"]
+ 		:[NSString stringWithFormat:@"%@/%@/%@/%@",kYQLBaseUrl,self.apiVersion,@"public",@"yql"];
 	
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
@@ -54,12 +106,9 @@ static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
 	
 	[client setRequestUrl:url];
 	[client setRequestParameters:requestParameters];
-	[client setHTTPMethod:@"GET"];
-	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
-	[client sendAsyncRequestWithDelegate:delegate];
 	
-	[client release];
-	[requestParameters release];
+	return client;
 }
 
 @end
+

@@ -28,8 +28,27 @@
 /**
  * Sends a query request to YQL. 
  * @param aQuery				A YQL query.
+ */
+- (YOSRequestClient *)generateRequest:(NSString *)aQuery;
+
+/**
+ * Sends a select query request to YQL. 
+ * @param aQuery				A YQL query.
  * @param delegate				An object containing the methods to handle the request's response. 
  */
 - (void)query:(NSString *)aQuery withDelegate:(id)delegate;
+
+/**
+ * Sends a query request to YQL. 
+ * @param aQuery				A YQL query.
+ */
+- (YOSResponseData *)query:(NSString *)aQuery;
+
+/**
+ * Sends a query request to YQL. 
+ * @param aQuery				A YQL query.
+ */
+- (BOOL *)updateQuery:(NSString *)aQuery;
+
 
 @end
