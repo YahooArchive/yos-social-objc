@@ -107,4 +107,95 @@ will automatically fetch a new access token to renew the session.
 
 
 ## Fetching Social Data:
+
+Now that we have a ready session, we can now access social information for 
+the logged-in user. The depth of user data you can access will depend on 
+the permissions for which your application asked.
+
+Each 'GET' method of YOSUserRequest creates an asynchronous request with the 
+delegate you provided. When the request is returned, the delegate method 
+'requestDidFinishLoading' is invoked with a YOSResponseData object containing 
+the NSHTTPURLResponse object, NSData response object, a responseText string 
+and an NSError object (if an error occurred) for which your application should handle.
+
+To work with the response data object, parse the response text 
+(defaults to encoded JSON data) using the methods from json-framework.
+
+	- (void)sendRequests {
+	   // initialize a user request for the logged-in user   
+	   YOSUserRequest *request = [YOSUserRequest requestWithSession:session];
+	   
+	   // fetch the user's profile data
+	   YOSResponseData *userProfileResponse = [request 
+                                               fetchProfileWithDelegate:self];
+}
+
+	- (void)requestDidFinishLoading:(YOSResponseData *)data {
+	   // parse the response text string into a dictionary
+	   NSDictionary *rspData = [data.responseText JSONValue];
+	   NSDictionary *profileData = [rspData objectForKey:@"profile"];
+	   
+  	   // format a string using the nickname object from the profile.
+  	   NSString *welcomeText = [NSString stringWithFormat:@"Hey %@ %@!", 
+	      [profileData objectForKey:@"givenName"],
+	      [profileData objectForKey:@"familyName"]];
+}
+
+## Posting User Activities
+
+Yahoo! provides two means for you to share your user's activities back to other Yahoo! users:
+
+Status: A line of text describing what a user is currently doing.
+
+Updates: A user's stream of shared activities. (Each containing, at the very least, a 
+line of developer-supplied text, your icon and a link back to your application.)
+
+You can use these channels to advertise your user's use of your app to a 
+large audience of Yahoo! users, driving this larger group to your product.
+
+The sample code below shows how to set a user's status and post an update 
+to their activity stream.
+
+Status:
+
+   // get the logged-in user
+   YOSUserRequest *request = [YOSUserRequest requestWithSession:session];
+   
+   // set the user's current status message
+   [request setStatus:@"is hacking"];
+
+Updates:
+
+	YOSUserRequest *request = [YOSUserRequest requestWithSession:session];
 	
+	[request insertUpdateWithTitle:@"installed Foo app on their iPhone" 
+                    andDescription:@""
+                           andLink:@"http://myapplication.com/download"
+                           andDate:nil 
+                           andSuid:[request generateUniqueSuid]];
+
+## Using YQL
+
+	- (void)sendRequests {  
+	   YQLQueryRequest *request = [YQLQueryRequest   
+	                                 requestWithSession:self.session];  
+	   
+	   NSString *structuredProfileLocationQuery = [NSString   
+	            stringWithFormat:@"select * from geo.places where text=\"sfo\""];  
+	   
+	   [request query:structuredProfileLocationQuery  
+	   withDelegate:self];  
+	}  
+  
+	- (void)requestDidFinishLoading:(YOSResponseData *)data {  
+	   NSDictionary *rspData = [data.responseText JSONValue];  
+	   NSDictionary *queryData = [rspData objectForKey:@"query"];  
+	   NSDictionary *results = [queryData objectForKey:@"results"];  
+	   
+	   NSLog(@"%@", [results description]);  
+	}
+	
+## Terms of Use
+
+Use of the Yahoo! Social APIs is governed by the [Yahoo! APIs Terms of Use](http://developer.yahoo.com/terms/).
+Your use of YQL is subject to the [YQL Terms of Service](http://info.yahoo.com/legal/us/yahoo/yql/yql-4307.html).
