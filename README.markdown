@@ -57,7 +57,7 @@ in the sources themselves:
 Requirements
 ============
 
-The following dependencies are bundled with the Yahoo! Python SDK, but are under
+The following dependencies are bundled with the Yahoo! Social SDK, but are under
 terms of a separate license:
 
  * json-framework - http://code.google.com/p/json-framework/
