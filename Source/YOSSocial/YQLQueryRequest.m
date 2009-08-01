@@ -62,7 +62,7 @@ static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
 	return response;
 }
 
-- (BOOL *)updateQuery:(NSString *)aQuery
+- (BOOL)updateQuery:(NSString *)aQuery
 {	
 	YOSRequestClient *client = [self generateRequest:aQuery];
 	
@@ -73,8 +73,8 @@ static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
 	
 	[client release];
 	
-	if(!response.didSucceed) {
-		return nil;
+	if (!response.didSucceed) {
+		return NO;
 	}
 	
 	return YES;

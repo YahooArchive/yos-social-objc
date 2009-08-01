@@ -48,7 +48,7 @@
  * Sends a query request to YQL. 
  * @param aQuery				A YQL query.
  */
-- (BOOL *)updateQuery:(NSString *)aQuery;
+- (BOOL)updateQuery:(NSString *)aQuery;
 
 
 @end
