@@ -128,7 +128,7 @@ To work with the response data object, parse the response text
 	   // fetch the user's profile data
 	   YOSResponseData *userProfileResponse = [request 
                                                fetchProfileWithDelegate:self];
-}
+	}
 
 	- (void)requestDidFinishLoading:(YOSResponseData *)data {
 	   // parse the response text string into a dictionary
@@ -139,7 +139,7 @@ To work with the response data object, parse the response text
   	   NSString *welcomeText = [NSString stringWithFormat:@"Hey %@ %@!", 
 	      [profileData objectForKey:@"givenName"],
 	      [profileData objectForKey:@"familyName"]];
-}
+	}
 
 ## Posting User Activities
 
