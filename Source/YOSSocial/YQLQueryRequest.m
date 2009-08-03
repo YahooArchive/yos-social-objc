@@ -40,8 +40,6 @@ static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
 	[client setHTTPMethod:@"GET"];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	[client sendAsyncRequestWithDelegate:delegate];
-	
-	[client release];
 }
 
 
@@ -53,8 +51,6 @@ static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
-
-	[client release];
 	
 	if(!response.didSucceed) {
 		return nil;
@@ -71,8 +67,6 @@ static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
-	
-	[client release];
 	
 	if (!response.didSucceed) {
 		return NO;
@@ -97,7 +91,7 @@ static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
 	
 	NSString *useDiagnostics = (self.diagnostics) ? @"true" : @"false";
 	
-	NSMutableDictionary *requestParameters = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
 	[requestParameters setObject:aQuery forKey:@"q"];
 	[requestParameters setObject:self.format forKey:@"format"];
 	[requestParameters setObject:useDiagnostics forKey:@"diagnostics"];
@@ -111,7 +105,7 @@ static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
 	[client setRequestUrl:url];
 	[client setRequestParameters:requestParameters];
 	
-	return client;
+	return [client autorelease];
 }
 
 @end
