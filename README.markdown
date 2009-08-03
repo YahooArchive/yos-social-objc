@@ -72,6 +72,14 @@ Then, include the YOSSocial.h header into your code.
 
     #import "YOSSocial.h" 
 
+Creating A New Application
+========
+
+To use Yahoo! Web Services, we need some information about you and the application you're building. 
+Sign up for a new application ID to get your OAuth consumer key &amp; secret.
+
+ * YDN Developer Dashboard - https://developer.yahoo.com/dashboard/
+ * New Application Form - https://developer.yahoo.com/dashboard/createKey.html
 
 Examples
 ========
