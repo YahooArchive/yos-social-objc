@@ -1,13 +1,13 @@
 Yahoo! Social SDK, Objective-C library
 =================
 
-Find documentation and support on Yahoo! Developer Network: http://developer.yahoo.com
+Find documentation and support on Yahoo! Developer Network: [http://developer.yahoo.com](http://developer.yahoo.com/yap/)
 
- * Yahoo! Application Platform - http://developer.yahoo.com/yap/
- * Yahoo! Social APIs - http://developer.yahoo.com/social/
- * Yahoo! Query Language - http://developer.yahoo.com/yql/
+ * Yahoo! Application Platform - [http://developer.yahoo.com/yap/](http://developer.yahoo.com/yap/)
+ * Yahoo! Social APIs - [http://developer.yahoo.com/social/](http://developer.yahoo.com/social/)
+ * Yahoo! Query Language - [http://developer.yahoo.com/yql/](http://github.com/yahoo/yos-social-objc/tree/master)
 
-Hosted on GitHub: http://github.com/yahoo/yos-social-objc/tree/master
+Hosted on GitHub: [http://github.com/yahoo/yos-social-objc/tree/master](http://github.com/yahoo/yos-social-objc/tree/master)
 
 License
 =======
@@ -60,8 +60,8 @@ Requirements
 The following dependencies are bundled with the Yahoo! Social SDK, but are under
 terms of a separate license:
 
- * json-framework - http://code.google.com/p/json-framework/
- * OAuthConsumer Crypto - http://oauth.googlecode.com/svn/code/obj-c/OAuthConsumer/Crypto/
+ * json-framework - [http://code.google.com/p/json-framework/](http://code.google.com/p/json-framework/)
+ * OAuthConsumer Crypto - [http://oauth.googlecode.com/svn/code/obj-c/OAuthConsumer/Crypto/](http://oauth.googlecode.com/svn/code/obj-c/OAuthConsumer/Crypto/)
 
 
 Install
@@ -78,8 +78,8 @@ Creating A New Application
 To use Yahoo! Web Services, we need some information about you and the application you're building. 
 Sign up for a new application ID to get your OAuth consumer key &amp; secret.
 
- * YDN Developer Dashboard - https://developer.yahoo.com/dashboard/
- * New Application Form - https://developer.yahoo.com/dashboard/createKey.html
+ * YDN Developer Dashboard - [https://developer.yahoo.com/dashboard/](https://developer.yahoo.com/dashboard/)
+ * New Application Form - [https://developer.yahoo.com/dashboard/createKey.html](https://developer.yahoo.com/dashboard/)
 
 Examples
 ========
