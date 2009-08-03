@@ -21,9 +21,15 @@
 	 * Returns the receiver's optional YQL environment file.
 	 */
 	NSString *environmentFile;
+	
+	/**
+	 * Returns a boolean determining if the request will return diagnostics information.
+	 */
+	BOOL diagnostics;
 }
 
 @property (nonatomic, readwrite, retain) NSString *environmentFile;
+@property (readwrite) BOOL diagnostics;
 
 /**
  * Sends a query request to YQL. 

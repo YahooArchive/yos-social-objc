@@ -15,6 +15,7 @@ static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
 @implementation YQLQueryRequest
 
 @synthesize environmentFile;
+@synthesize diagnostics;
 
 #pragma mark init
 
@@ -94,9 +95,12 @@ static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
 	
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
+	NSString *useDiagnostics = (self.diagnostics) ? @"true" : @"false";
+	
 	NSMutableDictionary *requestParameters = [[NSMutableDictionary alloc] init];
 	[requestParameters setObject:aQuery forKey:@"q"];
 	[requestParameters setObject:self.format forKey:@"format"];
+	[requestParameters setObject:useDiagnostics forKey:@"diagnostics"];
 	
 	if(self.environmentFile != nil) 
 		[requestParameters setObject:self.environmentFile forKey:@"env"];
