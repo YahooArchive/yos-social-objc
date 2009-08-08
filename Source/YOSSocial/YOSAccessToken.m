@@ -38,8 +38,8 @@
 	[theToken setSessionHandle:[tokenDictionary valueForKey:@"oauth_session_handle"]];
 	[theToken setTokenExpires:tokenExpires];
 	[theToken setAuthExpires:authExpires];
-	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSince1970:tokenExpires]];
-	[theToken setAuthExpiresDate:[NSDate dateWithTimeIntervalSince1970:authExpires]];
+	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSinceNow:tokenExpires]];
+	[theToken setAuthExpiresDate:[NSDate dateWithTimeIntervalSinceNow:authExpires]];
 	
 	return theToken;
 }
@@ -56,8 +56,8 @@
 	[theToken setSessionHandle:[tokenDictionary valueForKey:@"sessionHandle"]];
 	[theToken setTokenExpires:tokenExpires];
 	[theToken setAuthExpires:authExpires];
-	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSince1970:tokenExpires]];
-	[theToken setAuthExpiresDate:[NSDate dateWithTimeIntervalSince1970:authExpires]];
+	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSinceNow:tokenExpires]];
+	[theToken setAuthExpiresDate:[NSDate dateWithTimeIntervalSinceNow:authExpires]];
 	
 	if([tokenDictionary valueForKey:@"consumer"]) {
 		[theToken setConsumer:[tokenDictionary valueForKey:@"consumer"]];
