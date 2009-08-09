@@ -34,7 +34,7 @@
 	[theToken autorelease];
 	[theToken setRequestAuthUrl:[tokenDictionary valueForKey:@"xoauth_request_auth_url"]];
 	[theToken setTokenExpires:tokenExpires];
-	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSince1970:tokenExpires]];
+	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSinceNow:tokenExpires]];
 	[theToken setCallbackConfirmed:isCallbackConfirmed];
 	
 	return theToken;
@@ -49,7 +49,7 @@
 	[theToken autorelease];
 	[theToken setRequestAuthUrl:[tokenDictionary valueForKey:@"requestAuthUrl"]];
 	[theToken setTokenExpires:tokenExpires];
-	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSince1970:tokenExpires]];
+	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSinceNow:tokenExpires]];
 	
 	return theToken;
 }
