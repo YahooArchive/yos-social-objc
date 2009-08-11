@@ -72,6 +72,7 @@ Then, include the YOSSocial.h header into your code.
 
     #import "YOSSocial.h" 
 
+
 Creating A New Application
 ========
 
@@ -80,6 +81,7 @@ Sign up for a new application ID to get your OAuth consumer key &amp; secret.
 
  * YDN Developer Dashboard - [https://developer.yahoo.com/dashboard/](https://developer.yahoo.com/dashboard/)
  * New Application Form - [https://developer.yahoo.com/dashboard/createKey.html](https://developer.yahoo.com/dashboard/)
+
 
 Examples
 ========
@@ -114,7 +116,6 @@ will automatically fetch a new access token to renew the session.
 	}else{  
 	   [self sendRequests];  
 	}
-
 
 ## Fetching Social Data:
 
@@ -185,9 +186,24 @@ Updates:
 
 ## Using YQL
 
+Synchronous :
+	
+	YQLQueryRequest *request = [YQLQueryRequest requestWithSession:self.session];  
+	   
+	NSString *structuredLocationQuery = [NSString   
+	            stringWithFormat:@"select * from geo.places where text=\"sfo\""];  
+	   
+	YOSResponseData *data = [request query:structuredLocationQuery];
+	NSDictionary *rspData = [data.responseText JSONValue];
+	NSDictionary *queryData = [rspData objectForKey:@"query"];  
+	NSDictionary *results = [queryData objectForKey:@"results"];  
+	   
+	NSLog(@"%@", [results description]);
+
+Asynchronous:
+
 	- (void)sendRequests {  
-	   YQLQueryRequest *request = [YQLQueryRequest   
-	                                 requestWithSession:self.session];  
+	   YQLQueryRequest *request = [YQLQueryRequest requestWithSession:self.session];  
 	   
 	   NSString *structuredLocationQuery = [NSString   
 	            stringWithFormat:@"select * from geo.places where text=\"sfo\""];  
@@ -202,7 +218,7 @@ Updates:
 	   
 	   NSLog(@"%@", [results description]);  
 	}
-	
+
 ## Terms of Use
 
 Use of the Yahoo! Social APIs is governed by the [Yahoo! APIs Terms of Use](http://developer.yahoo.com/terms/).
