@@ -21,14 +21,7 @@
 
 + (YOSResponseData *)responseWithData:(NSData *)responseData andURLResponse:(NSURLResponse *)urlResponse
 {
-	NSStringEncoding responseEncoding = NSUTF8StringEncoding;
-	
-	if([urlResponse textEncodingName]) {
-		NSString *textEncodingName = [urlResponse textEncodingName];
-		responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)textEncodingName));
-	}
-	
-	NSString *responseText = [[[NSString alloc] initWithData:responseData encoding:responseEncoding] autorelease];
+	NSString *responseText = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
 	NSInteger httpStatusCode = [(NSHTTPURLResponse *)urlResponse statusCode];
 	
 	YOSResponseData *serviceResponseData = [[YOSResponseData alloc] init];
