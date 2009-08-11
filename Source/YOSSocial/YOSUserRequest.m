@@ -267,6 +267,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[client setHTTPMethod:@"PUT"];
 	[client setHTTPBody:updatesHTTPBody];
 	[client setRequestHeaders:requestHeaders];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
@@ -306,6 +307,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"DELETE"];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
@@ -334,11 +336,11 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSMutableDictionary *requestHeaders = [NSMutableDictionary dictionary];
 	[requestHeaders setObject:@"application/json" forKey:@"Content-Type"];
 	
-	NSMutableDictionary *messageDicationary = [NSMutableDictionary dictionary];
-	[messageDicationary setObject:theMessage forKey:@"message"];
+	NSMutableDictionary *messageDictionary = [NSMutableDictionary dictionary];
+	[messageDictionary setObject:theMessage forKey:@"message"];
 	
 	NSMutableDictionary *statusDictionary = [NSMutableDictionary dictionary];
-	[statusDictionary setObject:messageDicationary forKey:@"status"];
+	[statusDictionary setObject:messageDictionary forKey:@"status"];
 	
 	NSData *statusHTTPBody = [[self serializeDictionary:statusDictionary] dataUsingEncoding:NSUTF8StringEncoding];
 	
@@ -349,10 +351,12 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[client setHTTPMethod:@"PUT"];
 	[client setHTTPBody:statusHTTPBody];
 	[client setRequestHeaders:requestHeaders];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
 	
+	NSLog(@"%@", response.responseText);
 	// NSLog(@"%d", httpStatusCode);
 	
 	[client release];
@@ -381,6 +385,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[client setHTTPMethod:@"PUT"];
 	[client setHTTPBody:smallViewContentHTTPBody];
 	[client setRequestHeaders:requestHeaders];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
