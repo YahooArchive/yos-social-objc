@@ -15,7 +15,7 @@
 #define OAUTH_PARAMS_IN_AUTH_HEADER		@"OAUTH_PARAMS_IN_AUTH_HEADER"
 #define OAUTH_PARAMS_IN_QUERY_STRING	@"OAUTH_PARAMS_IN_QUERY_STRING"
 
-static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.3";
+static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.4";
 
 @implementation YOSRequestClient
 
