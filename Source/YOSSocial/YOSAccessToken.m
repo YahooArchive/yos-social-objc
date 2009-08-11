@@ -28,8 +28,8 @@
 {
 	NSDictionary *tokenDictionary = [responseData OAuthTokenResponse];
 	
-	NSInteger tokenExpires = [[tokenDictionary valueForKey:@"oauth_expires_in"] intValue] + time(NULL);
-	NSInteger authExpires = [[tokenDictionary valueForKey:@"oauth_authorization_expires_in"] intValue] + time(NULL);
+	NSInteger tokenExpires = [[tokenDictionary valueForKey:@"oauth_expires_in"] intValue];
+	NSInteger authExpires = [[tokenDictionary valueForKey:@"oauth_authorization_expires_in"] intValue];
 	
 	YOSAccessToken *theToken = [[YOSAccessToken alloc] initWithKey:[tokenDictionary valueForKey:@"oauth_token"]
 														 andSecret:[tokenDictionary valueForKey:@"oauth_token_secret"]];

@@ -26,7 +26,7 @@
 	NSDictionary *tokenDictionary = [responseData OAuthTokenResponse];
 	
 	BOOL isCallbackConfirmed = [[tokenDictionary valueForKey:@"oauth_callback_confirmed"] isEqualToString:@"true"];
-	NSInteger tokenExpires = [[tokenDictionary valueForKey:@"oauth_expires_in"] intValue] + time(NULL);
+	NSInteger tokenExpires = [[tokenDictionary valueForKey:@"oauth_expires_in"] intValue];
 	
 	YOSRequestToken *theToken = [[YOSRequestToken alloc] initWithKey:[tokenDictionary valueForKey:@"oauth_token"]
 														   andSecret:[tokenDictionary valueForKey:@"oauth_token_secret"]];
