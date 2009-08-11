@@ -81,13 +81,21 @@
 {	
 	YOSAuthRequest *tokenAuthRequest = [YOSAuthRequest requestWithSession:self];
 	
-	if([self.tokenStore hasRequestToken]) {
-		YOSRequestToken *storedRequestToken = [self.tokenStore requestToken];
+	if([tokenStore hasRequestToken] && self.requestToken == nil) {
+		[self setRequestToken:[tokenStore requestToken]];
+	} else if ([tokenStore hasAccessToken] && self.accessToken == nil) {
+		[self setAccessToken:[tokenStore accessToken]];
+	}
+	
+	if(self.requestToken) {
+		if(![requestToken key] || ![requestToken secret]) {
+			return FALSE;
+		}
 		
 		// check if the request token has expired.
 		// if expired, return FALSE as there is no session to resume.
-		if([storedRequestToken tokenHasExpired]) {
-			// NSLog(@"Request token (%@) has expired.", storedRequestToken.key);
+		if([self.requestToken tokenHasExpired]) {
+			// NSLog(@"Request token (%@) has expired.", self.requestToken.key);
 			return FALSE;
 		}
 		
@@ -97,7 +105,7 @@
 		}
 		
 		// exchange the request token for an access token.
-		YOSAccessToken *newAccessToken = [tokenAuthRequest fetchAccessToken:storedRequestToken withVerifier:self.verifier];
+		YOSAccessToken *newAccessToken = [tokenAuthRequest fetchAccessToken:self.requestToken withVerifier:self.verifier];
 		
 		// check for the presence of a key and secret,
 		// if missing the session is invalid, most likely 
@@ -112,16 +120,20 @@
 			// session is ready
 			return TRUE;
 		}
-	} else if([self.tokenStore hasAccessToken]) {
-		YOSAccessToken *storedAccessToken = [self.tokenStore accessToken];
-		[self setAccessToken:storedAccessToken];
+	} else if(self.accessToken) {
+		if(![accessToken key] || ![accessToken secret]) {
+			return FALSE;
+		}
+		
+		//YOSAccessToken *storedAccessToken = [self.tokenStore accessToken];
+		//[self setAccessToken:storedAccessToken];
 		
 		// check if the access token has expired
 		// if expired we can try to renew it.
-		if([storedAccessToken tokenHasExpired]) {
+		if([self.accessToken tokenHasExpired]) {
 			// NSLog(@"Access token (%@) has expired.", storedAccessToken.key);
 			
-			YOSAccessToken *refreshedAccessToken = [tokenAuthRequest fetchAccessToken:storedAccessToken withVerifier:nil];
+			YOSAccessToken *refreshedAccessToken = [tokenAuthRequest fetchAccessToken:self.accessToken withVerifier:nil];
 			
 			// check for the presence of a key and secret
 			// if missing the session is invalid, likely because the 
