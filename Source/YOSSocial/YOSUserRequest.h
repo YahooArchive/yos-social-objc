@@ -44,6 +44,12 @@
 - (void)fetchProfileWithDelegate:(id)delegate;
 
 /**
+ * Fetches the user's location data.
+ * @param delegate
+ */ 
+- (void)fetchProfileLocationWithDelegate:(id)delegate;
+
+/**
  * Fetches the profiles of the user's connections using an asynchronous request.
  * @param start					An integer specifying the index of the first connection returned. 
  * @param count					An integer specifying the number of connections returned.

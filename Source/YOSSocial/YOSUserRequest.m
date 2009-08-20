@@ -103,6 +103,17 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[requestParameters release];
 }
 
+- (void)fetchProfileLocationWithDelegate:(id)delegate
+{
+	YQLQueryRequest *yqlRequest = [[YQLQueryRequest alloc] initWithYOSUser:[self user]];
+	
+	NSString *queryJoin = [NSString stringWithFormat:@"select location from social.profile where guid=\"%@\"", start, count, user.guid];
+	NSString *yqlQuery = [NSString stringWithFormat:@"select * from geo.places where text in (%@)", queryJoin];
+	
+	[yqlRequest query:yqlQuery withDelegate:delegate];
+	[yqlRequest release];
+}
+
 - (void)fetchConnectionProfilesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
 {
 	YQLQueryRequest *yqlRequest = [[YQLQueryRequest alloc] initWithYOSUser:[self user]];
