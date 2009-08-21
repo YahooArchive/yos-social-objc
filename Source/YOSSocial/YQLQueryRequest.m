@@ -11,6 +11,7 @@
 #import "YQLQueryRequest.h"
 
 static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
+static NSString *const kYQLOpenTables = @"http://datatables.org/alltables.env";
 
 @implementation YQLQueryRequest
 
@@ -81,23 +82,23 @@ static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
 
 - (YOSRequestClient *)generateRequest:(NSString *)aQuery
 {
+	if(!self.environmentFile) [self setEnvironmentFile:kYQLOpenTables];
+	
 	// If a consumer is not available, we can assume public tables are being used
 	// and we'll use the public yql endpoint. 
 	NSString *requestUrl = ([self consumerForRequest] != nil)
-		?[NSString stringWithFormat:@"%@/%@/%@",kYQLBaseUrl,self.apiVersion,@"yql"]
- 		:[NSString stringWithFormat:@"%@/%@/%@/%@",kYQLBaseUrl,self.apiVersion,@"public",@"yql"];
+		? [NSString stringWithFormat:@"%@/%@/%@",kYQLBaseUrl,self.apiVersion,@"yql"]
+ 		: [NSString stringWithFormat:@"%@/%@/%@/%@",kYQLBaseUrl,self.apiVersion,@"public",@"yql"];
 	
 	NSURL *url = [NSURL URLWithString:requestUrl];
-	
-	NSString *useDiagnostics = (self.diagnostics) ? @"true" : @"false";
 	
 	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
 	[requestParameters setObject:aQuery forKey:@"q"];
 	[requestParameters setObject:self.format forKey:@"format"];
-	[requestParameters setObject:useDiagnostics forKey:@"diagnostics"];
 	
-	if(self.environmentFile != nil) 
-		[requestParameters setObject:self.environmentFile forKey:@"env"];
+	NSString *useDiagnostics = (self.diagnostics) ? @"true" : @"false";
+	[requestParameters setObject:useDiagnostics forKey:@"diagnostics"];
+	[requestParameters setObject:self.environmentFile forKey:@"env"];
 	
 	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
 																 andToken:[self tokenForRequest]];
