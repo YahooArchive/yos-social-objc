@@ -27,3 +27,4 @@
 #import "YOSAuthRequest.h"
 #import "YOSUserRequest.h"
 #import "YQLQueryRequest.h"
+#import "YOSOpenSocialRequest.h"
