@@ -34,20 +34,19 @@ static NSString *const kYQLOpenTables = @"http://datatables.org/alltables.env";
 #pragma mark -
 #pragma mark Public
 
-- (void)query:(NSString *)aQuery withDelegate:(id)delegate
+- (BOOL)query:(NSString *)aQuery withDelegate:(id)delegate
 {
 	YOSRequestClient *client = [self generateRequest:aQuery];
-
 	[client setHTTPMethod:@"GET"];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
-	[client sendAsyncRequestWithDelegate:delegate];
+	
+	return [client sendAsyncRequestWithDelegate:delegate];
 }
 
 
 - (YOSResponseData *)query:(NSString *)aQuery
 {	
 	YOSRequestClient *client = [self generateRequest:aQuery];
-	
 	[client setHTTPMethod:@"GET"];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	
@@ -60,20 +59,30 @@ static NSString *const kYQLOpenTables = @"http://datatables.org/alltables.env";
 	return response;
 }
 
+- (BOOL)updateQuery:(NSString *)aQuery withDelegate:(id)delegate
+{
+	YOSRequestClient *client = [self generateRequest:aQuery];
+	[client setHTTPMethod:@"PUT"];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
+	
+	return [client sendAsyncRequestWithDelegate:delegate];
+}
+
 - (BOOL)updateQuery:(NSString *)aQuery
 {	
 	YOSRequestClient *client = [self generateRequest:aQuery];
-	
 	[client setHTTPMethod:@"PUT"];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
 	
-	if (!response.didSucceed) {
-		return NO;
-	}
-	
-	return YES;
+	return (response.didSucceed);
+}
+
+- (NSString *)queryByJoiningQueries:(NSArray *)queries
+{
+	NSString *joinedQueries = [[queries componentsJoinedByString:@";"] stringByReplacingOccurrencesOfString:@"\"" withString:@"'"];
+	return [NSString stringWithFormat:@"select * from query.multi where queries=\"%@\"", joinedQueries];
 }
 
 
@@ -86,9 +95,8 @@ static NSString *const kYQLOpenTables = @"http://datatables.org/alltables.env";
 	
 	// If a consumer is not available, we can assume public tables are being used
 	// and we'll use the public yql endpoint. 
-	NSString *requestUrl = ([self consumerForRequest] != nil)
-		? [NSString stringWithFormat:@"%@/%@/%@",kYQLBaseUrl,self.apiVersion,@"yql"]
- 		: [NSString stringWithFormat:@"%@/%@/%@/%@",kYQLBaseUrl,self.apiVersion,@"public",@"yql"];
+	NSString *requestUrl = ([self oauthConsumer]) ? [NSString stringWithFormat:@"%@/%@/%@", kYQLBaseUrl, self.apiVersion, @"yql"]
+	: [NSString stringWithFormat:@"%@/%@/%@/%@", kYQLBaseUrl, self.apiVersion, @"public", @"yql"];
 	
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
@@ -100,13 +108,11 @@ static NSString *const kYQLOpenTables = @"http://datatables.org/alltables.env";
 	[requestParameters setObject:useDiagnostics forKey:@"diagnostics"];
 	[requestParameters setObject:self.environmentFile forKey:@"env"];
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
-	
+	YOSRequestClient *client = [self requestClient];
 	[client setRequestUrl:url];
 	[client setRequestParameters:requestParameters];
 	
-	return [client autorelease];
+	return client;
 }
 
 @end
