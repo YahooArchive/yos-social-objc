@@ -68,16 +68,24 @@ static NSString *const kRequestBaseSignatureMethod = @"HMAC-SHA1";
 #pragma mark -
 #pragma mark Protected
 
-- (YOAuthConsumer *)consumerForRequest
+- (YOAuthConsumer *)oauthConsumer
 {
 	YOAuthConsumer *theConsumer = (user) ? [user.session consumer] : consumer;	
 	return theConsumer;
 }
 
-- (YOAuthToken *)tokenForRequest
+- (YOAuthToken *)oauthToken
 {
 	YOAuthToken *theToken = (user) ? [user.session accessToken] : token;
 	return theToken;
+}
+
+- (YOSRequestClient *)requestClient
+{
+	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self oauthConsumer]
+																 andToken:[self oauthToken]];
+	
+	return [client autorelease];
 }
 
 - (id)deserializeJSON:(NSString *)aJSONString

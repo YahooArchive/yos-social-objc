@@ -121,13 +121,18 @@
  * @return					The OAuth consumer. First preference goes to the session's consumer. May be nil.
  * @see YOAuthConsumer
  */
-- (YOAuthConsumer *)consumerForRequest;
+- (YOAuthConsumer *)oauthConsumer;
 
 /**
  * Returns the OAuth token located in either the user's session or this object.
  * @return					The OAuth token. First preference goes to the session's token. May be nil.
  * @see YOAuthToken
  */
-- (YOAuthToken *)tokenForRequest;
+- (YOAuthToken *)oauthToken;
+
+/**
+ * Returns a new YOSRequestClient object.
+ */
+- (YOSRequestClient *)requestClient;
 
 @end

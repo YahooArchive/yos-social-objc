@@ -65,6 +65,8 @@
 		F23BEB060F610B0B006A4FAA /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAFF0F610B0B006A4FAA /* SBJSON.h */; };
 		F23C32BB0F70D3C700A2EE8E /* YOSUserRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F23C32B90F70D3C700A2EE8E /* YOSUserRequest.h */; };
 		F23C32BC0F70D3C700A2EE8E /* YOSUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F23C32BA0F70D3C700A2EE8E /* YOSUserRequest.m */; };
+		F2E1AD4B10618617002D979B /* YOSOpenSocialRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2E1AD4910618617002D979B /* YOSOpenSocialRequest.h */; };
+		F2E1AD4C10618617002D979B /* YOSOpenSocialRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E1AD4A10618617002D979B /* YOSOpenSocialRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +134,8 @@
 		F23BEAFF0F610B0B006A4FAA /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJSON.h; path = "Source/json-framework/SBJSON.h"; sourceTree = "<group>"; };
 		F23C32B90F70D3C700A2EE8E /* YOSUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOSUserRequest.h; path = Source/YOSSocial/YOSUserRequest.h; sourceTree = "<group>"; };
 		F23C32BA0F70D3C700A2EE8E /* YOSUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOSUserRequest.m; path = Source/YOSSocial/YOSUserRequest.m; sourceTree = "<group>"; };
+		F2E1AD4910618617002D979B /* YOSOpenSocialRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOSOpenSocialRequest.h; path = Source/YOSSocial/YOSOpenSocialRequest.h; sourceTree = "<group>"; };
+		F2E1AD4A10618617002D979B /* YOSOpenSocialRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOSOpenSocialRequest.m; path = Source/YOSSocial/YOSOpenSocialRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +274,8 @@
 				F23BEA7F0F610A9E006A4FAA /* YOSAuthRequest.m */,
 				F23C32B90F70D3C700A2EE8E /* YOSUserRequest.h */,
 				F23C32BA0F70D3C700A2EE8E /* YOSUserRequest.m */,
+				F2E1AD4910618617002D979B /* YOSOpenSocialRequest.h */,
+				F2E1AD4A10618617002D979B /* YOSOpenSocialRequest.m */,
 				F23BEA880F610A9E006A4FAA /* YQLQueryRequest.h */,
 				F23BEA890F610A9E006A4FAA /* YQLQueryRequest.m */,
 			);
@@ -374,6 +380,7 @@
 				F23C32BB0F70D3C700A2EE8E /* YOSUserRequest.h in Headers */,
 				F2235FD10F7221EC00BDA003 /* NSData+OAuthResponse.h in Headers */,
 				F2235FD50F72222200BDA003 /* NSDictionary+QueryString.h in Headers */,
+				F2E1AD4B10618617002D979B /* YOSOpenSocialRequest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +483,7 @@
 				F23C32BC0F70D3C700A2EE8E /* YOSUserRequest.m in Sources */,
 				F2235FD20F7221EC00BDA003 /* NSData+OAuthResponse.m in Sources */,
 				F2235FD60F72222200BDA003 /* NSDictionary+QueryString.m in Sources */,
+				F2E1AD4C10618617002D979B /* YOSOpenSocialRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
