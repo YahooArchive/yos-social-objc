@@ -60,14 +60,12 @@ static NSString *const kOAuthOutOfBand = @"oob";
 		[requestParameters setValue:self.oAuthLang forKey:@"xoauth_lang_pref"];
 	}
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
+	YOSRequestClient *client = [self requestClient];
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"POST"];
 	[client setRequestParameters:requestParameters];
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
-	[client release];
 	
 	if(!response.didSucceed) {
 		return nil;
@@ -109,8 +107,7 @@ static NSString *const kOAuthOutOfBand = @"oob";
 		}
 	}
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
+	YOSRequestClient *client = [self requestClient];
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"POST"];
 	[client setRequestParameters:requestParameters];
