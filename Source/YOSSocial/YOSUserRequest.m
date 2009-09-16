@@ -18,12 +18,8 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 
 + (id)requestWithSession:(YOSSession *)session
 {
-	YOSUser *sessionedUser = [[YOSUser alloc] initWithSession:session];
-	YOSUserRequest *request = [[YOSUserRequest alloc] initWithYOSUser:sessionedUser];
-	
-	[sessionedUser autorelease];
-	[request autorelease];
-	
+	YOSUser *sessionedUser = [[[YOSUser alloc] initWithSession:session] autorelease];
+	YOSUserRequest *request = [[[YOSUserRequest alloc] initWithYOSUser:sessionedUser] autorelease];
 	return request;
 }
 
@@ -33,24 +29,19 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
-	NSMutableDictionary *requestParameters = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
 	[requestParameters setObject:self.format forKey:@"format"];
 	[requestParameters setObject:self.user.region forKey:@"region"];
 	[requestParameters setObject:self.user.language forKey:@"lang"];
 	[requestParameters setObject:[NSString stringWithFormat:@"%d", start] forKey:@"start"];
 	[requestParameters setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
-	
+	YOSRequestClient *client = [self requestClient];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
 	[client sendAsyncRequestWithDelegate:delegate];
-	
-	[client release];
-	[requestParameters release];
 }
 
 - (void)fetchContactsWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
@@ -59,24 +50,19 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
-	NSMutableDictionary *requestParameters = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
 	[requestParameters setObject:self.format forKey:@"format"];
 	[requestParameters setObject:self.user.region forKey:@"region"];
 	[requestParameters setObject:self.user.language forKey:@"lang"];
 	[requestParameters setObject:[NSString stringWithFormat:@"%d", start] forKey:@"start"];
 	[requestParameters setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
-	
+	YOSRequestClient *client = [self requestClient];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
 	[client sendAsyncRequestWithDelegate:delegate];
-	
-	[client release];
-	[requestParameters release];
 }
 
 - (void)fetchProfileWithDelegate:(id)delegate
@@ -85,33 +71,17 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
-	NSMutableDictionary *requestParameters = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
 	[requestParameters setObject:self.format forKey:@"format"];
 	[requestParameters setObject:self.user.region forKey:@"region"];
 	[requestParameters setObject:self.user.language forKey:@"lang"];
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
-	
+	YOSRequestClient *client = [self requestClient];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
 	[client sendAsyncRequestWithDelegate:delegate];
-	
-	[client release];
-	[requestParameters release];
-}
-
-- (void)fetchProfileLocationWithDelegate:(id)delegate
-{
-	YQLQueryRequest *yqlRequest = [[YQLQueryRequest alloc] initWithYOSUser:[self user]];
-	
-	NSString *queryJoin = [NSString stringWithFormat:@"select location from social.profile where guid=\"%@\"", start, count, user.guid];
-	NSString *yqlQuery = [NSString stringWithFormat:@"select * from geo.places where text in (%@)", queryJoin];
-	
-	[yqlRequest query:yqlQuery withDelegate:delegate];
-	[yqlRequest release];
 }
 
 - (void)fetchConnectionProfilesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
@@ -131,22 +101,17 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@",self.baseUrl,self.apiVersion,@"user",self.user.guid,method];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
-	NSMutableDictionary *requestParameters = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
 	[requestParameters setObject:self.format forKey:@"format"];
 	[requestParameters setObject:self.user.region forKey:@"region"];
 	[requestParameters setObject:self.user.language forKey:@"lang"];
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
-	
+	YOSRequestClient *client = [self requestClient];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
 	[client sendAsyncRequestWithDelegate:delegate];
-	
-	[client release];
-	[requestParameters release];
 }
 
 - (void)fetchConnectionsStatusWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
@@ -169,7 +134,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSString *updatesDefaultSortingParam = [NSString stringWithFormat:@"pubDate"];
 	NSString *updatesTransform = [NSString stringWithFormat:@"(sort \"%@\" numeric descending (all))", updatesDefaultSortingParam];
 	
-	NSMutableDictionary *requestParameters = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
 	[requestParameters setObject:self.format forKey:@"format"];
 	[requestParameters setObject:self.user.region forKey:@"region"];
 	[requestParameters setObject:self.user.language forKey:@"lang"];
@@ -177,17 +142,12 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[requestParameters setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
 	[requestParameters setObject:updatesTransform forKey:@"transform"];
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
-	
+	YOSRequestClient *client = [self requestClient];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
 	[client sendAsyncRequestWithDelegate:delegate];
-	
-	[client release];
-	[requestParameters release];
 }
 
 - (void)fetchConnectionUpdatesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
@@ -199,7 +159,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSString *updatesDefaultSortingParam = [NSString stringWithFormat:@"pubDate"];
 	NSString *updatesTransform = [NSString stringWithFormat:@"(sort \"%@\" numeric descending (all))", updatesDefaultSortingParam];
 	
-	NSMutableDictionary *requestParameters = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
 	[requestParameters setObject:self.format forKey:@"format"];
 	[requestParameters setObject:self.user.region forKey:@"region"];
 	[requestParameters setObject:self.user.language forKey:@"lang"];
@@ -207,17 +167,12 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[requestParameters setObject:[NSString stringWithFormat:@"%d", count] forKey:@"count"];
 	[requestParameters setObject:updatesTransform forKey:@"transform"];
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
-	
+	YOSRequestClient *client = [self requestClient];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
 	[client sendAsyncRequestWithDelegate:delegate];
-	
-	[client release];
-	[requestParameters release];
 }
 
 - (BOOL)insertUpdateWithTitle:(NSString *)aTitle
@@ -242,7 +197,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSString *timestamp = [NSString stringWithFormat:@"%d", (long)[aDate timeIntervalSince1970]];
 	NSString *updateSource = [NSString stringWithFormat:@"APP.%@", theSession.applicationId];
 	
-	NSMutableDictionary *updateData = [[NSMutableDictionary alloc] initWithCapacity:10];
+	NSMutableDictionary *updateData = [NSMutableDictionary dictionary];
 	[updateData setObject:user.guid forKey:@"collectionID"];
 	[updateData setObject:updateSource forKey:@"source"];
 	[updateData setObject:aSuid forKey:@"suid"];
@@ -262,8 +217,6 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSString *jsonUpdatesPayload = [self serializeDictionary:updatesDataPayload];
 	NSData *updatesHTTPBody = [jsonUpdatesPayload dataUsingEncoding:NSUTF8StringEncoding];
 	
-	[updateData release];
-	
 	NSString *method = [NSString stringWithFormat:@"updates"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@/%@", baseUrl, apiVersion, @"user", user.guid, method, updateSource, aSuid];
 	NSURL *url = [NSURL URLWithString:requestUrl];
@@ -271,9 +224,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSMutableDictionary *requestHeaders = [NSMutableDictionary dictionary];
 	[requestHeaders setObject:@"application/json" forKey:@"Content-Type"];
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
-	
+	YOSRequestClient *client = [self requestClient];
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"PUT"];
 	[client setHTTPBody:updatesHTTPBody];
@@ -282,10 +233,6 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
-	
-	// NSLog(@"%d", httpStatusCode);
-	
-	[client release];
 	
 	if(!response.data) {
 		return FALSE;
@@ -313,19 +260,13 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@/%@", baseUrl, apiVersion, @"user", user.guid, method, updateSource, aSuid];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
-	
+	YOSRequestClient *client = [self requestClient];
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"DELETE"];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
-	
-	// NSLog(@"%d", httpStatusCode);
-	
-	[client release];
 	
 	if(!response.data) {
 		return FALSE;
@@ -355,9 +296,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	
 	NSData *statusHTTPBody = [[self serializeDictionary:statusDictionary] dataUsingEncoding:NSUTF8StringEncoding];
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
-	
+	YOSRequestClient *client = [self requestClient];
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"PUT"];
 	[client setHTTPBody:statusHTTPBody];
@@ -366,11 +305,6 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
-	
-	NSLog(@"%@", response.responseText);
-	// NSLog(@"%d", httpStatusCode);
-	
-	[client release];
 	
 	if(!response.data) {
 		return FALSE;
@@ -389,9 +323,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	
 	NSData *smallViewContentHTTPBody = [content dataUsingEncoding:NSUTF8StringEncoding];
 	
-	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self consumerForRequest] 
-																 andToken:[self tokenForRequest]];
-	
+	YOSRequestClient *client = [self requestClient];
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"PUT"];
 	[client setHTTPBody:smallViewContentHTTPBody];
@@ -400,10 +332,6 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
-	
-	[client release];
-	
-	// NSLog(@"%d", httpStatusCode);
 	
 	if(!response.data) {
 		return FALSE;
