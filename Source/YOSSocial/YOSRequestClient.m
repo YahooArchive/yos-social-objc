@@ -78,10 +78,9 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.4";
 	NSMutableURLRequest *urlRequest = [self buildUrlRequest];
 	//	self.URLConnection = [[NSURLConnection connectionWithRequest:urlRequest delegate:self] retain];
 	
-	self.URLConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+	[self setURLConnection:[[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES]];
 	
 	BOOL connectionCreated = (self.URLConnection != nil);
-	//[self.URLConnection start];
 	
 	return connectionCreated;
 }
