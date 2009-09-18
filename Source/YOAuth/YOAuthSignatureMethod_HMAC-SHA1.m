@@ -10,10 +10,9 @@
 
 #import "YOAuthSignatureMethod_HMAC-SHA1.h"
 
-#include "hmac.h"
-#include "Base64Transcoder.h"
+#import <CommonCrypto/CommonHMAC.h>
 
-static NSString *const kSignatureMethodName = @"HMAC-SHA1";
+#include "Base64Transcoder.h"
 
 @implementation YOAuthSignatureMethod_HMAC_SHA1
 
@@ -21,20 +20,25 @@ static NSString *const kSignatureMethodName = @"HMAC-SHA1";
 
 - (NSString *)name
 {
-	return [kSignatureMethodName autorelease];
+	return @"HMAC-SHA1";
 }
 
 - (NSString *)buildSignatureWithRequest:(NSString *)aSignableString andSecrets:(NSString *)aSecret
 {
 	NSData *secretData = [aSecret dataUsingEncoding:NSUTF8StringEncoding];
     NSData *clearTextData = [aSignableString dataUsingEncoding:NSUTF8StringEncoding];
-    unsigned char result[20];
-    hmac_sha1((unsigned char *)[clearTextData bytes], [clearTextData length], (unsigned char *)[secretData bytes], [secretData length], result);
+	
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH] = {0};
+	
+	CCHmacContext hmacContext;
+    CCHmacInit(&hmacContext, kCCHmacAlgSHA1, secretData.bytes, secretData.length);
+    CCHmacUpdate(&hmacContext, clearTextData.bytes, clearTextData.length);
+    CCHmacFinal(&hmacContext, digest);
     
     //Base64 Encoding
     char base64Result[32];
     size_t theResultLength = 32;
-    Base64EncodeData(result, 20, base64Result, &theResultLength);
+    Base64EncodeData(digest, CC_SHA1_DIGEST_LENGTH, base64Result, &theResultLength);
     NSData *theData = [NSData dataWithBytes:base64Result length:theResultLength];
     
     NSString *base64EncodedResult = [[NSString alloc] initWithData:theData encoding:NSUTF8StringEncoding];

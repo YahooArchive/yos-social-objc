@@ -10,15 +10,13 @@
 
 #import "YOAuthSignatureMethod_PLAINTEXT.h"
 
-static NSString *const kSignatureMethodName = @"PLAINTEXT";
-
 @implementation YOAuthSignatureMethod_PLAINTEXT
 
 #pragma mark Public
 
 - (NSString *)name
 {
-	return [kSignatureMethodName autorelease];
+	return @"PLAINTEXT";
 }
 
 - (NSString *)buildSignatureWithRequest:(NSString *)aSignableString andSecrets:(NSString *)aSecret
