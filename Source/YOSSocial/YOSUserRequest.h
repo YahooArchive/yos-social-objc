@@ -27,7 +27,7 @@
  * @param count					An integer specifying the number of connections returned.
  * @param delegate				An object containing the methods to handle the request's response. 
  */
-- (void)fetchConnectionsWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
+- (BOOL)fetchConnectionsWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
 
 /**
  * Fetches the user's contacts using an asynchronous request.
@@ -35,13 +35,34 @@
  * @param count					An integer specifying the number of contacts returned.
  * @param delegate				An object containing the methods to handle the request's response. 
  */
-- (void)fetchContactsWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
+- (BOOL)fetchContactsWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
 
 /**
  * Fetches the profile of the user using an asynchronous request.
  * @param delegate				An object containing the methods to handle the request's response. 
  */
-- (void)fetchProfileWithDelegate:(id)delegate;
+- (BOOL)fetchProfileWithDelegate:(id)delegate;
+
+/**
+ * Fetches the location of the user from their profile using an asynchronous request.
+ * @param delegate				An object containing the methods to handle the request's response. 
+ */
+- (BOOL)fetchProfileLocationWithDelegate:(id)delegate;
+
+/**
+ * Fetches probable locations from the content of a document.
+ * @param documentContent		A string of text.
+ * @param documentType			A document type such as 'text/plain'
+ * @param delegate				An object containing the methods to handle the request's response. 
+ */
+- (BOOL)fetchDataFromContent:(NSString *)documentContent andDocumentType:(NSString *)documentType withDelegate:(id)delegate;
+
+/**
+ * Fetches the structured location data for a given place name.
+ * @param location				A place name or location string.
+ * @param delegate				An object containing the methods to handle the request's response. 
+ */
+- (BOOL)fetchDataForGeoLocation:(NSString *)location withDelegate:(id)delegate;
 
 /**
  * Fetches the profiles of the user's connections using an asynchronous request.
@@ -49,7 +70,7 @@
  * @param count					An integer specifying the number of connections returned.
  * @param delegate				An object containing the methods to handle the request's response. 
  */
-- (void)fetchConnectionProfilesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
+- (BOOL)fetchConnectionProfilesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
 
 /**
  * Fetches the current status messages of the user's connections using an asynchronous request.
@@ -57,7 +78,7 @@
  * @param count					An integer specifying the number of connections returned.
  * @param delegate				An object containing the methods to handle the request's response. 
  */
-- (void)fetchConnectionsStatusWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
+- (BOOL)fetchConnectionsStatusWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
 
 /**
  * Fetches the updates for the user using an asynchronous request.
@@ -65,7 +86,7 @@
  * @param count					An integer specifying the number of updates returned.
  * @param delegate				An object containing the methods to handle the request's response. 
  */
-- (void)fetchUpdatesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
+- (BOOL)fetchUpdatesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
 
 /**
  * Fetches the updates for the user's connections using an asynchronous request.
@@ -73,14 +94,14 @@
  * @param count					An integer specifying the number of updates returned.
  * @param delegate				An object containing the methods to handle the request's response. 
  */
-- (void)fetchConnectionUpdatesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
+- (BOOL)fetchConnectionUpdatesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
 
 /**
  * Fetches the current status message for the user using an asynchronous request.
  * @return YOSResponseData		An object containing the response data and any errors encountered.
  * @param delegate				An object containing the methods to handle the request's response. 
  */
-- (void)fetchStatusWithDelegate:(id)delegate;
+- (BOOL)fetchStatusWithDelegate:(id)delegate;
 
 /**
  * Sets the user's status message using a synchronous request.
@@ -117,6 +138,11 @@
  * @return				A boolean, true if the request was successful.
  */
 - (BOOL)setSmallViewWithContents:(NSString *)content;
+
+/**
+ * Foo
+ */
+- (BOOL)query:(NSString *)aQuery withDelegate:(id)delegate;
 
 /**
  * Creates a unique string (SUID) usable for inserting an update.

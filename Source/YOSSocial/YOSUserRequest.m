@@ -23,7 +23,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	return request;
 }
 
-- (void)fetchConnectionsWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
+- (BOOL)fetchConnectionsWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
 {
 	NSString *method = [NSString stringWithFormat:@"connections"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method];
@@ -41,10 +41,10 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
-	[client sendAsyncRequestWithDelegate:delegate];
+	return [client sendAsyncRequestWithDelegate:delegate];
 }
 
-- (void)fetchContactsWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
+- (BOOL)fetchContactsWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
 {
 	NSString *method = [NSString stringWithFormat:@"contacts"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method];
@@ -62,10 +62,10 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
-	[client sendAsyncRequestWithDelegate:delegate];
+	return [client sendAsyncRequestWithDelegate:delegate];
 }
 
-- (void)fetchProfileWithDelegate:(id)delegate
+- (BOOL)fetchProfileWithDelegate:(id)delegate
 {
 	NSString *method = [NSString stringWithFormat:@"profile"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method];
@@ -81,21 +81,41 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
-	[client sendAsyncRequestWithDelegate:delegate];
+	return [client sendAsyncRequestWithDelegate:delegate];
 }
 
-- (void)fetchConnectionProfilesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
-{
-	YQLQueryRequest *yqlRequest = [[YQLQueryRequest alloc] initWithYOSUser:[self user]];
-	
+- (BOOL)fetchProfileLocationWithDelegate:(id)delegate
+{	
+	NSString *queryJoin = [NSString stringWithFormat:@"select location from social.profile where guid=\"%@\"", user.guid];
+	return [self query:[NSString stringWithFormat:@"select * from geo.places where text in (%@)", queryJoin] withDelegate:delegate];
+}
+
+- (BOOL)fetchConnectionProfilesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
+{	
 	NSString *queryJoin = [NSString stringWithFormat:@"select guid from social.connections(%d,%d) where owner_guid=\"%@\"", start, count, user.guid];
-	NSString *yqlQuery = [NSString stringWithFormat:@"select * from social.profile where guid in (%@)", queryJoin];
-	
-	[yqlRequest query:yqlQuery withDelegate:delegate];
-	[yqlRequest release];
+	return [self query:[NSString stringWithFormat:@"select * from social.profile where guid in (%@)", queryJoin] withDelegate:delegate];
 }
 
-- (void)fetchStatusWithDelegate:(id)delegate
+- (BOOL)fetchDataFromContent:(NSString *)documentContent andDocumentType:(NSString *)documentType withDelegate:(id)delegate
+{
+	documentContent = (documentContent) ? documentContent : @"text/plain";
+	return [self query:[NSString stringWithFormat:@"select * from geo.placemaker where documentContent=\"%@\" and documentType=\"%@\"", documentContent, documentType]
+		  withDelegate:delegate];
+}
+
+- (BOOL)fetchDataForGeoLocation:(NSString *)location withDelegate:(id)delegate
+{
+	return [self query:[NSString stringWithFormat:@"select * from geo.places where text=\"%@\"", location] withDelegate:delegate];
+}
+
+- (BOOL)fetchConnectionsStatusWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
+{
+	NSString *yqlJoin = [NSString stringWithFormat:@"select guid from social.connections(%d,%d) where owner_guid=\"%@\"", start, count, user.guid];
+	return [self query:[NSString stringWithFormat:@"select guid,status from social.profile where guid in (%@) | sort(field=\"status.lastStatusModified\") | reverse()", yqlJoin] 
+		  withDelegate:delegate];
+}
+
+- (BOOL)fetchStatusWithDelegate:(id)delegate
 {
 	NSString *method = [NSString stringWithFormat:@"profile/status"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@",self.baseUrl,self.apiVersion,@"user",self.user.guid,method];
@@ -111,21 +131,10 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
-	[client sendAsyncRequestWithDelegate:delegate];
+	return [client sendAsyncRequestWithDelegate:delegate];
 }
 
-- (void)fetchConnectionsStatusWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
-{
-	YQLQueryRequest *yqlRequest = [[YQLQueryRequest alloc] initWithYOSUser:[self user]];
-	
-	NSString *yqlJoin = [NSString stringWithFormat:@"select guid from social.connections(%d,%d) where owner_guid=\"%@\"", start, count, user.guid];
-	NSString *yqlQuery = [NSString stringWithFormat:@"select guid,status from social.profile where guid in (%@) | sort(field=\"status.lastStatusModified\") | reverse()", yqlJoin];
-	
-	[yqlRequest query:yqlQuery withDelegate:delegate];
-	[yqlRequest release];
-}
-
-- (void)fetchUpdatesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
+- (BOOL)fetchUpdatesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
 {
 	NSString *method = [NSString stringWithFormat:@"updates"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method];
@@ -147,10 +156,10 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
-	[client sendAsyncRequestWithDelegate:delegate];
+	return [client sendAsyncRequestWithDelegate:delegate];
 }
 
-- (void)fetchConnectionUpdatesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
+- (BOOL)fetchConnectionUpdatesWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate
 {
 	NSString *method = [NSString stringWithFormat:@"updates/connections"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", baseUrl, apiVersion, @"user", user.guid, method];
@@ -172,7 +181,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
-	[client sendAsyncRequestWithDelegate:delegate];
+	return [client sendAsyncRequestWithDelegate:delegate];
 }
 
 - (BOOL)insertUpdateWithTitle:(NSString *)aTitle
@@ -338,6 +347,16 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	}
 	
 	return (httpStatusCode == 200);
+}
+
+- (BOOL)query:(NSString *)aQuery withDelegate:(id)delegate
+{
+	YQLQueryRequest *yqlRequest = [[YQLQueryRequest alloc] initWithYOSUser:[self user]];
+	
+	BOOL connectionWasCreated = [yqlRequest query:aQuery withDelegate:delegate];
+	[yqlRequest release];
+	
+	return connectionWasCreated;
 }
 
 - (NSString *)generateUniqueSuid
