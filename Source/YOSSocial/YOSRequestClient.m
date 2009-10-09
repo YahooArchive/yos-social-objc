@@ -15,7 +15,7 @@
 #define OAUTH_PARAMS_IN_AUTH_HEADER		@"OAUTH_PARAMS_IN_AUTH_HEADER"
 #define OAUTH_PARAMS_IN_QUERY_STRING	@"OAUTH_PARAMS_IN_QUERY_STRING"
 
-static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.4";
+static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 
 @implementation YOSRequestClient
 
@@ -66,7 +66,6 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.4";
 	
 	YOSResponseData *serviceResponseData = [YOSResponseData responseWithData:connectionResponseData 
 															  andURLResponse:urlResponse];
-	
 	return serviceResponseData;
 }
 
@@ -76,7 +75,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.4";
 	[self setRequestDelegate:delegate];
 	
 	NSMutableURLRequest *urlRequest = [self buildUrlRequest];
-	//	self.URLConnection = [[NSURLConnection connectionWithRequest:urlRequest delegate:self] retain];
+	// self.URLConnection = [[NSURLConnection connectionWithRequest:urlRequest delegate:self] retain];
 	
 	[self setURLConnection:[[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES]];
 	
@@ -99,16 +98,26 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.4";
 	
 	if([self.HTTPMethod isEqualToString:@"POST"])
 	{
-		NSString *requestAbsoluteURLString = [self.requestUrl absoluteString];
-		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", requestAbsoluteURLString]];
+		//		NSString *requestAbsoluteURLString = [self.requestUrl absoluteString];
+		//		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", requestAbsoluteURLString]];
+		//		[urlRequest setURL:url];
+		//		
+		//		NSString *postDataQueryString = (oauthRequest) 
+		//		? [[oauthRequest allRequestParametersAsDictionary] QueryString] 
+		//		: [requestParameters QueryString];
+		//		
+		//		NSData *postData = [postDataQueryString dataUsingEncoding: NSASCIIStringEncoding];
+		//		[urlRequest setHTTPBody:postData];
+		
+		NSDictionary *queryParameters = (oauthRequest && [oauthParamsLocation isEqualToString:OAUTH_PARAMS_IN_QUERY_STRING]) 
+		? [oauthRequest allRequestParametersAsDictionary] 
+		: requestParameters; 
+		
+		NSString *requestAbsoluteURLString = [NSString stringWithFormat:@"%@?%@", [self.requestUrl absoluteString], [queryParameters QueryString]];
+		NSURL *url = [NSURL URLWithString:requestAbsoluteURLString];
+		
 		[urlRequest setURL:url];
-		
-		NSString *postDataQueryString = (oauthRequest) 
-		? [[oauthRequest allRequestParametersAsDictionary] QueryString] 
-		: [requestParameters QueryString];
-		
-		NSData *postData = [postDataQueryString dataUsingEncoding: NSASCIIStringEncoding];
-		[urlRequest setHTTPBody:postData];
+		[urlRequest setHTTPBody:self.HTTPBody];
 	}
 	else {
 		NSDictionary *queryParameters = (oauthRequest && [oauthParamsLocation isEqualToString:OAUTH_PARAMS_IN_QUERY_STRING]) 

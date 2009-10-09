@@ -62,13 +62,14 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"GET"];
 	[client setRequestParameters:requestParameters];
+	
 	return [client sendAsyncRequestWithDelegate:delegate];
 }
 
 - (BOOL)fetchContactWithID:(NSInteger)contactId withDelegate:(id)delegate
 {
 	NSString *method = [NSString stringWithFormat:@"contact"];
-	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method, contactId];
+	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method, [NSString stringWithFormat:@"%d", contactId]];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
 	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
@@ -84,7 +85,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	return [client sendAsyncRequestWithDelegate:delegate];
 }
 
-- (BOOL)addContact:(NSDictionary *)contact withDelegate:(id)delegate
+- (BOOL)addContact:(NSDictionary *)contact
 {
 	NSString *method = [NSString stringWithFormat:@"contacts"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method];
@@ -114,6 +115,8 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
 	
+	NSLog(@"%@", [response responseText]);
+	
 	if(!response.data) {
 		return FALSE;
 	}
@@ -142,7 +145,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	return [client sendAsyncRequestWithDelegate:delegate];
 }
 
-- (BOOL)syncContactsRevision:(NSDictionary *)contactsync withDelegate:(id)delegate
+- (BOOL)syncContactsRevision:(NSDictionary *)contactsync
 {
 	NSString *method = [NSString stringWithFormat:@"contacts"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method];
