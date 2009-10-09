@@ -38,6 +38,34 @@
 - (BOOL)fetchContactsWithStart:(NSInteger)start andCount:(NSInteger)count withDelegate:(id)delegate;
 
 /**
+ * Fetches a single contact given a contact ID number.
+ * @param contactId				An integer specifying a contact ID.
+ * @param delegate				An object containing the methods to handle the request's response. 
+ */
+- (BOOL)fetchContactWithID:(NSInteger)contactId withDelegate:(id)delegate;
+
+/**
+ * Adds a contact to the users address book given a dictionary of contact fields. 
+ * @param contact				A dictionary containing a list of contact fields such as name, email and nickname
+ * @param delegate				An object containing the methods to handle the request's response. 
+ */ 
+- (BOOL)addContact:(NSDictionary *)contact withDelegate:(id)delegate;
+
+/**
+ * Fetches the users contact list given a local revision ID.
+ * @param revision				An integer specifying the local revision.
+ * @param delegate				An object containing the methods to handle the request's response. 
+ */ 
+- (BOOL)fetchContactSyncRevision:(NSInteger)revision withDelegate:(id)delegate;
+
+/**
+ * Fetches the users contact list given a local revision ID.
+ * @param contactsync			A dictionary of a users local contact list with a local revision ID.
+ * @param delegate				An object containing the methods to handle the request's response. 
+ */ 
+- (BOOL)syncContactsRevision:(NSDictionary *)contactsync withDelegate:(id)delegate;
+
+/**
  * Fetches the profile of the user using an asynchronous request.
  * @param delegate				An object containing the methods to handle the request's response. 
  */
@@ -55,14 +83,14 @@
  * @param documentType			A document type such as 'text/plain'
  * @param delegate				An object containing the methods to handle the request's response. 
  */
-- (BOOL)fetchDataFromContent:(NSString *)documentContent andDocumentType:(NSString *)documentType withDelegate:(id)delegate;
+- (BOOL)fetchPlacesFromContent:(NSString *)documentContent andDocumentType:(NSString *)documentType withDelegate:(id)delegate;
 
 /**
  * Fetches the structured location data for a given place name.
  * @param location				A place name or location string.
  * @param delegate				An object containing the methods to handle the request's response. 
  */
-- (BOOL)fetchDataForGeoLocation:(NSString *)location withDelegate:(id)delegate;
+- (BOOL)fetchPlaceForLocation:(NSString *)location withDelegate:(id)delegate;
 
 /**
  * Fetches the profiles of the user's connections using an asynchronous request.

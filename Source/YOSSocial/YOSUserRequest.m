@@ -65,6 +65,120 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	return [client sendAsyncRequestWithDelegate:delegate];
 }
 
+- (BOOL)fetchContactWithID:(NSInteger)contactId withDelegate:(id)delegate
+{
+	NSString *method = [NSString stringWithFormat:@"contact"];
+	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method, contactId];
+	NSURL *url = [NSURL URLWithString:requestUrl];
+	
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
+	[requestParameters setObject:self.format forKey:@"format"];
+	[requestParameters setObject:self.user.region forKey:@"region"];
+	[requestParameters setObject:self.user.language forKey:@"lang"];
+	
+	YOSRequestClient *client = [self requestClient];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
+	[client setRequestUrl:url];
+	[client setHTTPMethod:@"GET"];
+	[client setRequestParameters:requestParameters];
+	return [client sendAsyncRequestWithDelegate:delegate];
+}
+
+- (BOOL)addContact:(NSDictionary *)contact withDelegate:(id)delegate
+{
+	NSString *method = [NSString stringWithFormat:@"contacts"];
+	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method];
+	NSURL *url = [NSURL URLWithString:requestUrl];
+	
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
+	[requestParameters setObject:self.format forKey:@"format"];
+	[requestParameters setObject:self.user.region forKey:@"region"];
+	[requestParameters setObject:self.user.language forKey:@"lang"];
+	
+	NSMutableDictionary *contactData = [NSMutableDictionary dictionary];
+	[contactData setObject:contact forKey:@"contact"];
+	
+	NSString *jsonContact = [self serializeDictionary:contactData];
+	NSData *contactHTTPBody = [jsonContact dataUsingEncoding:NSUTF8StringEncoding];
+	
+	NSMutableDictionary *requestHeaders = [NSMutableDictionary dictionary];
+	[requestHeaders setObject:@"application/json" forKey:@"Content-Type"];
+	
+	YOSRequestClient *client = [self requestClient];
+	[client setRequestUrl:url];
+	[client setHTTPMethod:@"POST"];
+	[client setHTTPBody:contactHTTPBody];
+	[client setRequestHeaders:requestHeaders];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
+	
+	YOSResponseData *response = [client sendSynchronousRequest];
+	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
+	
+	if(!response.data) {
+		return FALSE;
+	}
+	
+	return (httpStatusCode == 200);
+}
+
+- (BOOL)fetchContactSyncRevision:(NSInteger)revision withDelegate:(id)delegate
+{
+	NSString *method = [NSString stringWithFormat:@"contacts"];
+	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method];
+	NSURL *url = [NSURL URLWithString:requestUrl];
+	
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
+	[requestParameters setObject:@"sync" forKey:@"view"];
+	[requestParameters setObject:[NSString stringWithFormat:@"%d", revision] forKey:@"rev"];
+	[requestParameters setObject:self.format forKey:@"format"];
+	[requestParameters setObject:self.user.region forKey:@"region"];
+	[requestParameters setObject:self.user.language forKey:@"lang"];
+	
+	YOSRequestClient *client = [self requestClient];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
+	[client setRequestUrl:url];
+	[client setHTTPMethod:@"GET"];
+	[client setRequestParameters:requestParameters];
+	return [client sendAsyncRequestWithDelegate:delegate];
+}
+
+- (BOOL)syncContactsRevision:(NSDictionary *)contactsync withDelegate:(id)delegate
+{
+	NSString *method = [NSString stringWithFormat:@"contacts"];
+	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method];
+	NSURL *url = [NSURL URLWithString:requestUrl];
+	
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
+	[requestParameters setObject:self.format forKey:@"format"];
+	[requestParameters setObject:self.user.region forKey:@"region"];
+	[requestParameters setObject:self.user.language forKey:@"lang"];
+	
+	NSMutableDictionary *contactSyncData = [NSMutableDictionary dictionary];
+	[contactSyncData setObject:contactsync forKey:@"contactsync"];
+	
+	NSString *jsonContactsync = [self serializeDictionary:contactSyncData];
+	NSData *contactsyncHTTPBody = [jsonContactsync dataUsingEncoding:NSUTF8StringEncoding];
+	
+	NSMutableDictionary *requestHeaders = [NSMutableDictionary dictionary];
+	[requestHeaders setObject:@"application/json" forKey:@"Content-Type"];
+	
+	YOSRequestClient *client = [self requestClient];
+	[client setRequestUrl:url];
+	[client setHTTPMethod:@"PUT"];
+	[client setHTTPBody:contactsyncHTTPBody];
+	[client setRequestHeaders:requestHeaders];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
+	
+	YOSResponseData *response = [client sendSynchronousRequest];
+	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
+	
+	if(!response.data) {
+		return FALSE;
+	}
+	
+	return (httpStatusCode == 200);
+}
+
 - (BOOL)fetchProfileWithDelegate:(id)delegate
 {
 	NSString *method = [NSString stringWithFormat:@"profile"];
@@ -96,14 +210,14 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	return [self query:[NSString stringWithFormat:@"select * from social.profile where guid in (%@)", queryJoin] withDelegate:delegate];
 }
 
-- (BOOL)fetchDataFromContent:(NSString *)documentContent andDocumentType:(NSString *)documentType withDelegate:(id)delegate
+- (BOOL)fetchPlacesFromContent:(NSString *)documentContent andDocumentType:(NSString *)documentType withDelegate:(id)delegate
 {
 	documentContent = (documentContent) ? documentContent : @"text/plain";
 	return [self query:[NSString stringWithFormat:@"select * from geo.placemaker where documentContent=\"%@\" and documentType=\"%@\"", documentContent, documentType]
 		  withDelegate:delegate];
 }
 
-- (BOOL)fetchDataForGeoLocation:(NSString *)location withDelegate:(id)delegate
+- (BOOL)fetchPlaceForLocation:(NSString *)location withDelegate:(id)delegate
 {
 	return [self query:[NSString stringWithFormat:@"select * from geo.places where text=\"%@\"", location] withDelegate:delegate];
 }
