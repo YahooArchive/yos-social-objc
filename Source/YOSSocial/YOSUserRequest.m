@@ -215,7 +215,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 
 - (BOOL)fetchPlacesFromContent:(NSString *)documentContent andDocumentType:(NSString *)documentType withDelegate:(id)delegate
 {
-	documentContent = (documentContent) ? documentContent : @"text/plain";
+	documentType = (documentType) ? documentType : @"text/plain";
 	return [self query:[NSString stringWithFormat:@"select * from geo.placemaker where documentContent=\"%@\" and documentType=\"%@\"", documentContent, documentType]
 		  withDelegate:delegate];
 }
