@@ -11,7 +11,7 @@
 #import "YQLQueryRequest.h"
 
 static NSString *const kYQLBaseUrl = @"http://query.yahooapis.com";
-static NSString *const kYQLOpenTables = @"http://datatables.org/alltables.env";
+static NSString *const kYQLOpenTables = @"store://datatables.org/alltables.env";
 
 @implementation YQLQueryRequest
 
