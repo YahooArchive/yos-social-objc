@@ -112,7 +112,7 @@ will automatically fetch a new access token to renew the session.
 	BOOL hasSession = [session resumeSession];  
 	
 	if(hasSession == FALSE) {  
-	   [session sendUserToAuthorizationWithCallback:nil];  
+	   [session sendUserToAuthorizationWithCallbackUrl:nil];  
 	}else{  
 	   [self sendRequests];  
 	}
