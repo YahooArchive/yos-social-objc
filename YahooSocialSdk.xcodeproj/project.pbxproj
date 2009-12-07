@@ -36,10 +36,6 @@
 		F23BEABD0F610A9E006A4FAA /* YOSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BEA9A0F610A9E006A4FAA /* YOSUser.m */; };
 		F23BEACE0F610AD0006A4FAA /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = F23BEAC80F610AD0006A4FAA /* Base64Transcoder.c */; };
 		F23BEACF0F610AD0006A4FAA /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAC90F610AD0006A4FAA /* Base64Transcoder.h */; };
-		F23BEAD00F610AD0006A4FAA /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = F23BEACA0F610AD0006A4FAA /* hmac.c */; };
-		F23BEAD10F610AD0006A4FAA /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEACB0F610AD0006A4FAA /* hmac.h */; };
-		F23BEAD20F610AD0006A4FAA /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = F23BEACC0F610AD0006A4FAA /* sha1.c */; };
-		F23BEAD30F610AD0006A4FAA /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEACD0F610AD0006A4FAA /* sha1.h */; };
 		F23BEAE30F610ADB006A4FAA /* YOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAD50F610ADB006A4FAA /* YOAuth.h */; };
 		F23BEAE40F610ADB006A4FAA /* YOAuthConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAD60F610ADB006A4FAA /* YOAuthConsumer.h */; };
 		F23BEAE50F610ADB006A4FAA /* YOAuthConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BEAD70F610ADB006A4FAA /* YOAuthConsumer.m */; };
@@ -105,10 +101,6 @@
 		F23BEA9A0F610A9E006A4FAA /* YOSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOSUser.m; path = Source/YOSSocial/YOSUser.m; sourceTree = "<group>"; };
 		F23BEAC80F610AD0006A4FAA /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Base64Transcoder.c; path = Source/YOAuth/Crypto/Base64Transcoder.c; sourceTree = "<group>"; };
 		F23BEAC90F610AD0006A4FAA /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64Transcoder.h; path = Source/YOAuth/Crypto/Base64Transcoder.h; sourceTree = "<group>"; };
-		F23BEACA0F610AD0006A4FAA /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hmac.c; path = Source/YOAuth/Crypto/hmac.c; sourceTree = "<group>"; };
-		F23BEACB0F610AD0006A4FAA /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = Source/YOAuth/Crypto/hmac.h; sourceTree = "<group>"; };
-		F23BEACC0F610AD0006A4FAA /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sha1.c; path = Source/YOAuth/Crypto/sha1.c; sourceTree = "<group>"; };
-		F23BEACD0F610AD0006A4FAA /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = Source/YOAuth/Crypto/sha1.h; sourceTree = "<group>"; };
 		F23BEAD50F610ADB006A4FAA /* YOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOAuth.h; path = Source/YOAuth/YOAuth.h; sourceTree = "<group>"; };
 		F23BEAD60F610ADB006A4FAA /* YOAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOAuthConsumer.h; path = Source/YOAuth/YOAuthConsumer.h; sourceTree = "<group>"; };
 		F23BEAD70F610ADB006A4FAA /* YOAuthConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOAuthConsumer.m; path = Source/YOAuth/YOAuthConsumer.m; sourceTree = "<group>"; };
@@ -308,10 +300,6 @@
 			children = (
 				F23BEAC80F610AD0006A4FAA /* Base64Transcoder.c */,
 				F23BEAC90F610AD0006A4FAA /* Base64Transcoder.h */,
-				F23BEACA0F610AD0006A4FAA /* hmac.c */,
-				F23BEACB0F610AD0006A4FAA /* hmac.h */,
-				F23BEACC0F610AD0006A4FAA /* sha1.c */,
-				F23BEACD0F610AD0006A4FAA /* sha1.h */,
 			);
 			name = Crypto;
 			sourceTree = "<group>";
@@ -362,8 +350,6 @@
 				F23BEAB80F610A9E006A4FAA /* YOSTokenStore.h in Headers */,
 				F23BEABC0F610A9E006A4FAA /* YOSUser.h in Headers */,
 				F23BEACF0F610AD0006A4FAA /* Base64Transcoder.h in Headers */,
-				F23BEAD10F610AD0006A4FAA /* hmac.h in Headers */,
-				F23BEAD30F610AD0006A4FAA /* sha1.h in Headers */,
 				F23BEAE30F610ADB006A4FAA /* YOAuth.h in Headers */,
 				F23BEAE40F610ADB006A4FAA /* YOAuthConsumer.h in Headers */,
 				F23BEAE60F610ADB006A4FAA /* YOAuthRequest.h in Headers */,
@@ -468,8 +454,6 @@
 				F23BEAB90F610A9E006A4FAA /* YOSTokenStore.m in Sources */,
 				F23BEABD0F610A9E006A4FAA /* YOSUser.m in Sources */,
 				F23BEACE0F610AD0006A4FAA /* Base64Transcoder.c in Sources */,
-				F23BEAD00F610AD0006A4FAA /* hmac.c in Sources */,
-				F23BEAD20F610AD0006A4FAA /* sha1.c in Sources */,
 				F23BEAE50F610ADB006A4FAA /* YOAuthConsumer.m in Sources */,
 				F23BEAE70F610ADB006A4FAA /* YOAuthRequest.m in Sources */,
 				F23BEAE90F610ADB006A4FAA /* YOAuthSignatureMethod_HMAC-SHA1.m in Sources */,
