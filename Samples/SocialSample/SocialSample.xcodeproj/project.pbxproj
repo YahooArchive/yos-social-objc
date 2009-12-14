@@ -29,8 +29,6 @@
 		F2FA8E660F71A80000E4C211 /* YOSUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FA8E360F71A80000E4C211 /* YOSUserRequest.m */; };
 		F2FA8E670F71A80000E4C211 /* YQLQueryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FA8E380F71A80000E4C211 /* YQLQueryRequest.m */; };
 		F2FA8E680F71A80000E4C211 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = F2FA8E3B0F71A80000E4C211 /* Base64Transcoder.c */; };
-		F2FA8E690F71A80000E4C211 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = F2FA8E3D0F71A80000E4C211 /* hmac.c */; };
-		F2FA8E6A0F71A80000E4C211 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = F2FA8E3F0F71A80000E4C211 /* sha1.c */; };
 		F2FA8E6B0F71A80000E4C211 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FA8E430F71A80000E4C211 /* NSString+URLEncoding.m */; };
 		F2FA8E6C0F71A80000E4C211 /* YOAuthConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FA8E470F71A80000E4C211 /* YOAuthConsumer.m */; };
 		F2FA8E6D0F71A80000E4C211 /* YOAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FA8E490F71A80000E4C211 /* YOAuthRequest.m */; };
@@ -86,10 +84,6 @@
 		F2FA8E380F71A80000E4C211 /* YQLQueryRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YQLQueryRequest.m; path = ../../Source/YOSSocial/YQLQueryRequest.m; sourceTree = SOURCE_ROOT; };
 		F2FA8E3B0F71A80000E4C211 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Base64Transcoder.c; path = ../../Source/YOAuth/Crypto/Base64Transcoder.c; sourceTree = SOURCE_ROOT; };
 		F2FA8E3C0F71A80000E4C211 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64Transcoder.h; path = ../../Source/YOAuth/Crypto/Base64Transcoder.h; sourceTree = SOURCE_ROOT; };
-		F2FA8E3D0F71A80000E4C211 /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hmac.c; path = ../../Source/YOAuth/Crypto/hmac.c; sourceTree = SOURCE_ROOT; };
-		F2FA8E3E0F71A80000E4C211 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = ../../Source/YOAuth/Crypto/hmac.h; sourceTree = SOURCE_ROOT; };
-		F2FA8E3F0F71A80000E4C211 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sha1.c; path = ../../Source/YOAuth/Crypto/sha1.c; sourceTree = SOURCE_ROOT; };
-		F2FA8E400F71A80000E4C211 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = ../../Source/YOAuth/Crypto/sha1.h; sourceTree = SOURCE_ROOT; };
 		F2FA8E420F71A80000E4C211 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLEncoding.h"; path = "../../Source/YOAuth/NSString+URLEncoding.h"; sourceTree = SOURCE_ROOT; };
 		F2FA8E430F71A80000E4C211 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLEncoding.m"; path = "../../Source/YOAuth/NSString+URLEncoding.m"; sourceTree = SOURCE_ROOT; };
 		F2FA8E450F71A80000E4C211 /* YOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOAuth.h; path = ../../Source/YOAuth/YOAuth.h; sourceTree = SOURCE_ROOT; };
@@ -245,10 +239,6 @@
 			children = (
 				F2FA8E3B0F71A80000E4C211 /* Base64Transcoder.c */,
 				F2FA8E3C0F71A80000E4C211 /* Base64Transcoder.h */,
-				F2FA8E3D0F71A80000E4C211 /* hmac.c */,
-				F2FA8E3E0F71A80000E4C211 /* hmac.h */,
-				F2FA8E3F0F71A80000E4C211 /* sha1.c */,
-				F2FA8E400F71A80000E4C211 /* sha1.h */,
 			);
 			name = Crypto;
 			sourceTree = "<group>";
@@ -378,8 +368,6 @@
 				F2FA8E660F71A80000E4C211 /* YOSUserRequest.m in Sources */,
 				F2FA8E670F71A80000E4C211 /* YQLQueryRequest.m in Sources */,
 				F2FA8E680F71A80000E4C211 /* Base64Transcoder.c in Sources */,
-				F2FA8E690F71A80000E4C211 /* hmac.c in Sources */,
-				F2FA8E6A0F71A80000E4C211 /* sha1.c in Sources */,
 				F2FA8E6B0F71A80000E4C211 /* NSString+URLEncoding.m in Sources */,
 				F2FA8E6C0F71A80000E4C211 /* YOAuthConsumer.m in Sources */,
 				F2FA8E6D0F71A80000E4C211 /* YOAuthRequest.m in Sources */,
