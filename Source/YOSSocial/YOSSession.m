@@ -121,7 +121,7 @@
 			return TRUE;
 		}
 	} else if(self.accessToken) {
-		if(![accessToken key] || ![accessToken secret]) {
+		if(!accessToken.key || !accessToken.secret) {
 			return FALSE;
 		}
 		
@@ -168,7 +168,7 @@
 	YOSRequestToken *newRequestToken = [tokenAuthRequest fetchRequestTokenWithCallbackUrl:callbackUrl];
 	
 	// if it looks like we have a valid request token
-	if(newRequestToken.key && newRequestToken.secret) {
+	if(newRequestToken && newRequestToken.key && newRequestToken.secret) {
 		// store the request token for later use
 		[self setRequestToken:newRequestToken];
 		[self saveSession];
@@ -187,6 +187,8 @@
 		[[NSWorkspace sharedWorkspace] openURL:authorizationUrl];
 #endif
 		
+	} else {
+		// NSLog(@"error fetching request token. check your consumer key and secret.");
 	}
 }
 
