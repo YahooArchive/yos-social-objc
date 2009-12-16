@@ -280,7 +280,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>21</integer>
+									<integer>12</integer>
 									<integer>2</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -324,7 +324,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>YOSUserRequest.m</string>
+								<string>YOSAccessToken.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -332,11 +332,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>YOSUserRequest.m</string>
+										<string>YOSAccessToken.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>F2CE653710CDB2F400A07B72</string>
+										<string>F2BFD49810D71665002F10E6</string>
 										<key>history</key>
 										<array>
 											<string>F2FA8BF10F718CC100E4C211</string>
@@ -345,7 +345,6 @@
 											<string>F234E3F70FA7BC48008D48C1</string>
 											<string>F234E3FD0FA7BC48008D48C1</string>
 											<string>F234E3FE0FA7BC48008D48C1</string>
-											<string>F2F6CE7A0FBB582200F9DC7A</string>
 											<string>F2190B790FC216F80081BFE6</string>
 											<string>F283DB9A1026DEED003524EB</string>
 											<string>F283DB9B1026DEED003524EB</string>
@@ -398,7 +397,6 @@
 											<string>F22FDB6510756F540065F5F0</string>
 											<string>F22FDB6610756F540065F5F0</string>
 											<string>F22FDB6710756F540065F5F0</string>
-											<string>F22FDB6A10756F540065F5F0</string>
 											<string>F29313551076A3900081A44E</string>
 											<string>F29313561076A3900081A44E</string>
 											<string>F293135F1076B6630081A44E</string>
@@ -418,7 +416,9 @@
 											<string>F2B12CC610CDB1F400691991</string>
 											<string>F2B12CC710CDB1F400691991</string>
 											<string>F2B12CD810CDB23D00691991</string>
-											<string>F2B12CDC10CDB28100691991</string>
+											<string>F2BFD49010D70E4C002F10E6</string>
+											<string>F2BFD49110D70E4C002F10E6</string>
+											<string>F2BFD49210D70E4C002F10E6</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -501,6 +501,8 @@
 											<string>F22FDB9610756F540065F5F0</string>
 											<string>F22C124B108677730093BF31</string>
 											<string>F22C124C108677730093BF31</string>
+											<string>F2BFD49310D70E4C002F10E6</string>
+											<string>F2BFD49410D70E4C002F10E6</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -558,9 +560,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>F2CE653810CDB2F400A07B72</string>
+				<string>F2BFD49610D70E4C002F10E6</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>F2CE653910CDB2F400A07B72</string>
+				<string>F2BFD49710D70E4C002F10E6</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -694,7 +696,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>/Users/zachg/Documents/yapstudio/external_sdk/release-sdk/release-objc/YahooSocialSdk.xcodeproj</string>
+		<string>/Users/zachg/Desktop/yos-social-objc/YahooSocialSdk.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>246 203 1440 854 0 0 1920 1178 </string>
