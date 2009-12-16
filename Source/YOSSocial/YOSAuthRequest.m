@@ -73,7 +73,7 @@ static NSString *const kOAuthOutOfBand = @"oob";
 	
 	YOSRequestToken *requestToken = [YOSRequestToken tokenFromResponse:response.data];
 	
-	return (requestToken.key && requestToken.secret) ? requestToken : nil;
+	return (requestToken && requestToken.key && requestToken.secret) ? requestToken : nil;
 }
 
 - (NSURL *)authUrlForRequestToken:(YOSRequestToken *)requestToken
@@ -120,7 +120,7 @@ static NSString *const kOAuthOutOfBand = @"oob";
 	
 	YOSAccessToken *accessToken = [YOSAccessToken tokenFromResponse:response.data];
 	
-	return (accessToken.key && accessToken.secret) ? accessToken : nil;
+	return (accessToken && accessToken.key && accessToken.secret) ? accessToken : nil;
 }
 
 @end
