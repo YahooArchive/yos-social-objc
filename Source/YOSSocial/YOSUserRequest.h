@@ -47,9 +47,8 @@
 /**
  * Adds a contact to the users address book given a dictionary of contact fields. 
  * @param contact				A dictionary containing a list of contact fields such as name, email and nickname
- * @param delegate				An object containing the methods to handle the request's response. 
  */ 
-- (BOOL)addContact:(NSDictionary *)contact withDelegate:(id)delegate;
+- (BOOL)addContact:(NSDictionary *)contact;
 
 /**
  * Fetches the users contact list given a local revision ID.
@@ -61,9 +60,8 @@
 /**
  * Fetches the users contact list given a local revision ID.
  * @param contactsync			A dictionary of a users local contact list with a local revision ID.
- * @param delegate				An object containing the methods to handle the request's response. 
  */ 
-- (BOOL)syncContactsRevision:(NSDictionary *)contactsync withDelegate:(id)delegate;
+- (BOOL)syncContactsRevision:(NSDictionary *)contactsync;
 
 /**
  * Fetches the profile of the user using an asynchronous request.
