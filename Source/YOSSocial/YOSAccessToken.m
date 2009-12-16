@@ -26,7 +26,12 @@
 
 + (YOSAccessToken *)tokenFromResponse:(NSData *)responseData
 {
-	NSDictionary *tokenDictionary = [responseData OAuthTokenResponse];
+	NSDictionary *tokenDictionary = nil;
+	@try {
+		tokenDictionary = [responseData OAuthTokenResponse];
+	} @catch (id responseException) {
+		return nil;
+	}
 	
 	NSInteger tokenExpires = [[tokenDictionary valueForKey:@"oauth_expires_in"] intValue];
 	NSInteger authExpires = [[tokenDictionary valueForKey:@"oauth_authorization_expires_in"] intValue];
