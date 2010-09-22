@@ -17,8 +17,6 @@
 @synthesize guid;
 @synthesize sessionHandle;
 @synthesize consumer;
-@synthesize tokenExpires;
-@synthesize authExpires;
 @synthesize tokenExpiresDate;
 @synthesize authExpiresDate;
 
@@ -41,8 +39,6 @@
 	[theToken autorelease];
 	[theToken setGuid:[tokenDictionary valueForKey:@"xoauth_yahoo_guid"]];
 	[theToken setSessionHandle:[tokenDictionary valueForKey:@"oauth_session_handle"]];
-	[theToken setTokenExpires:tokenExpires];
-	[theToken setAuthExpires:authExpires];
 	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSinceNow:tokenExpires]];
 	[theToken setAuthExpiresDate:[NSDate dateWithTimeIntervalSinceNow:authExpires]];
 	
@@ -59,10 +55,8 @@
 	[theToken autorelease];
 	[theToken setGuid:[tokenDictionary valueForKey:@"guid"]];
 	[theToken setSessionHandle:[tokenDictionary valueForKey:@"sessionHandle"]];
-	[theToken setTokenExpires:tokenExpires];
-	[theToken setAuthExpires:authExpires];
-	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSinceNow:tokenExpires]];
-	[theToken setAuthExpiresDate:[NSDate dateWithTimeIntervalSinceNow:authExpires]];
+	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSinceReferenceDate:tokenExpires]];
+	[theToken setAuthExpiresDate:[NSDate dateWithTimeIntervalSinceReferenceDate:authExpires]];
 	
 	if([tokenDictionary valueForKey:@"consumer"]) {
 		[theToken setConsumer:[tokenDictionary valueForKey:@"consumer"]];
@@ -76,14 +70,17 @@
 
 - (NSMutableDictionary *)tokenAsDictionary
 {
+	NSInteger tokenExpires = [[self tokenExpiresDate] timeIntervalSinceReferenceDate];
+	NSInteger authExpires = [[self authExpiresDate] timeIntervalSinceReferenceDate];
+  
 	NSMutableDictionary *tokenDictionary = [[NSMutableDictionary alloc] init];
 	[tokenDictionary autorelease];
 	[tokenDictionary setObject:self.key forKey:@"key"];
 	[tokenDictionary setObject:self.secret forKey:@"secret"];
 	[tokenDictionary setObject:self.guid forKey:@"guid"];
 	[tokenDictionary setObject:self.sessionHandle forKey:@"sessionHandle"];
-	[tokenDictionary setObject:[NSNumber numberWithInt:self.tokenExpires] forKey:@"tokenExpires"];
-	[tokenDictionary setObject:[NSNumber numberWithInt:self.authExpires] forKey:@"authExpires"];
+	[tokenDictionary setObject:[NSNumber numberWithDouble:tokenExpires] forKey:@"tokenExpires"];
+	[tokenDictionary setObject:[NSNumber numberWithDouble:authExpires] forKey:@"authExpires"];
 	
 	if(self.consumer) [tokenDictionary setObject:self.consumer forKey:@"consumer"];
 	

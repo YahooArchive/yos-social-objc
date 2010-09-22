@@ -15,7 +15,6 @@
 @implementation YOSRequestToken
 
 @synthesize requestAuthUrl;
-@synthesize tokenExpires;
 @synthesize tokenExpiresDate;
 @synthesize callbackConfirmed;
 
@@ -38,7 +37,6 @@
 	
 	[theToken autorelease];
 	[theToken setRequestAuthUrl:[tokenDictionary valueForKey:@"xoauth_request_auth_url"]];
-	[theToken setTokenExpires:tokenExpires];
 	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSinceNow:tokenExpires]];
 	[theToken setCallbackConfirmed:isCallbackConfirmed];
 	
@@ -53,8 +51,7 @@
 														   andSecret:[tokenDictionary valueForKey:@"secret"]];
 	[theToken autorelease];
 	[theToken setRequestAuthUrl:[tokenDictionary valueForKey:@"requestAuthUrl"]];
-	[theToken setTokenExpires:tokenExpires];
-	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSinceNow:tokenExpires]];
+	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSinceReferenceDate:tokenExpires]];
 	
 	return theToken;
 }
@@ -64,11 +61,13 @@
 
 - (NSMutableDictionary *)tokenAsDictionary
 {
+	NSInteger tokenExpires = [[self tokenExpiresDate] timeIntervalSinceReferenceDate];
+  
 	NSMutableDictionary *tokenDictionary = [[NSMutableDictionary alloc] init];
 	[tokenDictionary autorelease];
 	[tokenDictionary setObject:self.key forKey:@"key"];
 	[tokenDictionary setObject:self.secret forKey:@"secret"];
-	[tokenDictionary setObject:[NSNumber numberWithInt:self.tokenExpires] forKey:@"tokenExpires"];
+	[tokenDictionary setObject:[NSNumber numberWithDouble:tokenExpires] forKey:@"tokenExpires"];
 	[tokenDictionary setObject:self.requestAuthUrl forKey:@"requestAuthUrl"];
 	
 	return tokenDictionary;

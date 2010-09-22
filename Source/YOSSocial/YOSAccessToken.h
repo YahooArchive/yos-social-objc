@@ -40,16 +40,6 @@
 	 * Returns a NSDate representing the application authorization expiry date.
 	 */
 	NSDate			*authExpiresDate;
-	
-	/**
-	 * Returns an integer of the UNIX time that the token will expire.
-	 */
-	NSInteger		tokenExpires;
-	
-	/**
-	 * Returns an integer of the UNIX time that application authorization will expire.
-	 */
-	NSInteger		authExpires;
 }
 
 @property (nonatomic, readwrite, retain) NSString *guid;
@@ -57,8 +47,6 @@
 @property (nonatomic, readwrite, retain) NSString *consumer;
 @property (nonatomic, readwrite, retain) NSDate *tokenExpiresDate;
 @property (nonatomic, readwrite, retain) NSDate *authExpiresDate;
-@property (nonatomic, readwrite) NSInteger tokenExpires;
-@property (nonatomic, readwrite) NSInteger authExpires;
 
 /**
  * Returns an access token for the specified dictionary containing token variables.
