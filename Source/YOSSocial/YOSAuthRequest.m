@@ -50,8 +50,7 @@ static NSString *const kOAuthOutOfBand = @"oob";
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@",self.baseUrl,@"oauth",self.apiVersion,method];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
-	NSMutableDictionary *requestParameters = [[NSMutableDictionary alloc] init];
-	[requestParameters autorelease];
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
 	
 	callbackUrl = (callbackUrl != nil) ? callbackUrl : kOAuthOutOfBand;
 	[requestParameters setValue:callbackUrl forKey:@"oauth_callback"];
@@ -64,6 +63,7 @@ static NSString *const kOAuthOutOfBand = @"oob";
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"POST"];
 	[client setRequestParameters:requestParameters];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
 	
@@ -73,7 +73,7 @@ static NSString *const kOAuthOutOfBand = @"oob";
 	
 	YOSRequestToken *requestToken = [YOSRequestToken tokenFromResponse:response.data];
 	
-	return requestToken;
+	return (requestToken && requestToken.key && requestToken.secret) ? requestToken : nil;
 }
 
 - (NSURL *)authUrlForRequestToken:(YOSRequestToken *)requestToken
@@ -93,8 +93,7 @@ static NSString *const kOAuthOutOfBand = @"oob";
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@", self.baseUrl, @"oauth", self.apiVersion, method];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
-	NSMutableDictionary *requestParameters = [[NSMutableDictionary alloc] init];
-	[requestParameters autorelease];
+	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
 	
 	if(verifier != nil) {
 		[requestParameters setValue:verifier forKey:@"oauth_verifier"];
@@ -111,6 +110,7 @@ static NSString *const kOAuthOutOfBand = @"oob";
 	[client setRequestUrl:url];
 	[client setHTTPMethod:@"POST"];
 	[client setRequestParameters:requestParameters];
+	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
 	
@@ -119,7 +119,8 @@ static NSString *const kOAuthOutOfBand = @"oob";
 	}
 	
 	YOSAccessToken *accessToken = [YOSAccessToken tokenFromResponse:response.data];
-	return accessToken;
+	
+	return (accessToken && accessToken.key && accessToken.secret) ? accessToken : nil;
 }
 
 @end

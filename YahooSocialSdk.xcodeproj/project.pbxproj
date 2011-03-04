@@ -35,9 +35,9 @@
 		F23BEABC0F610A9E006A4FAA /* YOSUser.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEA990F610A9E006A4FAA /* YOSUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F23BEABD0F610A9E006A4FAA /* YOSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BEA9A0F610A9E006A4FAA /* YOSUser.m */; };
 		F23BEACE0F610AD0006A4FAA /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = F23BEAC80F610AD0006A4FAA /* Base64Transcoder.c */; };
-		F23BEACF0F610AD0006A4FAA /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAC90F610AD0006A4FAA /* Base64Transcoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F23BEAE30F610ADB006A4FAA /* YOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAD50F610ADB006A4FAA /* YOAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F23BEAE40F610ADB006A4FAA /* YOAuthConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAD60F610ADB006A4FAA /* YOAuthConsumer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F23BEACF0F610AD0006A4FAA /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAC90F610AD0006A4FAA /* Base64Transcoder.h */; };
+		F23BEAE30F610ADB006A4FAA /* YOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAD50F610ADB006A4FAA /* YOAuth.h */; };
+		F23BEAE40F610ADB006A4FAA /* YOAuthConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAD60F610ADB006A4FAA /* YOAuthConsumer.h */; };
 		F23BEAE50F610ADB006A4FAA /* YOAuthConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BEAD70F610ADB006A4FAA /* YOAuthConsumer.m */; };
 		F23BEAE60F610ADB006A4FAA /* YOAuthRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAD80F610ADB006A4FAA /* YOAuthRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F23BEAE70F610ADB006A4FAA /* YOAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BEAD90F610ADB006A4FAA /* YOAuthRequest.m */; };

@@ -23,7 +23,12 @@
 
 + (YOSRequestToken *)tokenFromResponse:(NSData *)responseData
 {
-	NSDictionary *tokenDictionary = [responseData OAuthTokenResponse];
+	NSDictionary *tokenDictionary = nil;
+	@try {
+		tokenDictionary = [responseData OAuthTokenResponse];
+	} @catch (id responseException) {
+		return nil;
+	}
 	
 	BOOL isCallbackConfirmed = [[tokenDictionary valueForKey:@"oauth_callback_confirmed"] isEqualToString:@"true"];
 	NSInteger tokenExpires = [[tokenDictionary valueForKey:@"oauth_expires_in"] intValue];
