@@ -42,7 +42,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 	if(self = [self init]) {
 		[self setConsumer:aConsumer];
 		[self setToken:aToken];
-		[self setOauthParamsLocation:OAUTH_PARAMS_IN_AUTH_HEADER];
+		[self setOauthParamsLocation:OAUTH_PARAMS_IN_QUERY_STRING];
 		[self setTimeoutInterval:20.0]; // TODO: need to switch for EDGE/3G v. wi-fi
 		[self setUserAgentHeaderValue:[self buildUserAgentHeaderValue]];
 	}
@@ -60,10 +60,11 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 	NSURLResponse *urlResponse = nil;
 	
 	NSData *connectionResponseData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&urlResponse error:&rspError];
-	
-	[rspError autorelease];	
-	[connectionResponseData autorelease];
-	
+    if (connectionResponseData == nil) {
+        NSLog(@"Error = %@", rspError);        
+        return nil;
+    }
+    
 	YOSResponseData *serviceResponseData = [YOSResponseData responseWithData:connectionResponseData 
 															  andURLResponse:urlResponse];
 	return serviceResponseData;
@@ -77,8 +78,8 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 	NSMutableURLRequest *urlRequest = [self buildUrlRequest];
 	// self.URLConnection = [[NSURLConnection connectionWithRequest:urlRequest delegate:self] retain];
 	
-	[self setURLConnection:[[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES]];
-	
+	self.URLConnection = [[[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES] autorelease];
+    
 	BOOL connectionCreated = (self.URLConnection != nil);
 	
 	return connectionCreated;
@@ -123,10 +124,9 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 		NSDictionary *queryParameters = (oauthRequest && [oauthParamsLocation isEqualToString:OAUTH_PARAMS_IN_QUERY_STRING]) 
 		? [oauthRequest allRequestParametersAsDictionary] 
 		: requestParameters; 
-		
-		NSString *requestAbsoluteURLString = [NSString stringWithFormat:@"%@?%@", [self.requestUrl absoluteString], [queryParameters QueryString]];
+        		
+		NSString *requestAbsoluteURLString = [NSString stringWithFormat:@"%@%@%@", [self.requestUrl absoluteString], @"?", [queryParameters QueryString]];
 		NSURL *url = [NSURL URLWithString:requestAbsoluteURLString];
-		
 		[urlRequest setURL:url];
 		
 		if ([self.HTTPMethod isEqualToString:@"PUT"]) {

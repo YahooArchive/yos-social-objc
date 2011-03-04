@@ -36,6 +36,7 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url 
 {
+    NSLog(@"url = %@", url);
 	launchDefault = NO;
 	
 	if (!url) { 
@@ -71,11 +72,12 @@
 {
 	// create session with consumer key, secret and application id
 	// set up a new app here: https://developer.yahoo.com/dashboard/createKey.html
-	// because the default values here won't work
-	self.session = [YOSSession sessionWithConsumerKey:@"YOUR_CONSUMER_KEY" 
-									andConsumerSecret:@"YOUR_CONSUMER_SECRET" 
-									 andApplicationId:@"YOUR_APP_ID"];
-	
+	// because the default values here won't work	
+    self.session = [YOSSession sessionWithConsumerKey:@"dj0yJmk9SE12QmZWM0hmOU9uJmQ9WVdrOVlUWkJkbTFaTXpBbWNHbzlOVEE0TVRjNE5qZzMmcz1jb25zdW1lcnNlY3JldCZ4PWM3" 
+									andConsumerSecret:@"49bc562c17c8aa3c40a98de39a71606199edf100" 
+									 andApplicationId:@"a6AvmY30"];
+    
+    
 	if(self.oauthResponse) {
 		NSString *verifier = [self.oauthResponse valueForKey:@"oauth_verifier"];
 		[self.session setVerifier:verifier];
@@ -84,7 +86,7 @@
 	BOOL hasSession = [self.session resumeSession];
 	
 	if(!hasSession) {
-		[self.session sendUserToAuthorizationWithCallbackUrl:nil];
+		[self.session sendUserToAuthorizationWithCallbackUrl:@"com-zachgraves-myapp:oauth"];
 	} else {
 		[self getUserProfile];
 	}

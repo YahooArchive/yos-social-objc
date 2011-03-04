@@ -163,7 +163,7 @@
 {
 	// create a new YOSAuthRequest used to fetch OAuth tokens.
 	YOSAuthRequest *tokenAuthRequest = [YOSAuthRequest requestWithSession:self];
-	
+    
 	// fetch a new request token from oauth.
 	YOSRequestToken *newRequestToken = [tokenAuthRequest fetchRequestTokenWithCallbackUrl:callbackUrl];
 	

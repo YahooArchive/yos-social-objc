@@ -114,9 +114,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	
 	YOSResponseData *response = [client sendSynchronousRequest];
 	NSInteger httpStatusCode = [response.HTTPURLResponse statusCode];
-	
-	NSLog(@"%@", [response responseText]);
-	
+		
 	if(!response.data) {
 		return FALSE;
 	}
