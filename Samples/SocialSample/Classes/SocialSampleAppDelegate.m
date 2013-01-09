@@ -13,7 +13,7 @@
 
 #import "YOSUser.h"
 #import "YOSUserRequest.h"
-#import "NSString+SBJSON.h"
+#import <SBJson/SBJson.h>
 
 @implementation SocialSampleAppDelegate
 
@@ -73,9 +73,9 @@
 	// create session with consumer key, secret and application id
 	// set up a new app here: https://developer.yahoo.com/dashboard/createKey.html
 	// because the default values here won't work	
-    self.session = [YOSSession sessionWithConsumerKey:@"dj0yJmk9WERUdWdhazVJdWFxJmQ9WVdrOVRuZGhSMWRqTXpJbWNHbzlNVEkyTXpVd05UZzJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD04Yg--"
-									andConsumerSecret:@"f03ee662ba1602d30d2d88e5dc7defb30ff49827"
-									 andApplicationId:@"NwaGWc32"];
+    self.session = [YOSSession sessionWithConsumerKey:@"YOUR_CONSUMER_KEY"
+									andConsumerSecret:@"YOUR_CONSUMER_SECRET"
+									 andApplicationId:@"YOUR_APP_ID"];
     
     
 	if(self.oauthResponse) {
@@ -86,7 +86,7 @@
 	BOOL hasSession = [self.session resumeSession];
 	
 	if(!hasSession) {
-		[self.session sendUserToAuthorizationWithCallbackUrl:@"com-yourcompany-SocialSample:oauth"];
+		[self.session sendUserToAuthorizationWithCallbackUrl:nil];
 	} else {
 		[self getUserProfile];
 	}
@@ -103,7 +103,9 @@
 
 - (void)requestDidFinishLoading:(YOSResponseData *)data
 {
-	NSDictionary *userProfile = [[data.responseText JSONValue] objectForKey:@"profile"];
+	SBJsonParser *parser = [[SBJsonParser alloc] init];
+	NSDictionary *json = [parser objectWithString:data.responseText];
+	NSDictionary *userProfile = [json objectForKey:@"profile"];
 	// NSLog(@"%@",[userProfile description]);
 	if(userProfile) {
 		[viewController setUserProfile:userProfile];

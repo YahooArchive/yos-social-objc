@@ -9,7 +9,7 @@
 //
 
 #import "SocialSampleViewController.h"
-#import "NSString+SBJSON.h"
+#import <SBJson/SBJson.h>
 
 @implementation SocialSampleViewController
 

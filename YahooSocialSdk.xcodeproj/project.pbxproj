@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		A5E0B90F169DCD32009A8B54 /* SBJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E0B8C9169DC7FE009A8B54 /* SBJson.framework */; };
 		F2235FD10F7221EC00BDA003 /* NSData+OAuthResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2235FCF0F7221EC00BDA003 /* NSData+OAuthResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2235FD20F7221EC00BDA003 /* NSData+OAuthResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2235FD00F7221EC00BDA003 /* NSData+OAuthResponse.m */; };
 		F2235FD50F72222200BDA003 /* NSDictionary+QueryString.h in Headers */ = {isa = PBXBuildFile; fileRef = F2235FD30F72222200BDA003 /* NSDictionary+QueryString.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -52,18 +53,49 @@
 		F23BEAF00F610ADB006A4FAA /* YOAuthUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BEAE20F610ADB006A4FAA /* YOAuthUtil.m */; };
 		F23BEAF50F610AF3006A4FAA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BEAF30F610AF3006A4FAA /* NSString+URLEncoding.m */; };
 		F23BEAF60F610AF3006A4FAA /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAF40F610AF3006A4FAA /* NSString+URLEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F23BEB000F610B0B006A4FAA /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAF90F610B0B006A4FAA /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F23BEB010F610B0B006A4FAA /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAFA0F610B0B006A4FAA /* NSObject+SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F23BEB020F610B0B006A4FAA /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BEAFB0F610B0B006A4FAA /* NSObject+SBJSON.m */; };
-		F23BEB030F610B0B006A4FAA /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAFC0F610B0B006A4FAA /* NSString+SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F23BEB040F610B0B006A4FAA /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BEAFD0F610B0B006A4FAA /* NSString+SBJSON.m */; };
-		F23BEB050F610B0B006A4FAA /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BEAFE0F610B0B006A4FAA /* SBJSON.m */; };
-		F23BEB060F610B0B006A4FAA /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = F23BEAFF0F610B0B006A4FAA /* SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F23C32BB0F70D3C700A2EE8E /* YOSUserRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F23C32B90F70D3C700A2EE8E /* YOSUserRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F23C32BC0F70D3C700A2EE8E /* YOSUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F23C32BA0F70D3C700A2EE8E /* YOSUserRequest.m */; };
 		F2E1AD4B10618617002D979B /* YOSOpenSocialRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2E1AD4910618617002D979B /* YOSOpenSocialRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2E1AD4C10618617002D979B /* YOSOpenSocialRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E1AD4A10618617002D979B /* YOSOpenSocialRequest.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5E0B8C8169DC7FE009A8B54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5E0B8BE169DC7FD009A8B54 /* SBJson.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC12323D1391D5CC00131607;
+			remoteInfo = SBJson;
+		};
+		A5E0B8CA169DC7FE009A8B54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5E0B8BE169DC7FD009A8B54 /* SBJson.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC1232521391D5CC00131607;
+			remoteInfo = SBJsonTests;
+		};
+		A5E0B8CC169DC7FE009A8B54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5E0B8BE169DC7FD009A8B54 /* SBJson.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCC2626913920FC7003D9994;
+			remoteInfo = "sbjson-ios";
+		};
+		A5E0B8CE169DC7FE009A8B54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5E0B8BE169DC7FD009A8B54 /* SBJson.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCC2627313920FC7003D9994;
+			remoteInfo = "sbjson-iosTests";
+		};
+		A5E0B90D169DCD2E009A8B54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5E0B8BE169DC7FD009A8B54 /* SBJson.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC12323C1391D5CC00131607;
+			remoteInfo = SBJson;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -73,6 +105,7 @@
 		32DBCF5E0370ADEE00C91783 /* YahooSocialSdk_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YahooSocialSdk_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91ED4EC4132B326B00E158C4 /* YahooSocialSdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YahooSocialSdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5E0B8BE169DC7FD009A8B54 /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBJson.xcodeproj; path = "json-framework/SBJson.xcodeproj"; sourceTree = "<group>"; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		F2235FCF0F7221EC00BDA003 /* NSData+OAuthResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+OAuthResponse.h"; path = "Source/YOAuth/NSData+OAuthResponse.h"; sourceTree = "<group>"; };
 		F2235FD00F7221EC00BDA003 /* NSData+OAuthResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+OAuthResponse.m"; path = "Source/YOAuth/NSData+OAuthResponse.m"; sourceTree = "<group>"; };
@@ -117,13 +150,6 @@
 		F23BEAE20F610ADB006A4FAA /* YOAuthUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOAuthUtil.m; path = Source/YOAuth/YOAuthUtil.m; sourceTree = "<group>"; };
 		F23BEAF30F610AF3006A4FAA /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLEncoding.m"; path = "Source/YOAuth/NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		F23BEAF40F610AF3006A4FAA /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLEncoding.h"; path = "Source/YOAuth/NSString+URLEncoding.h"; sourceTree = "<group>"; };
-		F23BEAF90F610B0B006A4FAA /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = "Source/json-framework/JSON.h"; sourceTree = "<group>"; };
-		F23BEAFA0F610B0B006A4FAA /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJSON.h"; path = "Source/json-framework/NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		F23BEAFB0F610B0B006A4FAA /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJSON.m"; path = "Source/json-framework/NSObject+SBJSON.m"; sourceTree = "<group>"; };
-		F23BEAFC0F610B0B006A4FAA /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+SBJSON.h"; path = "Source/json-framework/NSString+SBJSON.h"; sourceTree = "<group>"; };
-		F23BEAFD0F610B0B006A4FAA /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+SBJSON.m"; path = "Source/json-framework/NSString+SBJSON.m"; sourceTree = "<group>"; };
-		F23BEAFE0F610B0B006A4FAA /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJSON.m; path = "Source/json-framework/SBJSON.m"; sourceTree = "<group>"; };
-		F23BEAFF0F610B0B006A4FAA /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJSON.h; path = "Source/json-framework/SBJSON.h"; sourceTree = "<group>"; };
 		F23C32B90F70D3C700A2EE8E /* YOSUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOSUserRequest.h; path = Source/YOSSocial/YOSUserRequest.h; sourceTree = "<group>"; };
 		F23C32BA0F70D3C700A2EE8E /* YOSUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YOSUserRequest.m; path = Source/YOSSocial/YOSUserRequest.m; sourceTree = "<group>"; };
 		F2E1AD4910618617002D979B /* YOSOpenSocialRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YOSOpenSocialRequest.h; path = Source/YOSSocial/YOSOpenSocialRequest.h; sourceTree = "<group>"; };
@@ -135,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E0B90F169DCD32009A8B54 /* SBJson.framework in Frameworks */,
 				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,10 +243,21 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		A5E0B8BF169DC7FD009A8B54 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5E0B8C9169DC7FE009A8B54 /* SBJson.framework */,
+				A5E0B8CB169DC7FE009A8B54 /* SBJsonTests.octest */,
+				A5E0B8CD169DC7FE009A8B54 /* libsbjson-ios.a */,
+				A5E0B8CF169DC7FE009A8B54 /* sbjson-iosTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F23BEA750F610A85006A4FAA /* json-framework */ = {
 			isa = PBXGroup;
 			children = (
-				F23BEAF70F610B01006A4FAA /* Source */,
+				A5E0B8BE169DC7FD009A8B54 /* SBJson.xcodeproj */,
 			);
 			name = "json-framework";
 			sourceTree = "<group>";
@@ -317,20 +355,6 @@
 			name = "Cocoa Categories";
 			sourceTree = "<group>";
 		};
-		F23BEAF70F610B01006A4FAA /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				F23BEAF90F610B0B006A4FAA /* JSON.h */,
-				F23BEAFA0F610B0B006A4FAA /* NSObject+SBJSON.h */,
-				F23BEAFB0F610B0B006A4FAA /* NSObject+SBJSON.m */,
-				F23BEAFC0F610B0B006A4FAA /* NSString+SBJSON.h */,
-				F23BEAFD0F610B0B006A4FAA /* NSString+SBJSON.m */,
-				F23BEAFE0F610B0B006A4FAA /* SBJSON.m */,
-				F23BEAFF0F610B0B006A4FAA /* SBJSON.h */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -359,10 +383,6 @@
 				F23BEAED0F610ADB006A4FAA /* YOAuthToken.h in Headers */,
 				F23BEAEF0F610ADB006A4FAA /* YOAuthUtil.h in Headers */,
 				F23BEAF60F610AF3006A4FAA /* NSString+URLEncoding.h in Headers */,
-				F23BEB000F610B0B006A4FAA /* JSON.h in Headers */,
-				F23BEB010F610B0B006A4FAA /* NSObject+SBJSON.h in Headers */,
-				F23BEB030F610B0B006A4FAA /* NSString+SBJSON.h in Headers */,
-				F23BEB060F610B0B006A4FAA /* SBJSON.h in Headers */,
 				F23C32BB0F70D3C700A2EE8E /* YOSUserRequest.h in Headers */,
 				F2235FD10F7221EC00BDA003 /* NSData+OAuthResponse.h in Headers */,
 				F2235FD50F72222200BDA003 /* NSDictionary+QueryString.h in Headers */,
@@ -386,6 +406,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A5E0B90E169DCD2E009A8B54 /* PBXTargetDependency */,
 			);
 			name = YahooSocialSdk;
 			productInstallPath = "$(HOME)/Library/Frameworks";
@@ -414,12 +435,49 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* YahooSocialSdk */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A5E0B8BF169DC7FD009A8B54 /* Products */;
+					ProjectRef = A5E0B8BE169DC7FD009A8B54 /* SBJson.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8DC2EF4F0486A6940098B216 /* YahooSocialSdk */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A5E0B8C9169DC7FE009A8B54 /* SBJson.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SBJson.framework;
+			remoteRef = A5E0B8C8169DC7FE009A8B54 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A5E0B8CB169DC7FE009A8B54 /* SBJsonTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SBJsonTests.octest;
+			remoteRef = A5E0B8CA169DC7FE009A8B54 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A5E0B8CD169DC7FE009A8B54 /* libsbjson-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libsbjson-ios.a";
+			remoteRef = A5E0B8CC169DC7FE009A8B54 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A5E0B8CF169DC7FE009A8B54 /* sbjson-iosTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "sbjson-iosTests.octest";
+			remoteRef = A5E0B8CE169DC7FE009A8B54 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8DC2EF520486A6940098B216 /* Resources */ = {
@@ -471,9 +529,6 @@
 				F23BEAEE0F610ADB006A4FAA /* YOAuthToken.m in Sources */,
 				F23BEAF00F610ADB006A4FAA /* YOAuthUtil.m in Sources */,
 				F23BEAF50F610AF3006A4FAA /* NSString+URLEncoding.m in Sources */,
-				F23BEB020F610B0B006A4FAA /* NSObject+SBJSON.m in Sources */,
-				F23BEB040F610B0B006A4FAA /* NSString+SBJSON.m in Sources */,
-				F23BEB050F610B0B006A4FAA /* SBJSON.m in Sources */,
 				F23C32BC0F70D3C700A2EE8E /* YOSUserRequest.m in Sources */,
 				F2235FD20F7221EC00BDA003 /* NSData+OAuthResponse.m in Sources */,
 				F2235FD60F72222200BDA003 /* NSDictionary+QueryString.m in Sources */,
@@ -482,6 +537,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5E0B90E169DCD2E009A8B54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SBJson;
+			targetProxy = A5E0B90D169DCD2E009A8B54 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C1666FE841158C02AAC07 /* InfoPlist.strings */ = {
@@ -508,12 +571,13 @@
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = YahooSocialSdk_Prefix.pch;
+				HEADER_SEARCH_PATHS = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = YahooSocialSdk;
 				SDKROOT = macosx;
@@ -533,11 +597,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = YahooSocialSdk_Prefix.pch;
+				HEADER_SEARCH_PATHS = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = YahooSocialSdk;
 				SDKROOT = macosx;
@@ -550,7 +615,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -564,7 +628,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				SDKROOT = macosx;
