@@ -98,12 +98,12 @@ static NSString *const kYQLOpenTables = @"store://datatables.org/alltableswithke
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
 	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
-	[requestParameters setObject:aQuery forKey:@"q"];
-	[requestParameters setObject:self.format forKey:@"format"];
+	requestParameters[@"q"] = aQuery;
+	requestParameters[@"format"] = self.format;
 	
 	NSString *useDiagnostics = (self.diagnostics) ? @"true" : @"false";
-	[requestParameters setObject:useDiagnostics forKey:@"diagnostics"];
-	[requestParameters setObject:self.environmentFile forKey:@"env"];
+	requestParameters[@"diagnostics"] = useDiagnostics;
+	requestParameters[@"env"] = self.environmentFile;
 	
 	YOSRequestClient *client = [self requestClient];
 	[client setRequestUrl:url];

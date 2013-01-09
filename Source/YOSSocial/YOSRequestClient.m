@@ -136,7 +136,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 	
 	if(oauthRequest) {
 		if([oauthParamsLocation isEqualToString:OAUTH_PARAMS_IN_AUTH_HEADER]) {
-			[requestHeaders setObject:[oauthRequest buildAuthorizationHeaderValue] forKey:@"Authorization"];
+			requestHeaders[@"Authorization"] = [oauthRequest buildAuthorizationHeaderValue];
 		}
 		else if([oauthParamsLocation isEqualToString:OAUTH_PARAMS_IN_HTTP_BODY]) {
 			NSString *requestQueryString = [[oauthRequest allOAuthRequestParametersAsDictionary] QueryString];
@@ -146,7 +146,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 	
 	if(self.requestHeaders && [self.requestHeaders count]) {
 		for (NSString *headerKey in [self.requestHeaders allKeys]) {
-			NSString *headerValue = [self.requestHeaders objectForKey:headerKey];
+			NSString *headerValue = (self.requestHeaders)[headerKey];
 			[urlRequest setValue:headerValue forHTTPHeaderField:headerKey];
 		}
 	}
@@ -197,8 +197,8 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 	// Examples:
 	// YosCocoaSdk/0.1 (Mac OS X/10.5.6; en_US;) 
 	NSDictionary *systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
-	NSString *systemProductName = [systemVersionDictionary objectForKey:@"ProductName"];
-	NSString *systemProductVersion = [systemVersionDictionary objectForKey:@"ProductVersion"];
+	NSString *systemProductName = systemVersionDictionary[@"ProductName"];
+	NSString *systemProductVersion = systemVersionDictionary[@"ProductVersion"];
 	NSString *currentLocaleIdentifier = [[NSLocale currentLocale] localeIdentifier];
 	NSString *currentDeviceInfo = [NSString stringWithFormat:@"%@/%@; %@;", systemProductName, systemProductVersion, currentLocaleIdentifier];
 	NSString *clientUrlRequestUserAgent = [NSString stringWithFormat:@"%@ (%@)",kYOSUserAgentPrefix,currentDeviceInfo];	

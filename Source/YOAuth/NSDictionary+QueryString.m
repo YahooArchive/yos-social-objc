@@ -18,7 +18,7 @@
     NSMutableArray *queryParameters = [[NSMutableArray alloc] init];
 	
 	for (NSString *aKey in [self allKeys]) {
-		NSString *keyValuePair = [NSString stringWithFormat:@"%@=%@", aKey, [[self objectForKey:aKey] URLEncodedString]];
+		NSString *keyValuePair = [NSString stringWithFormat:@"%@=%@", aKey, [self[aKey] URLEncodedString]];
 		[queryParameters addObject:keyValuePair];
 	}
 	

@@ -65,10 +65,10 @@
 {
 	NSMutableDictionary *tokenDictionary = [[NSMutableDictionary alloc] init];
 
-	[tokenDictionary setObject:self.key forKey:@"key"];
-	[tokenDictionary setObject:self.secret forKey:@"secret"];
-	[tokenDictionary setObject:[NSNumber numberWithInt:self.tokenExpires] forKey:@"tokenExpires"];
-	[tokenDictionary setObject:self.requestAuthUrl forKey:@"requestAuthUrl"];
+	tokenDictionary[@"key"] = self.key;
+	tokenDictionary[@"secret"] = self.secret;
+	tokenDictionary[@"tokenExpires"] = @(self.tokenExpires);
+	tokenDictionary[@"requestAuthUrl"] = self.requestAuthUrl;
 	
 	return tokenDictionary;
 }

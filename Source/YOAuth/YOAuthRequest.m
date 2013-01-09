@@ -92,7 +92,7 @@
 	}
 	
 	for (NSString *key in [requestDictionary allKeys]) {
-		NSString *value = [requestDictionary objectForKey:key];
+		NSString *value = requestDictionary[key];
 		NSString *keyValuePair = [NSString stringWithFormat:@"%@=\%@", [key URLEncodedString], [value URLEncodedString]];
 		[queryParameters addObject:keyValuePair];
 	}
@@ -175,18 +175,18 @@
 	[self setOauthVersion:[YOAuthUtil oauth_version]];
 	
 	oauthParams = [[NSMutableDictionary alloc] init];
-	[oauthParams setObject:self.oauthNonce forKey:@"oauth_nonce"];
-	[oauthParams setObject:self.oauthTimestamp forKey:@"oauth_timestamp"];
-	[oauthParams setObject:self.oauthVersion forKey:@"oauth_version"];
-	[oauthParams setObject:self.consumer.key forKey:@"oauth_consumer_key"];
-	[oauthParams setObject:[signatureMethod name] forKey:@"oauth_signature_method"];
+	oauthParams[@"oauth_nonce"] = self.oauthNonce;
+	oauthParams[@"oauth_timestamp"] = self.oauthTimestamp;
+	oauthParams[@"oauth_version"] = self.oauthVersion;
+	oauthParams[@"oauth_consumer_key"] = self.consumer.key;
+	oauthParams[@"oauth_signature_method"] = [signatureMethod name];
 	
 	if(token && ![[token key] isEqualToString:@""]) {
-		[oauthParams setObject:self.token.key forKey:@"oauth_token"];
+		oauthParams[@"oauth_token"] = self.token.key;
 	}
 	
 	[self setOauthSignature:[self buildSignature]];
-	[oauthParams setObject:oauthSignature forKey:@"oauth_signature"];
+	oauthParams[@"oauth_signature"] = oauthSignature;
 }
 
 - (NSMutableDictionary *)allRequestParametersAsDictionary

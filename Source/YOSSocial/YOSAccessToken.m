@@ -80,16 +80,16 @@
 {
 	NSMutableDictionary *tokenDictionary = [[NSMutableDictionary alloc] init];
 
-	[tokenDictionary setObject:self.key forKey:@"key"];
-	[tokenDictionary setObject:self.secret forKey:@"secret"];
-	[tokenDictionary setObject:self.guid forKey:@"guid"];
-	[tokenDictionary setObject:self.sessionHandle forKey:@"sessionHandle"];
-	[tokenDictionary setObject:[NSNumber numberWithInt:self.tokenExpires] forKey:@"tokenExpires"];
-	[tokenDictionary setObject:[NSNumber numberWithInt:self.authExpires] forKey:@"authExpires"];
-    [tokenDictionary setObject:self.authExpiresDate forKey:@"authExpiresDate"];
-    [tokenDictionary setObject:self.tokenExpiresDate forKey:@"tokenExpiresDate"];
+	tokenDictionary[@"key"] = self.key;
+	tokenDictionary[@"secret"] = self.secret;
+	tokenDictionary[@"guid"] = self.guid;
+	tokenDictionary[@"sessionHandle"] = self.sessionHandle;
+	tokenDictionary[@"tokenExpires"] = @(self.tokenExpires);
+	tokenDictionary[@"authExpires"] = @(self.authExpires);
+    tokenDictionary[@"authExpiresDate"] = self.authExpiresDate;
+    tokenDictionary[@"tokenExpiresDate"] = self.tokenExpiresDate;
     
-	if(self.consumer) [tokenDictionary setObject:self.consumer forKey:@"consumer"];
+	if(self.consumer) tokenDictionary[@"consumer"] = self.consumer;
 	
 	return tokenDictionary;
 }

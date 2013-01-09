@@ -48,10 +48,10 @@
 	
 	for (NSString *item in pairs) {
 		NSArray *fields = [item componentsSeparatedByString:@"="];
-		NSString *name = [fields objectAtIndex:0];
-		NSString *value = [[fields objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+		NSString *name = fields[0];
+		NSString *value = [fields[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 		
-		[response setObject:value forKey:name];
+		response[name] = value;
 	}
 	
 	self.oauthResponse = response;
@@ -105,7 +105,7 @@
 {
 	SBJsonParser *parser = [[SBJsonParser alloc] init];
 	NSDictionary *json = [parser objectWithString:data.responseText];
-	NSDictionary *userProfile = [json objectForKey:@"profile"];
+	NSDictionary *userProfile = json[@"profile"];
 	// NSLog(@"%@",[userProfile description]);
 	if(userProfile) {
 		[viewController setUserProfile:userProfile];

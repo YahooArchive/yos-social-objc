@@ -55,7 +55,7 @@ static NSString *const kOpenSocialBaseUrl = @"http://appstore.apps.yahooapis.com
 	if(!guid) guid = @"@me";
 	
 	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
-	[requestParameters setObject:@"displayName" forKey:@"fields"];
+	requestParameters[@"fields"] = @"displayName";
 	
 	return [self getDataForUrl:[NSString stringWithFormat:@"/people/%@/@self", guid] 
 				 andParameters:requestParameters 
@@ -67,7 +67,7 @@ static NSString *const kOpenSocialBaseUrl = @"http://appstore.apps.yahooapis.com
 	if(!guid) guid = @"@me";
 	
 	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
-	[requestParameters setObject:@"100" forKey:@"count"];
+	requestParameters[@"count"] = @"100";
 	
 	return [self getDataForUrl:[NSString stringWithFormat:@"/activities/%@/@self", guid] 
 				 andParameters:requestParameters 
