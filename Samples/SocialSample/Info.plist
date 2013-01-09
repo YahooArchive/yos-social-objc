@@ -29,7 +29,7 @@
 			<string>com.yourcompany.SocialSample</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com-yourcompany-SocialSample</string>
+				<string>referto</string>
 			</array>
 		</dict>
 	</array>

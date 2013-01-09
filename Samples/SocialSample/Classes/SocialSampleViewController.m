@@ -44,8 +44,8 @@
 - (void)setUserProfile:(NSDictionary *)data
 {
 	NSString *welcomeText = [NSString stringWithFormat:@"Hey %@ %@!", 
-							 data[@"profile"][@"givenName"],
-							 data[@"profile"][@"familyName"]];
+							 data[@"givenName"],
+							 data[@"familyName"]];
 		
 	[nicknameLabel setText:welcomeText];
 }

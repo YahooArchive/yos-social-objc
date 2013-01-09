@@ -73,9 +73,9 @@
 	// create session with consumer key, secret and application id
 	// set up a new app here: https://developer.yahoo.com/dashboard/createKey.html
 	// because the default values here won't work	
-    self.session = [YOSSession sessionWithConsumerKey:@"YOUR_CONSUMER_KEY"
-									andConsumerSecret:@"YOUR_CONSUMER_SECRET"
-									 andApplicationId:@"YOUR_APP_ID"];
+    self.session = [YOSSession sessionWithConsumerKey: @"dj0yJmk9WERUdWdhazVJdWFxJmQ9WVdrOVRuZGhSMWRqTXpJbWNHbzlNVEkyTXpVd05UZzJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD04Yg--"
+									andConsumerSecret: @"f03ee662ba1602d30d2d88e5dc7defb30ff49827"
+									 andApplicationId: @"NwaGWc32"];
     
     
 	if(self.oauthResponse) {
@@ -93,7 +93,7 @@
 		 header("Location: com-yourcompany-SocialSample://oauth-response?" . $query);
 		 ?>
 		 */
-		[self.session sendUserToAuthorizationWithCallbackUrl:@"http://yourdomain.com/callback"];
+		[self.session sendUserToAuthorizationWithCallbackUrl:@"http://refertomobile.p.webdevs.com/social/yahoocallback"];
 	} else {
 		[self getUserProfile];
 	}
