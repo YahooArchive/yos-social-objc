@@ -10,7 +10,9 @@
 
 #import "YOSSession.h"
 #import "YOSAuthRequest.h"
-
+#if (TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR)
+#import <UIKit/UIKit.h> 
+#endif
 @implementation YOSSession
 
 @synthesize consumer;

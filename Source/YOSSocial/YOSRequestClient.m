@@ -10,6 +10,9 @@
 
 #import "YOSRequestClient.h"
 #import "NSDictionary+QueryString.h"
+#if (TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR)
+#import <UIKit/UIKit.h>
+#endif
 
 #define OAUTH_PARAMS_IN_HTTP_BODY		@"OAUTH_PARAMS_IN_HTTP_BODY"
 #define OAUTH_PARAMS_IN_AUTH_HEADER		@"OAUTH_PARAMS_IN_AUTH_HEADER"

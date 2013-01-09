@@ -27,11 +27,11 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     
     // Override point for customization after app launch    
-    [window addSubview:viewController.view];
+    [self.window setRootViewController:viewController];
     [window makeKeyAndVisible];
 	
 	launchDefault = YES;
-	[self performSelector:@selector(handlePostLaunch) withObject:nil afterDelay:0.0];
+	[self performSelector:@selector(handlePostLaunch) withObject:nil afterDelay:0.1];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url 
