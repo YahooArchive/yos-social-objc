@@ -94,21 +94,21 @@
 	
 }
 
-@property (nonatomic, readwrite, retain) YOAuthConsumer *consumer;
-@property (nonatomic, readwrite, retain) YOAuthToken *token;
-@property (nonatomic, readwrite, retain) NSString *HTTPMethod;
-@property (nonatomic, readwrite, retain) NSURL *requestUrl;
-@property (nonatomic, readwrite, retain) NSMutableDictionary *requestParameters;
-@property (nonatomic, readwrite, retain) NSMutableDictionary *requestHeaders;
-@property (nonatomic, readwrite, retain) NSData *HTTPBody;
-@property (nonatomic, readwrite, retain) NSString *oauthParamsLocation;
+@property (nonatomic, readwrite, strong) YOAuthConsumer *consumer;
+@property (nonatomic, readwrite, strong) YOAuthToken *token;
+@property (nonatomic, readwrite, strong) NSString *HTTPMethod;
+@property (nonatomic, readwrite, strong) NSURL *requestUrl;
+@property (nonatomic, readwrite, strong) NSMutableDictionary *requestParameters;
+@property (nonatomic, readwrite, strong) NSMutableDictionary *requestHeaders;
+@property (nonatomic, readwrite, strong) NSData *HTTPBody;
+@property (nonatomic, readwrite, strong) NSString *oauthParamsLocation;
 @property (nonatomic, readwrite) NSTimeInterval timeoutInterval;
-@property (nonatomic, readwrite, retain) NSString *userAgentHeaderValue;
+@property (nonatomic, readwrite, strong) NSString *userAgentHeaderValue;
 
-@property (nonatomic, readwrite, retain) id<YOSRequestDelegate> requestDelegate;
-@property (nonatomic, readwrite, retain) NSURLResponse *response;
-@property (nonatomic, readwrite, retain) NSMutableData *responseData;
-@property (nonatomic, readwrite, retain) NSURLConnection *URLConnection;
+@property (nonatomic, readwrite, strong) id<YOSRequestDelegate> requestDelegate;
+@property (nonatomic, readwrite, strong) NSURLResponse *response;
+@property (nonatomic, readwrite, strong) NSMutableData *responseData;
+@property (nonatomic, readwrite, strong) NSURLConnection *URLConnection;
 
 /**
  * Returns a request object for the specified OAuth consumer and (optional) token.

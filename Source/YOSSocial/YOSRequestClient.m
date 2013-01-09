@@ -72,13 +72,13 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 
 - (BOOL)sendAsyncRequestWithDelegate:(id)delegate
 {
-	self.responseData = [[NSMutableData data] retain];
+	self.responseData = [NSMutableData data];
 	[self setRequestDelegate:delegate];
 	
 	NSMutableURLRequest *urlRequest = [self buildUrlRequest];
 	// self.URLConnection = [[NSURLConnection connectionWithRequest:urlRequest delegate:self] retain];
 	
-	self.URLConnection = [[[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES] autorelease];
+	self.URLConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
     
 	BOOL connectionCreated = (self.URLConnection != nil);
 	
@@ -151,7 +151,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 		}
 	}
 	
-	return [urlRequest autorelease];
+	return urlRequest;
 }
 
 - (YOAuthRequest *)buildOAuthRequest
@@ -173,7 +173,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 		[oauthRequest prepareRequest];
 	}
 	
-	return [oauthRequest autorelease];
+	return oauthRequest;
 }
 
 - (NSString *)buildUserAgentHeaderValue
@@ -224,9 +224,9 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 
 - (void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSURLResponse *)aResponse
 {
-	if(self.response) [self.response release];
+	if (self.response) self.response = nil;
 	
-	self.response = [aResponse retain];
+	self.response = aResponse;
 	[self.responseData setLength:0];
 	
 	if ([self.requestDelegate respondsToSelector:@selector(request:didReceiveResponse:)]) {
@@ -246,7 +246,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 - (void)connection:(NSURLConnection *)aConnection didFailWithError:(NSError *)error
 {
 	YOSResponseData *serviceResponseData = [[YOSResponseData alloc] init];
-	[serviceResponseData autorelease];
+
 	[serviceResponseData setError:error];
 	[serviceResponseData setDidSucceed:NO];
 	

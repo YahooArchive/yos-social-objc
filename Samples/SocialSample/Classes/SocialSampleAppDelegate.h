@@ -23,11 +23,11 @@
 }
 
 @property BOOL launchDefault;
-@property (nonatomic, readwrite, retain) YOSSession *session;
-@property (nonatomic, readwrite, retain) NSMutableDictionary *oauthResponse;
+@property (nonatomic, readwrite, strong) YOSSession *session;
+@property (nonatomic, readwrite, strong) NSMutableDictionary *oauthResponse;
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet SocialSampleViewController *viewController;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet SocialSampleViewController *viewController;
 
 - (void)getUserProfile;
 - (void)createYahooSession;

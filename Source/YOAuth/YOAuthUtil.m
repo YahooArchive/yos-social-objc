@@ -18,20 +18,20 @@ static NSString *const kOAuthVersion= @"1.0";
 {	
 	NSString *nonce = nil;
 	CFUUIDRef generatedUUID = CFUUIDCreate(kCFAllocatorDefault);
-	nonce = (NSString*)CFUUIDCreateString(kCFAllocatorDefault, generatedUUID);
+	nonce = (NSString*)CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, generatedUUID));
 	CFRelease(generatedUUID);
 	
-	return [nonce autorelease];
+	return nonce;
 }
 
 + (NSString *)oauth_timestamp
 {
-	return [NSString stringWithFormat:@"%d", time(NULL)];
+	return [NSString stringWithFormat:@"%ld", time(NULL)];
 }
 
 + (NSString *)oauth_version
 {
-	return [kOAuthVersion autorelease];
+	return kOAuthVersion;
 }
 
 @end

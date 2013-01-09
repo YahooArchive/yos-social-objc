@@ -67,13 +67,13 @@
 	YOSUser				*user;
 }
 
-@property (nonatomic, readwrite, retain) NSString *format;
-@property (nonatomic, readwrite, retain) NSString *apiVersion;
-@property (nonatomic, readwrite, retain) NSString *baseUrl;
-@property (nonatomic, readwrite, retain) NSString *signatureMethod;
-@property (nonatomic, readwrite, retain) YOAuthConsumer *consumer;
-@property (nonatomic, readwrite, retain) YOAuthToken *token;
-@property (nonatomic, readwrite, retain) YOSUser *user;
+@property (nonatomic, readwrite, strong) NSString *format;
+@property (nonatomic, readwrite, strong) NSString *apiVersion;
+@property (nonatomic, readwrite, strong) NSString *baseUrl;
+@property (nonatomic, readwrite, strong) NSString *signatureMethod;
+@property (nonatomic, readwrite, strong) YOAuthConsumer *consumer;
+@property (nonatomic, readwrite, strong) YOAuthToken *token;
+@property (nonatomic, readwrite, strong) YOSUser *user;
 
 /**
  * Returns a new request for the sessioned-user.

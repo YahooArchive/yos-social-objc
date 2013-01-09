@@ -29,7 +29,7 @@
 	YOAuthConsumer *sessionConsumer = [YOAuthConsumer consumerWithKey:aConsumerKey andSecret:aConsumerSecret];
 	YOSSession *session = [[YOSSession alloc] initWithConsumer:sessionConsumer andApplicationId:anApplicationId];
 	
-	return [session autorelease];
+	return session;
 }
 
 - (id)initWithConsumer:(YOAuthConsumer *)aConsumer andApplicationId:(NSString *)anApplicationId
@@ -39,7 +39,7 @@
 		[self setConsumer:aConsumer];
 		[self setApplicationId:anApplicationId];
 		
-		YOSTokenStore *sessionTokenStore = [[[YOSTokenStore alloc] initWithConsumer:aConsumer] autorelease];
+		YOSTokenStore *sessionTokenStore = [[YOSTokenStore alloc] initWithConsumer:aConsumer];
 		[self setTokenStore:sessionTokenStore];
 	}
 	return self;

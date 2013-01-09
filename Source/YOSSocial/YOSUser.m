@@ -51,7 +51,6 @@ static NSString *const kYOSUserDefaultRegion = @"US";
 	YOSUserRequest *userRequest = [[YOSUserRequest alloc] initWithYOSUser:self];
 	BOOL smallViewWasSet = [userRequest setSmallViewWithContents:theContent];
 	
-	[userRequest release];
 	
 	return smallViewWasSet;
 }

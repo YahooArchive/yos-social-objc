@@ -18,9 +18,6 @@ static NSString *const kOpenSocialBaseUrl = @"http://appstore.apps.yahooapis.com
 	YOSUser *sessionedUser = [[YOSUser alloc] initWithSession:session];
 	YOSOpenSocialRequest *request = [[YOSOpenSocialRequest alloc] initWithYOSUser:sessionedUser];
 	
-	[sessionedUser autorelease];
-	[request autorelease];
-	
 	[request setBaseUrl:kOpenSocialBaseUrl];
 	
 	return request;

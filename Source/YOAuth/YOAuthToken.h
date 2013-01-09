@@ -27,8 +27,8 @@
 	NSString		*secret;
 }
 
-@property(nonatomic, readwrite, retain) NSString *key;
-@property(nonatomic, readwrite, retain) NSString *secret;
+@property(nonatomic, readwrite, strong) NSString *key;
+@property(nonatomic, readwrite, strong) NSString *secret;
 
 /**
  * Creates a token with the specified key and secret.

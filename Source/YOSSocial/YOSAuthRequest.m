@@ -26,7 +26,6 @@ static NSString *const kOAuthOutOfBand = @"oob";
 + (id)requestWithSession:(YOSSession *)session
 {
 	YOSAuthRequest *request = [[YOSAuthRequest alloc] initWithConsumer:session.consumer];
-	[request autorelease];
 	
 	return request;
 }

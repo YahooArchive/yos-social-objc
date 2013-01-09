@@ -24,7 +24,7 @@
 	YOAuthConsumer		*consumer;
 }
 
-@property (nonatomic, readwrite, retain) YOAuthConsumer	*consumer;
+@property (nonatomic, readwrite, strong) YOAuthConsumer	*consumer;
 
 /**
  * Returns a token store for the specified OAuth consumer.

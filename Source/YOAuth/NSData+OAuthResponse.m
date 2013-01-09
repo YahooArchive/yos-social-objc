@@ -28,7 +28,6 @@
 		[oauthResponse setObject:value forKey:name];
 	}
 	
-	[responseBody release];
 	
 	return oauthResponse;
 }

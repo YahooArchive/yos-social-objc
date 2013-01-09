@@ -41,10 +41,10 @@
 	BOOL					didSucceed;
 }
 
-@property (nonatomic, readwrite, retain) NSHTTPURLResponse *HTTPURLResponse;
-@property (nonatomic, readwrite, retain) NSString *responseText;
-@property (nonatomic, readwrite, retain) NSData *data;
-@property (nonatomic, readwrite, retain) NSError *error;
+@property (nonatomic, readwrite, strong) NSHTTPURLResponse *HTTPURLResponse;
+@property (nonatomic, readwrite, strong) NSString *responseText;
+@property (nonatomic, readwrite, strong) NSData *data;
+@property (nonatomic, readwrite, strong) NSError *error;
 @property (assign) BOOL didSucceed;
 
 /**

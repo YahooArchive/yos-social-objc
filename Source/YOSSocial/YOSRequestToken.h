@@ -37,9 +37,9 @@
 	BOOL			callbackConfirmed;
 }
 
-@property (nonatomic, readwrite, retain) NSString *requestAuthUrl;
+@property (nonatomic, readwrite, strong) NSString *requestAuthUrl;
 @property (nonatomic, readwrite) NSInteger tokenExpires;
-@property (nonatomic, readwrite, retain) NSDate *tokenExpiresDate;
+@property (nonatomic, readwrite, strong) NSDate *tokenExpiresDate;
 @property (nonatomic, readwrite) BOOL callbackConfirmed;
 
 /**

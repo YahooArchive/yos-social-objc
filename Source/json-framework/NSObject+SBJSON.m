@@ -33,7 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 @implementation NSObject (NSObject_SBJSON)
 
 - (NSString *)JSONFragment {
-    SBJSON *generator = [[SBJSON new] autorelease];
+    SBJSON *generator = [SBJSON new];
     
     NSError *error;
     NSString *json = [generator stringWithFragment:self error:&error];
@@ -44,7 +44,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 }
 
 - (NSString *)JSONRepresentation {
-    SBJSON *generator = [[SBJSON new] autorelease];
+    SBJSON *generator = [SBJSON new];
     
     NSError *error;
     NSString *json = [generator stringWithObject:self error:&error];

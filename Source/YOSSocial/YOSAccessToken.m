@@ -38,7 +38,7 @@
 	
 	YOSAccessToken *theToken = [[YOSAccessToken alloc] initWithKey:[tokenDictionary valueForKey:@"oauth_token"]
 														 andSecret:[tokenDictionary valueForKey:@"oauth_token_secret"]];
-	[theToken autorelease];
+
 	[theToken setGuid:[tokenDictionary valueForKey:@"xoauth_yahoo_guid"]];
 	[theToken setSessionHandle:[tokenDictionary valueForKey:@"oauth_session_handle"]];
 	[theToken setTokenExpires:tokenExpires];
@@ -56,7 +56,7 @@
 	
 	YOSAccessToken *theToken = [[YOSAccessToken alloc] initWithKey:[tokenDictionary valueForKey:@"key"]
 														 andSecret:[tokenDictionary valueForKey:@"secret"]];
-	[theToken autorelease];
+	
 	[theToken setGuid:[tokenDictionary valueForKey:@"guid"]];
 	[theToken setSessionHandle:[tokenDictionary valueForKey:@"sessionHandle"]];
 	[theToken setTokenExpires:tokenExpires];
@@ -79,7 +79,7 @@
 - (NSMutableDictionary *)tokenAsDictionary
 {
 	NSMutableDictionary *tokenDictionary = [[NSMutableDictionary alloc] init];
-	[tokenDictionary autorelease];
+
 	[tokenDictionary setObject:self.key forKey:@"key"];
 	[tokenDictionary setObject:self.secret forKey:@"secret"];
 	[tokenDictionary setObject:self.guid forKey:@"guid"];

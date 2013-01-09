@@ -18,8 +18,8 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 
 + (id)requestWithSession:(YOSSession *)session
 {
-	YOSUser *sessionedUser = [[[YOSUser alloc] initWithSession:session] autorelease];
-	YOSUserRequest *request = [[[YOSUserRequest alloc] initWithYOSUser:sessionedUser] autorelease];
+	YOSUser *sessionedUser = [[YOSUser alloc] initWithSession:session];
+	YOSUserRequest *request = [[YOSUserRequest alloc] initWithYOSUser:sessionedUser];
 	return request;
 }
 
@@ -318,7 +318,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	
 	if(aDate == nil) aDate = [NSDate date];
 	
-	NSString *timestamp = [NSString stringWithFormat:@"%d", (long)[aDate timeIntervalSince1970]];
+	NSString *timestamp = [NSString stringWithFormat:@"%ld", (long)[aDate timeIntervalSince1970]];
 	NSString *updateSource = [NSString stringWithFormat:@"APP.%@", theSession.applicationId];
 	
 	NSMutableDictionary *updateData = [NSMutableDictionary dictionary];
@@ -469,7 +469,6 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	YQLQueryRequest *yqlRequest = [[YQLQueryRequest alloc] initWithYOSUser:[self user]];
 	
 	BOOL connectionWasCreated = [yqlRequest query:aQuery withDelegate:delegate];
-	[yqlRequest release];
 	
 	return connectionWasCreated;
 }
@@ -478,10 +477,10 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 {
 	NSString *generatedSuid = nil;
 	CFUUIDRef generatedUUID = CFUUIDCreate(kCFAllocatorDefault);
-	generatedSuid = (NSString*)CFUUIDCreateString(kCFAllocatorDefault, generatedUUID);
+	generatedSuid = (NSString*)CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, generatedUUID));
 	CFRelease(generatedUUID);
 	
-	return [generatedSuid autorelease];
+	return generatedSuid;
 }
 
 @end

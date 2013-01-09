@@ -31,10 +31,10 @@ static NSString *const kRequestBaseSignatureMethod = @"HMAC-SHA1";
 
 + (id)requestWithSession:(YOSSession *)session
 {
-	YOSUser *user = [[[YOSUser alloc] initWithSession:session] autorelease];
+	YOSUser *user = [[YOSUser alloc] initWithSession:session];
 	YOSBaseRequest *request = [[YOSBaseRequest alloc] initWithYOSUser:user];
 	
-	return [request autorelease];
+	return request;
 }
 
 - (id)init
@@ -85,7 +85,7 @@ static NSString *const kRequestBaseSignatureMethod = @"HMAC-SHA1";
 	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self oauthConsumer]
 																 andToken:[self oauthToken]];
 	
-	return [client autorelease];
+	return client;
 }
 
 - (id)deserializeJSON:(NSString *)aJSONString

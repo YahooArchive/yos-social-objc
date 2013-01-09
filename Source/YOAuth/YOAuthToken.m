@@ -22,7 +22,7 @@
 {
 	YOAuthToken *token = [[YOAuthToken alloc] initWithKey:aKey andSecret:aSecret];
 	
-	return [token autorelease];
+	return token;
 }
 
 + (YOAuthToken *)tokenWithDictionary:(NSDictionary *)aDictionary

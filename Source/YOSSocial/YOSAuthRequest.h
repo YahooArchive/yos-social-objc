@@ -27,7 +27,7 @@
 	NSString		*oAuthLang;
 }
 
-@property (nonatomic, readwrite, retain) NSString *oAuthLang;
+@property (nonatomic, readwrite, strong) NSString *oAuthLang;
 
 /**
  * Sends a request to fetch a request token.

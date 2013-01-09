@@ -73,9 +73,9 @@
 	// create session with consumer key, secret and application id
 	// set up a new app here: https://developer.yahoo.com/dashboard/createKey.html
 	// because the default values here won't work	
-    self.session = [YOSSession sessionWithConsumerKey:@"dj0yJmk9SE12QmZWM0hmOU9uJmQ9WVdrOVlUWkJkbTFaTXpBbWNHbzlOVEE0TVRjNE5qZzMmcz1jb25zdW1lcnNlY3JldCZ4PWM3" 
-									andConsumerSecret:@"49bc562c17c8aa3c40a98de39a71606199edf100" 
-									 andApplicationId:@"a6AvmY30"];
+    self.session = [YOSSession sessionWithConsumerKey:@"dj0yJmk9WERUdWdhazVJdWFxJmQ9WVdrOVRuZGhSMWRqTXpJbWNHbzlNVEkyTXpVd05UZzJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD04Yg--"
+									andConsumerSecret:@"f03ee662ba1602d30d2d88e5dc7defb30ff49827"
+									 andApplicationId:@"NwaGWc32"];
     
     
 	if(self.oauthResponse) {
@@ -86,7 +86,7 @@
 	BOOL hasSession = [self.session resumeSession];
 	
 	if(!hasSession) {
-		[self.session sendUserToAuthorizationWithCallbackUrl:@"com-zachgraves-myapp:oauth"];
+		[self.session sendUserToAuthorizationWithCallbackUrl:@"com-yourcompany-SocialSample:oauth"];
 	} else {
 		[self getUserProfile];
 	}
@@ -111,11 +111,6 @@
 }
 
 
-- (void)dealloc {
-    [viewController release];
-    [window release];
-    [super dealloc];
-}
 
 
 @end

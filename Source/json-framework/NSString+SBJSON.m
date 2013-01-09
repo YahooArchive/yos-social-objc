@@ -35,7 +35,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 - (id)JSONFragmentValue
 {
-    SBJSON *json = [[SBJSON new] autorelease];
+    SBJSON *json = [SBJSON new];
     
     NSError *error;
     id o = [json fragmentWithString:self error:&error];
@@ -47,7 +47,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 - (id)JSONValue
 {
-    SBJSON *json = [[SBJSON new] autorelease];
+    SBJSON *json = [SBJSON new];
     
     NSError *error;
     id o = [json objectWithString:self error:&error];

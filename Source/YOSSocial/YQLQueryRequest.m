@@ -25,9 +25,6 @@ static NSString *const kYQLOpenTables = @"store://datatables.org/alltableswithke
 	YOSUser *sessionedUser = [[YOSUser alloc] initWithSession:session];
 	YQLQueryRequest *request = [[YQLQueryRequest alloc] initWithYOSUser:sessionedUser];
 	
-	[sessionedUser autorelease];
-	[request autorelease];
-	
 	return request;
 }
 
