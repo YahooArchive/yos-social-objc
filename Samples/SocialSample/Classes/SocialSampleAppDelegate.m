@@ -86,7 +86,14 @@
 	BOOL hasSession = [self.session resumeSession];
 	
 	if(!hasSession) {
-		[self.session sendUserToAuthorizationWithCallbackUrl:nil];
+		//!!!you need process that via your site only!!!
+		/*
+		 <?php
+		 $query = $_SERVER['QUERY_STRING'];
+		 header("Location: com-yourcompany-SocialSample://oauth-response?" . $query);
+		 ?>
+		 */
+		[self.session sendUserToAuthorizationWithCallbackUrl:@"http://yourdomain.com/callback"];
 	} else {
 		[self getUserProfile];
 	}
