@@ -9,6 +9,11 @@ Find documentation and support on Yahoo! Developer Network: [http://developer.ya
 
 Hosted on GitHub: [http://github.com/yahoo/yos-social-objc/tree/master](http://github.com/yahoo/yos-social-objc/tree/master)
 
+Features
+========
+
+* Automatic Reference Counting (ARC)
+
 License
 =======
 
