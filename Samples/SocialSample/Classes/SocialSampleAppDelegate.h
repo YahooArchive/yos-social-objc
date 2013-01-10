@@ -9,9 +9,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "YOSSession.h"
 
 @class SocialSampleViewController;
+@class YOSSession;
 
 @interface SocialSampleAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
