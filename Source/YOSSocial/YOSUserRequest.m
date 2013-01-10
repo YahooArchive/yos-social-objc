@@ -33,8 +33,8 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	requestParameters[@"format"] = self.format;
 	requestParameters[@"region"] = self.user.region;
 	requestParameters[@"lang"] = self.user.language;
-	requestParameters[@"start"] = @(start);
-	requestParameters[@"count"] = @(count);
+	requestParameters[@"start"] = [@(start) stringValue];
+	requestParameters[@"count"] = [@(count) stringValue];
 	
 	YOSRequestClient *client = [self requestClient];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
@@ -54,8 +54,8 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	requestParameters[@"format"] = self.format;
 	requestParameters[@"region"] = self.user.region;
 	requestParameters[@"lang"] = self.user.language;
-	requestParameters[@"start"] = @(start);
-	requestParameters[@"count"] = @(count);
+	requestParameters[@"start"] = [@(start) stringValue];
+	requestParameters[@"count"] = [@(count) stringValue];
 	
 	YOSRequestClient *client = [self requestClient];
 	[client setOauthParamsLocation:@"OAUTH_PARAMS_IN_QUERY_STRING"];
@@ -69,7 +69,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 - (BOOL)fetchContactWithID:(NSInteger)contactId withDelegate:(id)delegate
 {
 	NSString *method = [NSString stringWithFormat:@"contact"];
-	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method, @(contactId)];
+	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@", self.baseUrl, self.apiVersion, @"user", self.user.guid, method, [@(contactId) stringValue]];
 	NSURL *url = [NSURL URLWithString:requestUrl];
 	
 	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
@@ -130,7 +130,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	
 	NSMutableDictionary *requestParameters = [NSMutableDictionary dictionary];
 	requestParameters[@"view"] = @"sync";
-	requestParameters[@"rev"] = @(revision);
+	requestParameters[@"rev"] = [@(revision) stringValue];
 	requestParameters[@"format"] = self.format;
 	requestParameters[@"region"] = self.user.region;
 	requestParameters[@"lang"] = self.user.language;
@@ -262,8 +262,8 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	requestParameters[@"format"] = self.format;
 	requestParameters[@"region"] = self.user.region;
 	requestParameters[@"lang"] = self.user.language;
-	requestParameters[@"start"] = @(start);
-	requestParameters[@"count"] = @(count);
+	requestParameters[@"start"] = [@(start) stringValue];
+	requestParameters[@"count"] = [@(count) stringValue];
 	requestParameters[@"transform"] = updatesTransform;
 	
 	YOSRequestClient *client = [self requestClient];
@@ -287,8 +287,8 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	requestParameters[@"format"] = self.format;
 	requestParameters[@"region"] = self.user.region;
 	requestParameters[@"lang"] = self.user.language;
-	requestParameters[@"start"] = @(start);
-	requestParameters[@"count"] = @(count);
+	requestParameters[@"start"] = [@(start) stringValue];
+	requestParameters[@"count"] = [@(count) stringValue];
 	requestParameters[@"transform"] = updatesTransform;
 	
 	YOSRequestClient *client = [self requestClient];
