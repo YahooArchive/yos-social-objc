@@ -16,7 +16,7 @@
 		9165C52110A39A4700FB5078 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9165C52010A39A4700FB5078 /* Foundation.framework */; };
 		9165C52510A39A5200FB5078 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9165C52410A39A5200FB5078 /* CoreGraphics.framework */; };
 		A5E0B8AF169DC4E7009A8B54 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5E0B8AE169DC4E7009A8B54 /* Default-568h@2x.png */; };
-		A5E0B929169DCDB6009A8B54 /* libsbjson-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E0B924169DCDA3009A8B54 /* libsbjson-ios.a */; };
+		A5E0BB21169EDCFF009A8B54 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E0BB1E169EDCFF009A8B54 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F2C8F2810F72F8FA0044B7B4 /* NSDictionary+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C8F2800F72F8FA0044B7B4 /* NSDictionary+QueryString.m */; };
 		F2C8F28C0F72F9080044B7B4 /* NSData+OAuthResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C8F28B0F72F9080044B7B4 /* NSData+OAuthResponse.m */; };
 		F2FA8E5D0F71A80000E4C211 /* YOSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FA8E240F71A80000E4C211 /* YOSSession.m */; };
@@ -40,44 +40,6 @@
 		F2FA8E710F71A80000E4C211 /* YOAuthUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FA8E520F71A80000E4C211 /* YOAuthUtil.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A5E0B91F169DCDA3009A8B54 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5E0B915169DCDA2009A8B54 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC12323D1391D5CC00131607;
-			remoteInfo = SBJson;
-		};
-		A5E0B921169DCDA3009A8B54 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5E0B915169DCDA2009A8B54 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC1232521391D5CC00131607;
-			remoteInfo = SBJsonTests;
-		};
-		A5E0B923169DCDA3009A8B54 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5E0B915169DCDA2009A8B54 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCC2626913920FC7003D9994;
-			remoteInfo = "sbjson-ios";
-		};
-		A5E0B925169DCDA3009A8B54 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5E0B915169DCDA2009A8B54 /* SBJson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCC2627313920FC7003D9994;
-			remoteInfo = "sbjson-iosTests";
-		};
-		A5E0B927169DCDAE009A8B54 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5E0B915169DCDA2009A8B54 /* SBJson.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BCC2626813920FC7003D9994;
-			remoteInfo = "sbjson-ios";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		1D3623240D0F684500981E51 /* SocialSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSampleAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* SocialSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSampleAppDelegate.m; sourceTree = "<group>"; };
@@ -93,7 +55,8 @@
 		9165C52010A39A4700FB5078 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		9165C52410A39A5200FB5078 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		A5E0B8AE169DC4E7009A8B54 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		A5E0B915169DCDA2009A8B54 /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBJson.xcodeproj; path = "../../json-framework/SBJson.xcodeproj"; sourceTree = "<group>"; };
+		A5E0BB1D169EDCFF009A8B54 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		A5E0BB1E169EDCFF009A8B54 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		F2C8F27F0F72F8FA0044B7B4 /* NSDictionary+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+QueryString.h"; path = "../../Source/YOAuth/NSDictionary+QueryString.h"; sourceTree = SOURCE_ROOT; };
 		F2C8F2800F72F8FA0044B7B4 /* NSDictionary+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+QueryString.m"; path = "../../Source/YOAuth/NSDictionary+QueryString.m"; sourceTree = SOURCE_ROOT; };
 		F2C8F28A0F72F9080044B7B4 /* NSData+OAuthResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+OAuthResponse.h"; path = "../../Source/YOAuth/NSData+OAuthResponse.h"; sourceTree = SOURCE_ROOT; };
@@ -146,7 +109,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5E0B929169DCDB6009A8B54 /* libsbjson-ios.a in Frameworks */,
 				9165C51D10A39A3400FB5078 /* UIKit.framework in Frameworks */,
 				9165C52110A39A4700FB5078 /* Foundation.framework in Frameworks */,
 				9165C52510A39A5200FB5078 /* CoreGraphics.framework in Frameworks */,
@@ -178,7 +140,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				F2FA8E530F71A80000E4C211 /* json-framework */,
+				A5E0BB1B169EDCFE009A8B54 /* JSONKit */,
 				F2FA8E390F71A80000E4C211 /* YOAuth */,
 				F2FA8E1D0F71A80000E4C211 /* YOSSocial */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -220,15 +182,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A5E0B916169DCDA2009A8B54 /* Products */ = {
+		A5E0BB1B169EDCFE009A8B54 /* JSONKit */ = {
 			isa = PBXGroup;
 			children = (
-				A5E0B920169DCDA3009A8B54 /* SBJson.framework */,
-				A5E0B922169DCDA3009A8B54 /* SBJsonTests.octest */,
-				A5E0B924169DCDA3009A8B54 /* libsbjson-ios.a */,
-				A5E0B926169DCDA3009A8B54 /* sbjson-iosTests.octest */,
+				A5E0BB1D169EDCFF009A8B54 /* JSONKit.h */,
+				A5E0BB1E169EDCFF009A8B54 /* JSONKit.m */,
 			);
-			name = Products;
+			name = JSONKit;
+			path = ../../JSONKit;
 			sourceTree = "<group>";
 		};
 		F2FA8E1D0F71A80000E4C211 /* YOSSocial */ = {
@@ -322,14 +283,6 @@
 			name = Source;
 			sourceTree = "<group>";
 		};
-		F2FA8E530F71A80000E4C211 /* json-framework */ = {
-			isa = PBXGroup;
-			children = (
-				A5E0B915169DCDA2009A8B54 /* SBJson.xcodeproj */,
-			);
-			name = "json-framework";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -344,7 +297,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A5E0B928169DCDAE009A8B54 /* PBXTargetDependency */,
 			);
 			name = SocialSample;
 			productName = SocialSample;
@@ -368,49 +320,12 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = A5E0B916169DCDA2009A8B54 /* Products */;
-					ProjectRef = A5E0B915169DCDA2009A8B54 /* SBJson.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* SocialSample */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		A5E0B920169DCDA3009A8B54 /* SBJson.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SBJson.framework;
-			remoteRef = A5E0B91F169DCDA3009A8B54 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A5E0B922169DCDA3009A8B54 /* SBJsonTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SBJsonTests.octest;
-			remoteRef = A5E0B921169DCDA3009A8B54 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A5E0B924169DCDA3009A8B54 /* libsbjson-ios.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libsbjson-ios.a";
-			remoteRef = A5E0B923169DCDA3009A8B54 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A5E0B926169DCDA3009A8B54 /* sbjson-iosTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "sbjson-iosTests.octest";
-			remoteRef = A5E0B925169DCDA3009A8B54 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -454,18 +369,11 @@
 				F2FA8E710F71A80000E4C211 /* YOAuthUtil.m in Sources */,
 				F2C8F2810F72F8FA0044B7B4 /* NSDictionary+QueryString.m in Sources */,
 				F2C8F28C0F72F9080044B7B4 /* NSData+OAuthResponse.m in Sources */,
+				A5E0BB21169EDCFF009A8B54 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A5E0B928169DCDAE009A8B54 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "sbjson-ios";
-			targetProxy = A5E0B927169DCDAE009A8B54 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -480,7 +388,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SocialSample_Prefix.pch;
-				HEADER_SEARCH_PATHS = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/include";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JSONKit";
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = SocialSample;
 				PROVISIONING_PROFILE = "";
@@ -497,7 +405,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SocialSample_Prefix.pch;
-				HEADER_SEARCH_PATHS = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/include";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JSONKit";
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = SocialSample;
 				PROVISIONING_PROFILE = "";

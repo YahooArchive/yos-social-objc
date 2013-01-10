@@ -9,7 +9,7 @@
 //
 
 #import "YOSBaseRequest.h"
-#import <SBJson/SBJson.h>
+#import "JSONKit.h"
 
 static NSString *const kRequestBaseUrl = @"http://social.yahooapis.com";
 static NSString *const kRequestBaseVersion = @"v1";
@@ -90,17 +90,13 @@ static NSString *const kRequestBaseSignatureMethod = @"HMAC-SHA1";
 - (id)deserializeJSON:(NSString *)aJSONString
 {
 	// if you are using another JSON encoder/decoder, you can swap it out here.
-	SBJsonWriter *writer = [[SBJsonWriter alloc] init];
-    NSString *json = [writer stringWithObject:aJSONString];
-	return json;
+	return [aJSONString JSONString];;
 }
 
 - (NSString *)serializeDictionary:(NSDictionary *)aDictionary
 {
 	// if you are using another JSON encoder/decoder, you can swap it out here.
-	SBJsonWriter *writer = [[SBJsonWriter alloc] init];
-    NSString *json = [writer stringWithObject:aDictionary];
-	return json;
+	return [aDictionary JSONString];
 }
 
 @end

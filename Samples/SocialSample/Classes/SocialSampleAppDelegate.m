@@ -13,7 +13,7 @@
 
 #import "YOSUser.h"
 #import "YOSUserRequest.h"
-#import <SBJson/SBJson.h>
+#import <JSONKit.h>
 
 @implementation SocialSampleAppDelegate
 
@@ -110,8 +110,7 @@
 
 - (void)requestDidFinishLoading:(YOSResponseData *)data
 {
-	SBJsonParser *parser = [[SBJsonParser alloc] init];
-	NSDictionary *json = [parser objectWithString:data.responseText];
+	NSDictionary *json = [data.responseText objectFromJSONString];
 	NSDictionary *userProfile = json[@"profile"];
 	// NSLog(@"%@",[userProfile description]);
 	if(userProfile) {
