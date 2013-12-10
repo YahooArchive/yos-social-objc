@@ -65,7 +65,6 @@ Requirements
 The following dependencies are bundled with the Yahoo! Social SDK, but are under
 terms of a separate license:
 
- * json-framework - [http://code.google.com/p/json-framework/](http://code.google.com/p/json-framework/)
  * OAuthConsumer Crypto - [http://oauth.googlecode.com/svn/code/obj-c/OAuthConsumer/Crypto/](http://oauth.googlecode.com/svn/code/obj-c/OAuthConsumer/Crypto/)
 
 
