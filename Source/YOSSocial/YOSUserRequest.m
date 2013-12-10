@@ -99,8 +99,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSMutableDictionary *contactData = [NSMutableDictionary dictionary];
 	contactData[@"contact"] = contact;
 	
-	NSString *jsonContact = [self serializeDictionary:contactData];
-	NSData *contactHTTPBody = [jsonContact dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *contactHTTPBody = [self serializeDictionary:contactData];
 	
 	NSMutableDictionary *requestHeaders = [NSMutableDictionary dictionary];
 	requestHeaders[@"Content-Type"] = @"application/json";
@@ -157,8 +156,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSMutableDictionary *contactSyncData = [NSMutableDictionary dictionary];
 	contactSyncData[@"contactsync"] = contactsync;
 	
-	NSString *jsonContactsync = [self serializeDictionary:contactSyncData];
-	NSData *contactsyncHTTPBody = [jsonContactsync dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *contactsyncHTTPBody = [self serializeDictionary:contactSyncData];
 	
 	NSMutableDictionary *requestHeaders = [NSMutableDictionary dictionary];
 	requestHeaders[@"Content-Type"] = @"application/json";
@@ -338,8 +336,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSMutableDictionary *updatesDataPayload = [NSMutableDictionary dictionary];
 	updatesDataPayload[@"updates"] = updateDataWrapper;
 	
-	NSString *jsonUpdatesPayload = [self serializeDictionary:updatesDataPayload];
-	NSData *updatesHTTPBody = [jsonUpdatesPayload dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *updatesHTTPBody = [self serializeDictionary:updatesDataPayload];
 	
 	NSString *method = [NSString stringWithFormat:@"updates"];
 	NSString *requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@/%@", baseUrl, apiVersion, @"user", user.guid, method, updateSource, aSuid];
@@ -418,7 +415,7 @@ static NSString *const kYAPBaseUrl = @"http://appstore.apps.yahooapis.com";
 	NSMutableDictionary *statusDictionary = [NSMutableDictionary dictionary];
 	statusDictionary[@"status"] = messageDictionary;
 	
-	NSData *statusHTTPBody = [[self serializeDictionary:statusDictionary] dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *statusHTTPBody = [self serializeDictionary:statusDictionary];
 	
 	YOSRequestClient *client = [self requestClient];
 	[client setRequestUrl:url];

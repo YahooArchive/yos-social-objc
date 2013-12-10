@@ -9,7 +9,6 @@
 //
 
 #import "YOSBaseRequest.h"
-#import "JSONKit.h"
 
 static NSString *const kRequestBaseUrl = @"http://social.yahooapis.com";
 static NSString *const kRequestBaseVersion = @"v1";
@@ -87,16 +86,28 @@ static NSString *const kRequestBaseSignatureMethod = @"HMAC-SHA1";
 	return client;
 }
 
-- (id)deserializeJSON:(NSString *)aJSONString
+- (id)deserializeJSON:(NSData *)value
 {
-	// if you are using another JSON encoder/decoder, you can swap it out here.
-	return [aJSONString JSONString];;
+	NSError *error = nil;
+    id returnValue = [NSJSONSerialization JSONObjectWithData:value options:0 error:&error];
+    if(error)
+    {
+        NSString *string = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+        NSLog(@"ERROR: deserializing value: %@, raason: %@", string, error);
+    }
+    return returnValue;
 }
 
-- (NSString *)serializeDictionary:(NSDictionary *)aDictionary
+- (NSData *)serializeDictionary:(NSDictionary *)aDictionary
 {
 	// if you are using another JSON encoder/decoder, you can swap it out here.
-	return [aDictionary JSONString];
+    NSError *error = nil;
+	NSData *returnValue = [NSJSONSerialization dataWithJSONObject:aDictionary options:0 error:&error];
+    if(error)
+    {
+        NSLog(@"ERROR: Serializing Dictionary: %@, reason: %@", aDictionary, error);
+    }
+    return returnValue;
 }
 
 @end

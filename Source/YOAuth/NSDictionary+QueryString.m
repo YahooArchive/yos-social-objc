@@ -13,6 +13,23 @@
 
 @implementation NSDictionary (QueryStringAdditions)
 
++ (instancetype)dictionaryFromQueryString:(NSString *)queryString
+{
+    return [[NSDictionary alloc] initWithQueryString:queryString];
+}
+
+- (id)initWithQueryString:(NSString *)queryString
+{
+    NSArray *components = [queryString componentsSeparatedByString:@"&"];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    for (NSString *component in components)
+    {
+        NSArray *keyValue = [component componentsSeparatedByString:@"="];
+        dictionary[[keyValue[0] URLDecodedString]] = [keyValue[1] URLDecodedString];
+    }
+    return dictionary;
+}
+
 - (NSString *)QueryString 
 {
     NSMutableArray *queryParameters = [[NSMutableArray alloc] init];

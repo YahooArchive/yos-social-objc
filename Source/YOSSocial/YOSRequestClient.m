@@ -220,7 +220,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 {
 	[self.URLConnection cancel];
 	
-	if ([self.requestDelegate respondsToSelector:@selector(connectionWasCancelled:)]) {
+	if ([self.requestDelegate respondsToSelector:@selector(connectionWasCancelled)]) {
 		[self.requestDelegate connectionWasCancelled];
 	}
 }

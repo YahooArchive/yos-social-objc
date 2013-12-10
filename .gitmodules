@@ -1,6 +1,3 @@
 [submodule "json-framework"]
 	path = json-framework
 	url = https://github.com/stig/json-framework
-[submodule "JSONKit"]
-	path = JSONKit
-	url = https://github.com/johnezang/JSONKit

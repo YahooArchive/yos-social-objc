@@ -33,9 +33,6 @@
 		A5E0B980169DDCB7009A8B54 /* YOAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BEAE00F610ADB006A4FAA /* YOAuthToken.m */; };
 		A5E0B981169DDCBA009A8B54 /* YOAuthUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BEAE20F610ADB006A4FAA /* YOAuthUtil.m */; };
 		A5E0B984169DDD83009A8B54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E0B983169DDD83009A8B54 /* UIKit.framework */; };
-		A5E0BAA5169ED804009A8B54 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E0BAA1169ED804009A8B54 /* JSONKit.h */; };
-		A5E0BAA6169ED804009A8B54 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E0BAA2169ED804009A8B54 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A5E0BAA8169ED9B1009A8B54 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E0BAA2169ED804009A8B54 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F2235FD10F7221EC00BDA003 /* NSData+OAuthResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2235FCF0F7221EC00BDA003 /* NSData+OAuthResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2235FD20F7221EC00BDA003 /* NSData+OAuthResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2235FD00F7221EC00BDA003 /* NSData+OAuthResponse.m */; };
 		F2235FD50F72222200BDA003 /* NSDictionary+QueryString.h in Headers */ = {isa = PBXBuildFile; fileRef = F2235FD30F72222200BDA003 /* NSDictionary+QueryString.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -109,8 +106,6 @@
 		A5E0B95E169DDB69009A8B54 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A5E0B962169DDB69009A8B54 /* YahooSocialSskIOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YahooSocialSskIOS-Prefix.pch"; sourceTree = "<group>"; };
 		A5E0B983169DDD83009A8B54 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		A5E0BAA1169ED804009A8B54 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		A5E0BAA2169ED804009A8B54 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		F2235FCF0F7221EC00BDA003 /* NSData+OAuthResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+OAuthResponse.h"; path = "Source/YOAuth/NSData+OAuthResponse.h"; sourceTree = "<group>"; };
 		F2235FD00F7221EC00BDA003 /* NSData+OAuthResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+OAuthResponse.m"; path = "Source/YOAuth/NSData+OAuthResponse.m"; sourceTree = "<group>"; };
@@ -194,7 +189,6 @@
 		0867D691FE84028FC02AAC07 /* YahooSocialSdk */ = {
 			isa = PBXGroup;
 			children = (
-				A5E0BA9F169ED804009A8B54 /* JSONKit */,
 				F23BEA770F610A90006A4FAA /* YOSSocial */,
 				F23BEA760F610A8C006A4FAA /* YOAuth */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
@@ -258,15 +252,6 @@
 				A5E0B95E169DDB69009A8B54 /* Foundation.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A5E0BA9F169ED804009A8B54 /* JSONKit */ = {
-			isa = PBXGroup;
-			children = (
-				A5E0BAA1169ED804009A8B54 /* JSONKit.h */,
-				A5E0BAA2169ED804009A8B54 /* JSONKit.m */,
-			);
-			path = JSONKit;
 			sourceTree = "<group>";
 		};
 		F23BEA760F610A8C006A4FAA /* YOAuth */ = {
@@ -394,7 +379,6 @@
 				F2235FD10F7221EC00BDA003 /* NSData+OAuthResponse.h in Headers */,
 				F2235FD50F72222200BDA003 /* NSDictionary+QueryString.h in Headers */,
 				F2E1AD4B10618617002D979B /* YOSOpenSocialRequest.h in Headers */,
-				A5E0BAA5169ED804009A8B54 /* JSONKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,7 +505,6 @@
 				F2235FD20F7221EC00BDA003 /* NSData+OAuthResponse.m in Sources */,
 				F2235FD60F72222200BDA003 /* NSDictionary+QueryString.m in Sources */,
 				F2E1AD4C10618617002D979B /* YOSOpenSocialRequest.m in Sources */,
-				A5E0BAA6169ED804009A8B54 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,7 +534,6 @@
 				A5E0B97F169DDCB2009A8B54 /* YOAuthSignatureMethod_PLAINTEXT.m in Sources */,
 				A5E0B980169DDCB7009A8B54 /* YOAuthToken.m in Sources */,
 				A5E0B981169DDCBA009A8B54 /* YOAuthUtil.m in Sources */,
-				A5E0BAA8169ED9B1009A8B54 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
