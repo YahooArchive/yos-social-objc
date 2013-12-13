@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
 
   s.description  = <<-DESC
                    Yahoo's social sdk for objective-c is outdated and buggy. This pod
-                   is fixes those issues and is meant to be used as a replacement till
+                   fixes those issues and is meant to be used as a replacement till
                    yahoo releases an update. 
 
                    *Features*
@@ -48,7 +48,7 @@ Pod::Spec.new do |s|
 
   # s.library   = 'iconv'
   # s.libraries = 'iconv', 'xml2'
-  
+
 
   s.requires_arc = true
 
