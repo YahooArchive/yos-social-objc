@@ -10,6 +10,9 @@
 
 #import "YOSRequestClient.h"
 #import "NSDictionary+QueryString.h"
+#if (TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR)
+#import <UIKit/UIKit.h>
+#endif
 
 #define OAUTH_PARAMS_IN_HTTP_BODY		@"OAUTH_PARAMS_IN_HTTP_BODY"
 #define OAUTH_PARAMS_IN_AUTH_HEADER		@"OAUTH_PARAMS_IN_AUTH_HEADER"
@@ -42,7 +45,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 	if(self = [self init]) {
 		[self setConsumer:aConsumer];
 		[self setToken:aToken];
-		[self setOauthParamsLocation:OAUTH_PARAMS_IN_AUTH_HEADER];
+		[self setOauthParamsLocation:OAUTH_PARAMS_IN_QUERY_STRING];
 		[self setTimeoutInterval:20.0]; // TODO: need to switch for EDGE/3G v. wi-fi
 		[self setUserAgentHeaderValue:[self buildUserAgentHeaderValue]];
 	}
@@ -60,10 +63,11 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 	NSURLResponse *urlResponse = nil;
 	
 	NSData *connectionResponseData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&urlResponse error:&rspError];
-	
-	[rspError autorelease];	
-	[connectionResponseData autorelease];
-	
+    if (connectionResponseData == nil) {
+        NSLog(@"Error = %@", rspError);        
+        return nil;
+    }
+    
 	YOSResponseData *serviceResponseData = [YOSResponseData responseWithData:connectionResponseData 
 															  andURLResponse:urlResponse];
 	return serviceResponseData;
@@ -71,14 +75,14 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 
 - (BOOL)sendAsyncRequestWithDelegate:(id)delegate
 {
-	self.responseData = [[NSMutableData data] retain];
+	self.responseData = [NSMutableData data];
 	[self setRequestDelegate:delegate];
 	
 	NSMutableURLRequest *urlRequest = [self buildUrlRequest];
 	// self.URLConnection = [[NSURLConnection connectionWithRequest:urlRequest delegate:self] retain];
 	
-	[self setURLConnection:[[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES]];
-	
+	self.URLConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+    
 	BOOL connectionCreated = (self.URLConnection != nil);
 	
 	return connectionCreated;
@@ -123,10 +127,9 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 		NSDictionary *queryParameters = (oauthRequest && [oauthParamsLocation isEqualToString:OAUTH_PARAMS_IN_QUERY_STRING]) 
 		? [oauthRequest allRequestParametersAsDictionary] 
 		: requestParameters; 
-		
-		NSString *requestAbsoluteURLString = [NSString stringWithFormat:@"%@?%@", [self.requestUrl absoluteString], [queryParameters QueryString]];
+        		
+		NSString *requestAbsoluteURLString = [NSString stringWithFormat:@"%@%@%@", [self.requestUrl absoluteString], @"?", [queryParameters QueryString]];
 		NSURL *url = [NSURL URLWithString:requestAbsoluteURLString];
-		
 		[urlRequest setURL:url];
 		
 		if ([self.HTTPMethod isEqualToString:@"PUT"]) {
@@ -136,7 +139,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 	
 	if(oauthRequest) {
 		if([oauthParamsLocation isEqualToString:OAUTH_PARAMS_IN_AUTH_HEADER]) {
-			[requestHeaders setObject:[oauthRequest buildAuthorizationHeaderValue] forKey:@"Authorization"];
+			requestHeaders[@"Authorization"] = [oauthRequest buildAuthorizationHeaderValue];
 		}
 		else if([oauthParamsLocation isEqualToString:OAUTH_PARAMS_IN_HTTP_BODY]) {
 			NSString *requestQueryString = [[oauthRequest allOAuthRequestParametersAsDictionary] QueryString];
@@ -146,12 +149,12 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 	
 	if(self.requestHeaders && [self.requestHeaders count]) {
 		for (NSString *headerKey in [self.requestHeaders allKeys]) {
-			NSString *headerValue = [self.requestHeaders objectForKey:headerKey];
+			NSString *headerValue = (self.requestHeaders)[headerKey];
 			[urlRequest setValue:headerValue forHTTPHeaderField:headerKey];
 		}
 	}
 	
-	return [urlRequest autorelease];
+	return urlRequest;
 }
 
 - (YOAuthRequest *)buildOAuthRequest
@@ -173,7 +176,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 		[oauthRequest prepareRequest];
 	}
 	
-	return [oauthRequest autorelease];
+	return oauthRequest;
 }
 
 - (NSString *)buildUserAgentHeaderValue
@@ -197,8 +200,8 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 	// Examples:
 	// YosCocoaSdk/0.1 (Mac OS X/10.5.6; en_US;) 
 	NSDictionary *systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
-	NSString *systemProductName = [systemVersionDictionary objectForKey:@"ProductName"];
-	NSString *systemProductVersion = [systemVersionDictionary objectForKey:@"ProductVersion"];
+	NSString *systemProductName = systemVersionDictionary[@"ProductName"];
+	NSString *systemProductVersion = systemVersionDictionary[@"ProductVersion"];
 	NSString *currentLocaleIdentifier = [[NSLocale currentLocale] localeIdentifier];
 	NSString *currentDeviceInfo = [NSString stringWithFormat:@"%@/%@; %@;", systemProductName, systemProductVersion, currentLocaleIdentifier];
 	NSString *clientUrlRequestUserAgent = [NSString stringWithFormat:@"%@ (%@)",kYOSUserAgentPrefix,currentDeviceInfo];	
@@ -217,16 +220,16 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 {
 	[self.URLConnection cancel];
 	
-	if ([self.requestDelegate respondsToSelector:@selector(connectionWasCancelled:)]) {
+	if ([self.requestDelegate respondsToSelector:@selector(connectionWasCancelled)]) {
 		[self.requestDelegate connectionWasCancelled];
 	}
 }
 
 - (void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSURLResponse *)aResponse
 {
-	if(self.response) [self.response release];
+	if (self.response) self.response = nil;
 	
-	self.response = [aResponse retain];
+	self.response = aResponse;
 	[self.responseData setLength:0];
 	
 	if ([self.requestDelegate respondsToSelector:@selector(request:didReceiveResponse:)]) {
@@ -246,7 +249,7 @@ static NSString *const kYOSUserAgentPrefix = @"YosCocoaSdk/0.5";
 - (void)connection:(NSURLConnection *)aConnection didFailWithError:(NSError *)error
 {
 	YOSResponseData *serviceResponseData = [[YOSResponseData alloc] init];
-	[serviceResponseData autorelease];
+
 	[serviceResponseData setError:error];
 	[serviceResponseData setDidSucceed:NO];
 	

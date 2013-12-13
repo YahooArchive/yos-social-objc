@@ -28,7 +28,7 @@
 	BOOL diagnostics;
 }
 
-@property (nonatomic, readwrite, retain) NSString *environmentFile;
+@property (nonatomic, readwrite, strong) NSString *environmentFile;
 @property (readwrite) BOOL diagnostics;
 
 /**

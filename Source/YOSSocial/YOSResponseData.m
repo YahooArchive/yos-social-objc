@@ -21,7 +21,7 @@
 
 + (YOSResponseData *)responseWithData:(NSData *)responseData andURLResponse:(NSURLResponse *)urlResponse
 {
-	NSString *responseText = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+	NSString *responseText = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	NSInteger httpStatusCode = [(NSHTTPURLResponse *)urlResponse statusCode];
 	
 	YOSResponseData *serviceResponseData = [[YOSResponseData alloc] init];
@@ -30,7 +30,7 @@
 	[serviceResponseData setData:responseData];
 	[serviceResponseData setDidSucceed:(httpStatusCode < 400)];
 	
-	return [serviceResponseData autorelease];
+	return serviceResponseData;
 }
 
 @end

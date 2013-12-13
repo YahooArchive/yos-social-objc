@@ -22,13 +22,12 @@
 	
 	for (NSString *item in pairs) {
 		NSArray *fields = [item componentsSeparatedByString:@"="];
-		NSString *name = [fields objectAtIndex:0];
-		NSString *value = [[fields objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+		NSString *name = fields[0];
+		NSString *value = [fields[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 		
-		[oauthResponse setObject:value forKey:name];
+		oauthResponse[name] = value;
 	}
 	
-	[responseBody release];
 	
 	return oauthResponse;
 }

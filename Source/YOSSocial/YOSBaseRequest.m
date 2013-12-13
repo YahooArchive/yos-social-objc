@@ -9,8 +9,6 @@
 //
 
 #import "YOSBaseRequest.h"
-#import "NSObject+SBJSON.h"
-#import "NSString+SBJSON.h"
 
 static NSString *const kRequestBaseUrl = @"http://social.yahooapis.com";
 static NSString *const kRequestBaseVersion = @"v1";
@@ -31,10 +29,10 @@ static NSString *const kRequestBaseSignatureMethod = @"HMAC-SHA1";
 
 + (id)requestWithSession:(YOSSession *)session
 {
-	YOSUser *user = [[[YOSUser alloc] initWithSession:session] autorelease];
+	YOSUser *user = [[YOSUser alloc] initWithSession:session];
 	YOSBaseRequest *request = [[YOSBaseRequest alloc] initWithYOSUser:user];
 	
-	return [request autorelease];
+	return request;
 }
 
 - (id)init
@@ -85,19 +83,31 @@ static NSString *const kRequestBaseSignatureMethod = @"HMAC-SHA1";
 	YOSRequestClient *client = [[YOSRequestClient alloc] initWithConsumer:[self oauthConsumer]
 																 andToken:[self oauthToken]];
 	
-	return [client autorelease];
+	return client;
 }
 
-- (id)deserializeJSON:(NSString *)aJSONString
+- (id)deserializeJSON:(NSData *)value
 {
-	// if you are using another JSON encoder/decoder, you can swap it out here.
-	return [aJSONString JSONValue];
+	NSError *error = nil;
+    id returnValue = [NSJSONSerialization JSONObjectWithData:value options:0 error:&error];
+    if(error)
+    {
+        NSString *string = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+        NSLog(@"ERROR: deserializing value: %@, raason: %@", string, error);
+    }
+    return returnValue;
 }
 
-- (NSString *)serializeDictionary:(NSDictionary *)aDictionary
+- (NSData *)serializeDictionary:(NSDictionary *)aDictionary
 {
 	// if you are using another JSON encoder/decoder, you can swap it out here.
-	return [aDictionary JSONRepresentation];
+    NSError *error = nil;
+	NSData *returnValue = [NSJSONSerialization dataWithJSONObject:aDictionary options:0 error:&error];
+    if(error)
+    {
+        NSLog(@"ERROR: Serializing Dictionary: %@, reason: %@", aDictionary, error);
+    }
+    return returnValue;
 }
 
 @end

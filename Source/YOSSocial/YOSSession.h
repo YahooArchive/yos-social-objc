@@ -55,12 +55,12 @@
 	NSString			*verifier;
 }
 
-@property (nonatomic, readwrite, retain) NSString *applicationId;
-@property (nonatomic, readwrite, retain) YOAuthConsumer *consumer;
-@property (nonatomic, readwrite, retain) YOSAccessToken *accessToken;
-@property (nonatomic, readwrite, retain) YOSRequestToken *requestToken;
-@property (nonatomic, readwrite, retain) YOSTokenStore *tokenStore;
-@property (nonatomic, readwrite, retain) NSString *verifier;
+@property (nonatomic, readwrite, strong) NSString *applicationId;
+@property (nonatomic, readwrite, strong) YOAuthConsumer *consumer;
+@property (nonatomic, readwrite, strong) YOSAccessToken *accessToken;
+@property (nonatomic, readwrite, strong) YOSRequestToken *requestToken;
+@property (nonatomic, readwrite, strong) YOSTokenStore *tokenStore;
+@property (nonatomic, readwrite, strong) NSString *verifier;
 
 /**
  * Creates and returns a new <code>YOSSession</code> with an initialized token store.

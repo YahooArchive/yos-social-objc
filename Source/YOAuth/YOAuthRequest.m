@@ -65,7 +65,6 @@
 	[signableObjects addObject:[[self signableParameters] URLEncodedString]];
 	
 	NSString *theSignableString = [signableObjects componentsJoinedByString:@"&"];
-	[signableObjects autorelease];
 	
 	return theSignableString;
 }
@@ -79,7 +78,6 @@
 	[secrets addObject:theTokenSecret];
 	
 	NSString *theSignableSecrets = [secrets componentsJoinedByString:@"&"];
-	[secrets release];
 	
 	return theSignableSecrets;
 }
@@ -94,14 +92,13 @@
 	}
 	
 	for (NSString *key in [requestDictionary allKeys]) {
-		NSString *value = [requestDictionary objectForKey:key];
+		NSString *value = requestDictionary[key];
 		NSString *keyValuePair = [NSString stringWithFormat:@"%@=\%@", [key URLEncodedString], [value URLEncodedString]];
 		[queryParameters addObject:keyValuePair];
 	}
 	
 	NSMutableArray *sortedQueryParams = (NSMutableArray*)[queryParameters sortedArrayUsingSelector:@selector(compare:)];
 	
-	[queryParameters release];
 	
 	NSString *keyValuePairs = [sortedQueryParams componentsJoinedByString:@"&"];
 	return keyValuePairs;
@@ -178,18 +175,18 @@
 	[self setOauthVersion:[YOAuthUtil oauth_version]];
 	
 	oauthParams = [[NSMutableDictionary alloc] init];
-	[oauthParams setObject:self.oauthNonce forKey:@"oauth_nonce"];
-	[oauthParams setObject:self.oauthTimestamp forKey:@"oauth_timestamp"];
-	[oauthParams setObject:self.oauthVersion forKey:@"oauth_version"];
-	[oauthParams setObject:self.consumer.key forKey:@"oauth_consumer_key"];
-	[oauthParams setObject:[signatureMethod name] forKey:@"oauth_signature_method"];
+	oauthParams[@"oauth_nonce"] = self.oauthNonce;
+	oauthParams[@"oauth_timestamp"] = self.oauthTimestamp;
+	oauthParams[@"oauth_version"] = self.oauthVersion;
+	oauthParams[@"oauth_consumer_key"] = self.consumer.key;
+	oauthParams[@"oauth_signature_method"] = [signatureMethod name];
 	
 	if(token && ![[token key] isEqualToString:@""]) {
-		[oauthParams setObject:self.token.key forKey:@"oauth_token"];
+		oauthParams[@"oauth_token"] = self.token.key;
 	}
 	
 	[self setOauthSignature:[self buildSignature]];
-	[oauthParams setObject:oauthSignature forKey:@"oauth_signature"];
+	oauthParams[@"oauth_signature"] = oauthSignature;
 }
 
 - (NSMutableDictionary *)allRequestParametersAsDictionary
@@ -198,7 +195,7 @@
 	[parameterDictionary addEntriesFromDictionary:oauthParams];
 	if(requestParams && [requestParams count]) [parameterDictionary addEntriesFromDictionary:requestParams];
 	
-	return [parameterDictionary autorelease];
+	return parameterDictionary;
 }
 
 - (NSMutableDictionary *)allNonOAuthRequestParametersAsDictionary
@@ -206,7 +203,7 @@
 	NSMutableDictionary *parameterDictionary = [[NSMutableDictionary alloc] init];
 	if(requestParams && [requestParams count]) [parameterDictionary addEntriesFromDictionary:requestParams];
 	
-	return [parameterDictionary autorelease];
+	return parameterDictionary;
 }
 
 - (NSMutableDictionary *)allOAuthRequestParametersAsDictionary
@@ -214,7 +211,7 @@
 	NSMutableDictionary *parameterDictionary = [[NSMutableDictionary alloc] init];
 	[parameterDictionary addEntriesFromDictionary:self.oauthParams];
 	
-	return [parameterDictionary autorelease];
+	return parameterDictionary;
 }
 
 - (NSString *)buildAuthorizationHeaderValue
@@ -238,7 +235,6 @@
 	
 	NSString *authorizationHeaderValue = [NSString stringWithFormat:@"OAuth %@", [authorizationHeaderParts componentsJoinedByString:@","]];
 	
-	[authorizationHeaderParts release];
 	
 	return authorizationHeaderValue;
 }

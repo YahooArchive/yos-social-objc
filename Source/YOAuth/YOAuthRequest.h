@@ -89,18 +89,18 @@
 	NSString					*oauthTimestamp;
 }
 
-@property (nonatomic, readwrite, retain) YOAuthConsumer *consumer;
-@property (nonatomic, readwrite, retain) YOAuthToken *token;
-@property (nonatomic, readwrite, retain) NSString *realm;
-@property (nonatomic, readwrite, retain) NSString *HTTPMethod;
-@property (nonatomic, readwrite, retain) NSURL *url;
-@property (nonatomic, readwrite, retain) NSMutableDictionary *requestParams;
-@property (nonatomic, readwrite, retain) NSMutableDictionary *oauthParams;
+@property (nonatomic, readwrite, strong) YOAuthConsumer *consumer;
+@property (nonatomic, readwrite, strong) YOAuthToken *token;
+@property (nonatomic, readwrite, strong) NSString *realm;
+@property (nonatomic, readwrite, strong) NSString *HTTPMethod;
+@property (nonatomic, readwrite, strong) NSURL *url;
+@property (nonatomic, readwrite, strong) NSMutableDictionary *requestParams;
+@property (nonatomic, readwrite, strong) NSMutableDictionary *oauthParams;
 
-@property (nonatomic, readwrite, retain) NSString *oauthSignature;
-@property (nonatomic, readwrite, retain) NSString *oauthNonce;
-@property (nonatomic, readwrite, retain) NSString *oauthVersion;
-@property (nonatomic, readwrite, retain) NSString *oauthTimestamp;
+@property (nonatomic, readwrite, strong) NSString *oauthSignature;
+@property (nonatomic, readwrite, strong) NSString *oauthNonce;
+@property (nonatomic, readwrite, strong) NSString *oauthVersion;
+@property (nonatomic, readwrite, strong) NSString *oauthTimestamp;
 
 /**
  * Returns an oauth request for the specified consumer, url, HTTP method and signature method to sign.

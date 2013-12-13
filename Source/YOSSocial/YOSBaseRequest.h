@@ -67,13 +67,13 @@
 	YOSUser				*user;
 }
 
-@property (nonatomic, readwrite, retain) NSString *format;
-@property (nonatomic, readwrite, retain) NSString *apiVersion;
-@property (nonatomic, readwrite, retain) NSString *baseUrl;
-@property (nonatomic, readwrite, retain) NSString *signatureMethod;
-@property (nonatomic, readwrite, retain) YOAuthConsumer *consumer;
-@property (nonatomic, readwrite, retain) YOAuthToken *token;
-@property (nonatomic, readwrite, retain) YOSUser *user;
+@property (nonatomic, readwrite, strong) NSString *format;
+@property (nonatomic, readwrite, strong) NSString *apiVersion;
+@property (nonatomic, readwrite, strong) NSString *baseUrl;
+@property (nonatomic, readwrite, strong) NSString *signatureMethod;
+@property (nonatomic, readwrite, strong) YOAuthConsumer *consumer;
+@property (nonatomic, readwrite, strong) YOAuthToken *token;
+@property (nonatomic, readwrite, strong) YOSUser *user;
 
 /**
  * Returns a new request for the sessioned-user.
@@ -100,21 +100,17 @@
 
 /**
  * Returns a deserialized object representing the provided JSON string.
- * <p>Uses the <code>json-framework</code> library.</p>
  * @param value				The string to deserialize.
  * @return					An initialized object containing the JSON data.
- * @see http://code.google.com/p/json-framework/
  */
-- (id)deserializeJSON:(NSString *)value;
+- (id)deserializeJSON:(NSData *)value;
 
 /**
  * Returns a serialized JSON string representing the provided dictionary.
- * <p>Uses the <code>json-framework</code> library.</p>
  * @param aDictionary		The dictionary to serialize.
- * @return					A string containing the serialized data.
- * @see http://code.google.com/p/json-framework/
+ * @return					serialized json data
  */
-- (NSString *)serializeDictionary:(NSDictionary *)aDictionary;
+- (NSData *)serializeDictionary:(NSDictionary *)aDictionary;
 
 /**
  * Returns the OAuth consumer located in either the user's session or this object. 

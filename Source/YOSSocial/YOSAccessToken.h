@@ -52,11 +52,11 @@
 	NSInteger		authExpires;
 }
 
-@property (nonatomic, readwrite, retain) NSString *guid;
-@property (nonatomic, readwrite, retain) NSString *sessionHandle;
-@property (nonatomic, readwrite, retain) NSString *consumer;
-@property (nonatomic, readwrite, retain) NSDate *tokenExpiresDate;
-@property (nonatomic, readwrite, retain) NSDate *authExpiresDate;
+@property (nonatomic, readwrite, strong) NSString *guid;
+@property (nonatomic, readwrite, strong) NSString *sessionHandle;
+@property (nonatomic, readwrite, strong) NSString *consumer;
+@property (nonatomic, readwrite, strong) NSDate *tokenExpiresDate;
+@property (nonatomic, readwrite, strong) NSDate *authExpiresDate;
 @property (nonatomic, readwrite) NSInteger tokenExpires;
 @property (nonatomic, readwrite) NSInteger authExpires;
 

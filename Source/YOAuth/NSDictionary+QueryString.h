@@ -15,6 +15,9 @@
  */
 @interface NSDictionary (QueryStringAdditions)
 
++ (instancetype)dictionaryFromQueryString:(NSString *)queryString;
+
+
 /**
  * Returns a query string containing the key=value pairs from the dictionary.
  */

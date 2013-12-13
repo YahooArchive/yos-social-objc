@@ -13,7 +13,7 @@
 
 #import "YOSUser.h"
 #import "YOSUserRequest.h"
-#import "NSString+SBJSON.h"
+#import <JSONKit.h>
 
 @implementation SocialSampleAppDelegate
 
@@ -27,15 +27,16 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     
     // Override point for customization after app launch    
-    [window addSubview:viewController.view];
+    [self.window setRootViewController:viewController];
     [window makeKeyAndVisible];
 	
 	launchDefault = YES;
-	[self performSelector:@selector(handlePostLaunch) withObject:nil afterDelay:0.0];
+	[self performSelector:@selector(handlePostLaunch) withObject:nil afterDelay:0.1];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url 
 {
+    NSLog(@"url = %@", url);
 	launchDefault = NO;
 	
 	if (!url) { 
@@ -47,10 +48,10 @@
 	
 	for (NSString *item in pairs) {
 		NSArray *fields = [item componentsSeparatedByString:@"="];
-		NSString *name = [fields objectAtIndex:0];
-		NSString *value = [[fields objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+		NSString *name = fields[0];
+		NSString *value = [fields[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 		
-		[response setObject:value forKey:name];
+		response[name] = value;
 	}
 	
 	self.oauthResponse = response;
@@ -71,11 +72,12 @@
 {
 	// create session with consumer key, secret and application id
 	// set up a new app here: https://developer.yahoo.com/dashboard/createKey.html
-	// because the default values here won't work
-	self.session = [YOSSession sessionWithConsumerKey:@"YOUR_CONSUMER_KEY" 
-									andConsumerSecret:@"YOUR_CONSUMER_SECRET" 
+	// because the default values here won't work	
+    self.session = [YOSSession sessionWithConsumerKey:@"YOUR_CONSUMER_KEY"
+									andConsumerSecret:@"YOUR_CONSUMER_SECRET"
 									 andApplicationId:@"YOUR_APP_ID"];
-	
+    
+    
 	if(self.oauthResponse) {
 		NSString *verifier = [self.oauthResponse valueForKey:@"oauth_verifier"];
 		[self.session setVerifier:verifier];
@@ -84,7 +86,14 @@
 	BOOL hasSession = [self.session resumeSession];
 	
 	if(!hasSession) {
-		[self.session sendUserToAuthorizationWithCallbackUrl:nil];
+		//!!!you need process that via your site only!!!
+		/*
+		 <?php
+		 $query = $_SERVER['QUERY_STRING'];
+		 header("Location: com-yourcompany-SocialSample://oauth-response?" . $query);
+		 ?>
+		 */
+		[self.session sendUserToAuthorizationWithCallbackUrl:@"http://yourdomain.com/callback"];
 	} else {
 		[self getUserProfile];
 	}
@@ -101,7 +110,8 @@
 
 - (void)requestDidFinishLoading:(YOSResponseData *)data
 {
-	NSDictionary *userProfile = [[data.responseText JSONValue] objectForKey:@"profile"];
+	NSDictionary *json = [data.responseText objectFromJSONString];
+	NSDictionary *userProfile = json[@"profile"];
 	// NSLog(@"%@",[userProfile description]);
 	if(userProfile) {
 		[viewController setUserProfile:userProfile];
@@ -109,11 +119,6 @@
 }
 
 
-- (void)dealloc {
-    [viewController release];
-    [window release];
-    [super dealloc];
-}
 
 
 @end

@@ -52,7 +52,7 @@
 }
 
 - (BOOL)setAccessToken:(YOSAccessToken *)theToken
-{
+{    
 	[[NSUserDefaults standardUserDefaults] setObject:[theToken tokenAsDictionary] 
 											  forKey:[NSString stringWithFormat:@"%@:OAuthAccessToken", consumer.key]];
 	

@@ -9,7 +9,7 @@
 //
 
 #import "SocialSampleViewController.h"
-#import "NSString+SBJSON.h"
+#import <SBJson/SBJson.h>
 
 @implementation SocialSampleViewController
 
@@ -44,8 +44,8 @@
 - (void)setUserProfile:(NSDictionary *)data
 {
 	NSString *welcomeText = [NSString stringWithFormat:@"Hey %@ %@!", 
-							 [[data objectForKey:@"profile"] objectForKey:@"givenName"],
-							 [[data objectForKey:@"profile"] objectForKey:@"familyName"]];
+							 data[@"givenName"],
+							 data[@"familyName"]];
 		
 	[nicknameLabel setText:welcomeText];
 }
@@ -66,8 +66,5 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 @end

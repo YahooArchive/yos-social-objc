@@ -15,7 +15,7 @@
 	UILabel				*nicknameLabel;
 }
 
-@property (nonatomic, retain) IBOutlet UILabel *nicknameLabel;
+@property (nonatomic, strong) IBOutlet UILabel *nicknameLabel;
 
 - (void)setUserProfile:(NSDictionary *)data;
 

@@ -50,10 +50,10 @@
 	YOSSession				*session;
 }
 
-@property (nonatomic, readwrite, retain) NSString *region;
-@property (nonatomic, readwrite, retain) NSString *language;
-@property (nonatomic, readwrite, retain) NSString *guid;
-@property (nonatomic, readwrite, retain) YOSSession *session;
+@property (nonatomic, readwrite, strong) NSString *region;
+@property (nonatomic, readwrite, strong) NSString *language;
+@property (nonatomic, readwrite, strong) NSString *guid;
+@property (nonatomic, readwrite, strong) YOSSession *session;
 
 /**
  * Returns a user for the owner of specified session.

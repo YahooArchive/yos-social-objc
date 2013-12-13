@@ -36,7 +36,6 @@
 	YOSRequestToken *theToken = [[YOSRequestToken alloc] initWithKey:[tokenDictionary valueForKey:@"oauth_token"]
 														   andSecret:[tokenDictionary valueForKey:@"oauth_token_secret"]];
 	
-	[theToken autorelease];
 	[theToken setRequestAuthUrl:[tokenDictionary valueForKey:@"xoauth_request_auth_url"]];
 	[theToken setTokenExpires:tokenExpires];
 	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSinceNow:tokenExpires]];
@@ -51,7 +50,7 @@
 	
 	YOSRequestToken *theToken = [[YOSRequestToken alloc] initWithKey:[tokenDictionary valueForKey:@"key"]
 														   andSecret:[tokenDictionary valueForKey:@"secret"]];
-	[theToken autorelease];
+	
 	[theToken setRequestAuthUrl:[tokenDictionary valueForKey:@"requestAuthUrl"]];
 	[theToken setTokenExpires:tokenExpires];
 	[theToken setTokenExpiresDate:[NSDate dateWithTimeIntervalSinceNow:tokenExpires]];
@@ -65,11 +64,11 @@
 - (NSMutableDictionary *)tokenAsDictionary
 {
 	NSMutableDictionary *tokenDictionary = [[NSMutableDictionary alloc] init];
-	[tokenDictionary autorelease];
-	[tokenDictionary setObject:self.key forKey:@"key"];
-	[tokenDictionary setObject:self.secret forKey:@"secret"];
-	[tokenDictionary setObject:[NSNumber numberWithInt:self.tokenExpires] forKey:@"tokenExpires"];
-	[tokenDictionary setObject:self.requestAuthUrl forKey:@"requestAuthUrl"];
+
+	tokenDictionary[@"key"] = self.key;
+	tokenDictionary[@"secret"] = self.secret;
+	tokenDictionary[@"tokenExpires"] = @(self.tokenExpires);
+	tokenDictionary[@"requestAuthUrl"] = self.requestAuthUrl;
 	
 	return tokenDictionary;
 }

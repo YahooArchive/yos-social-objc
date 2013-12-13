@@ -9,6 +9,11 @@ Find documentation and support on Yahoo! Developer Network: [http://developer.ya
 
 Hosted on GitHub: [http://github.com/yahoo/yos-social-objc/tree/master](http://github.com/yahoo/yos-social-objc/tree/master)
 
+Features
+========
+
+* Automatic Reference Counting (ARC)
+
 License
 =======
 
@@ -60,7 +65,6 @@ Requirements
 The following dependencies are bundled with the Yahoo! Social SDK, but are under
 terms of a separate license:
 
- * json-framework - [http://code.google.com/p/json-framework/](http://code.google.com/p/json-framework/)
  * OAuthConsumer Crypto - [http://oauth.googlecode.com/svn/code/obj-c/OAuthConsumer/Crypto/](http://oauth.googlecode.com/svn/code/obj-c/OAuthConsumer/Crypto/)
 
 
