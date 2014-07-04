@@ -22,11 +22,6 @@
 	NSString		*requestAuthUrl;
 	
 	/**
-	 * Returns an integer of the UNIX time that the token will expire. 
-	 */
-	NSInteger		tokenExpires;
-	
-	/**
 	 * Returns a NSDate representing the expiry date of this token. 
 	 */
 	NSDate			*tokenExpiresDate;
@@ -38,7 +33,6 @@
 }
 
 @property (nonatomic, readwrite, retain) NSString *requestAuthUrl;
-@property (nonatomic, readwrite) NSInteger tokenExpires;
 @property (nonatomic, readwrite, retain) NSDate *tokenExpiresDate;
 @property (nonatomic, readwrite) BOOL callbackConfirmed;
 
