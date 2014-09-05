@@ -3,7 +3,7 @@ Yahoo SDK for iOS
 
 This open-source library allows you to integrate Yahoo login into your iOS app, access the user's profile and friends and query from all Yahoo! APIs through YQL.  
 
-<img src="https://git.corp.yahoo.com/michaelho/YOSSocialDemo/raw/master/SocialDemo/Images.xcassets/yahoo-sign-in.imageset/button-sign-in-with-yahoo.png" />
+<img src="https://raw.githubusercontent.com/michaelchum/yos-social-objc/master/YahooSDK/YOAssets/button-sign-in-with-yahoo.png" />
 
 Find documentation and support on [Yahoo! Developer Network](http://developer.yahoo.com/)
 * Guide to accessing [Yahoo! Social APIs](https://developer.yahoo.com/social/rest_api_guide/index.html)
