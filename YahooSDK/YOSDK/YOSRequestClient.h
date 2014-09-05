@@ -3,7 +3,7 @@
 //  YOSSocial
 //
 //  Created by Zach Graves on 2/19/09.
-//  Copyright (c) 2009 Yahoo! Inc. All rights reserved.
+//  Copyright 2014 Yahoo Inc.
 //  
 //  The copyrights embodied in the content of this file are licensed under the BSD (revised) open source license.
 //

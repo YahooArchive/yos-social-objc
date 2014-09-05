@@ -4,7 +4,7 @@
 //
 //  Created by Zach Graves on 2/26/09.
 //  Modified by Michael Ho on 08/18/14.
-//  Copyright (c) 2014 Yahoo! Inc. All rights reserved.
+//  Copyright 2014 Yahoo Inc.
 //  
 //  The copyrights embodied in the content of this file are licensed under the BSD (revised) open source license.
 //

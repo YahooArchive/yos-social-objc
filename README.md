@@ -193,7 +193,7 @@ Your use of YQL is subject to the [YQL Terms of Service](http://info.yahoo.com/l
 
 Software License Agreement (BSD License)
 
-Copyright (c) 2014, Yahoo! Inc.
+Copyright 2014 Yahoo Inc.
 
 All rights reserved.
  
