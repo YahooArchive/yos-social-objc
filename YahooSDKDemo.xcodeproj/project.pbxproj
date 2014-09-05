@@ -1,0 +1,756 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7A4CE75E19A3BE0A004B7B53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4CE75D19A3BE0A004B7B53 /* Foundation.framework */; };
+		7A4CE76019A3BE0A004B7B53 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4CE75F19A3BE0A004B7B53 /* CoreGraphics.framework */; };
+		7A4CE76219A3BE0A004B7B53 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4CE76119A3BE0A004B7B53 /* UIKit.framework */; };
+		7A4CE76819A3BE0A004B7B53 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A4CE76619A3BE0A004B7B53 /* InfoPlist.strings */; };
+		7A4CE76A19A3BE0A004B7B53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE76919A3BE0A004B7B53 /* main.m */; };
+		7A4CE77019A3BE0A004B7B53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A4CE76F19A3BE0A004B7B53 /* Images.xcassets */; };
+		7A4CE77719A3BE0A004B7B53 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4CE77619A3BE0A004B7B53 /* XCTest.framework */; };
+		7A4CE77819A3BE0A004B7B53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4CE75D19A3BE0A004B7B53 /* Foundation.framework */; };
+		7A4CE77919A3BE0A004B7B53 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4CE76119A3BE0A004B7B53 /* UIKit.framework */; };
+		7A4CE78119A3BE0A004B7B53 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A4CE77F19A3BE0A004B7B53 /* InfoPlist.strings */; };
+		7A4CE78319A3BE0A004B7B53 /* YahooSDKDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE78219A3BE0A004B7B53 /* YahooSDKDemoTests.m */; };
+		7A4CE79719A3BE31004B7B53 /* YOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE78D19A3BE31004B7B53 /* YOAppDelegate.m */; };
+		7A4CE79819A3BE31004B7B53 /* YOContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE78F19A3BE31004B7B53 /* YOContactViewController.m */; };
+		7A4CE79919A3BE31004B7B53 /* YOContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A4CE79019A3BE31004B7B53 /* YOContactViewController.xib */; };
+		7A4CE79A19A3BE31004B7B53 /* YOLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE79219A3BE31004B7B53 /* YOLoginViewController.m */; };
+		7A4CE79B19A3BE31004B7B53 /* YOLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A4CE79319A3BE31004B7B53 /* YOLoginViewController.xib */; };
+		7A4CE79C19A3BE31004B7B53 /* YOUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE79519A3BE31004B7B53 /* YOUserProfileViewController.m */; };
+		7A4CE79D19A3BE31004B7B53 /* YOUserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A4CE79619A3BE31004B7B53 /* YOUserProfileViewController.xib */; };
+		7A4CE7D419A3BE5F004B7B53 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7A219A3BE5F004B7B53 /* Base64Transcoder.c */; };
+		7A4CE7D519A3BE5F004B7B53 /* NSData+OAuthResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7A519A3BE5F004B7B53 /* NSData+OAuthResponse.m */; };
+		7A4CE7D619A3BE5F004B7B53 /* NSDictionary+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7A719A3BE5F004B7B53 /* NSDictionary+QueryString.m */; };
+		7A4CE7D719A3BE5F004B7B53 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7A919A3BE5F004B7B53 /* NSString+URLEncoding.m */; };
+		7A4CE7D819A3BE5F004B7B53 /* YOAuthConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7AC19A3BE5F004B7B53 /* YOAuthConsumer.m */; };
+		7A4CE7D919A3BE5F004B7B53 /* YOAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7AE19A3BE5F004B7B53 /* YOAuthRequest.m */; };
+		7A4CE7DA19A3BE5F004B7B53 /* YOAuthSignatureMethod_HMAC-SHA1.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7B119A3BE5F004B7B53 /* YOAuthSignatureMethod_HMAC-SHA1.m */; };
+		7A4CE7DB19A3BE5F004B7B53 /* YOAuthSignatureMethod_PLAINTEXT.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7B319A3BE5F004B7B53 /* YOAuthSignatureMethod_PLAINTEXT.m */; };
+		7A4CE7DC19A3BE5F004B7B53 /* YOAuthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7B519A3BE5F004B7B53 /* YOAuthToken.m */; };
+		7A4CE7DD19A3BE5F004B7B53 /* YOAuthUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7B719A3BE5F004B7B53 /* YOAuthUtil.m */; };
+		7A4CE7DE19A3BE5F004B7B53 /* YOSAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7BC19A3BE5F004B7B53 /* YOSAccessToken.m */; };
+		7A4CE7DF19A3BE5F004B7B53 /* YOSAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7BE19A3BE5F004B7B53 /* YOSAuthRequest.m */; };
+		7A4CE7E019A3BE5F004B7B53 /* YOSBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7C019A3BE5F004B7B53 /* YOSBaseRequest.m */; };
+		7A4CE7E119A3BE5F004B7B53 /* YOSOpenSocialRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7C219A3BE5F004B7B53 /* YOSOpenSocialRequest.m */; };
+		7A4CE7E219A3BE5F004B7B53 /* YOSRequestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7C419A3BE5F004B7B53 /* YOSRequestClient.m */; };
+		7A4CE7E319A3BE5F004B7B53 /* YOSRequestToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7C619A3BE5F004B7B53 /* YOSRequestToken.m */; };
+		7A4CE7E419A3BE5F004B7B53 /* YOSResponseData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7C819A3BE5F004B7B53 /* YOSResponseData.m */; };
+		7A4CE7E519A3BE5F004B7B53 /* YahooSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7CA19A3BE5F004B7B53 /* YahooSession.m */; };
+		7A4CE7E619A3BE5F004B7B53 /* YOSTokenStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7CC19A3BE5F004B7B53 /* YOSTokenStore.m */; };
+		7A4CE7E719A3BE5F004B7B53 /* YOSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7CE19A3BE5F004B7B53 /* YOSUser.m */; };
+		7A4CE7E819A3BE5F004B7B53 /* YOSUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7D019A3BE5F004B7B53 /* YOSUserRequest.m */; };
+		7A4CE7E919A3BE5F004B7B53 /* YQLQueryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4CE7D219A3BE5F004B7B53 /* YQLQueryRequest.m */; };
+		7A90EA0F19B9033200967EBB /* button-sign-in-with-yahoo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A90EA0D19B9033200967EBB /* button-sign-in-with-yahoo.png */; };
+		7A90EA1019B9033200967EBB /* profile-150x150.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A90EA0E19B9033200967EBB /* profile-150x150.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A4CE77A19A3BE0A004B7B53 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A4CE75219A3BE0A004B7B53 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A4CE75919A3BE0A004B7B53;
+			remoteInfo = YahooSDKDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7A4CE75A19A3BE0A004B7B53 /* YahooSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YahooSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A4CE75D19A3BE0A004B7B53 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7A4CE75F19A3BE0A004B7B53 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7A4CE76119A3BE0A004B7B53 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7A4CE76519A3BE0A004B7B53 /* YahooSDKDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YahooSDKDemo-Info.plist"; sourceTree = "<group>"; };
+		7A4CE76719A3BE0A004B7B53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7A4CE76919A3BE0A004B7B53 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7A4CE76B19A3BE0A004B7B53 /* YahooSDKDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YahooSDKDemo-Prefix.pch"; sourceTree = "<group>"; };
+		7A4CE76F19A3BE0A004B7B53 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7A4CE77519A3BE0A004B7B53 /* YahooSDKDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YahooSDKDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A4CE77619A3BE0A004B7B53 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		7A4CE77E19A3BE0A004B7B53 /* YahooSDKDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YahooSDKDemoTests-Info.plist"; sourceTree = "<group>"; };
+		7A4CE78019A3BE0A004B7B53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7A4CE78219A3BE0A004B7B53 /* YahooSDKDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YahooSDKDemoTests.m; sourceTree = "<group>"; };
+		7A4CE78C19A3BE31004B7B53 /* YOAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOAppDelegate.h; sourceTree = "<group>"; };
+		7A4CE78D19A3BE31004B7B53 /* YOAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOAppDelegate.m; sourceTree = "<group>"; };
+		7A4CE78E19A3BE31004B7B53 /* YOContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOContactViewController.h; sourceTree = "<group>"; };
+		7A4CE78F19A3BE31004B7B53 /* YOContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOContactViewController.m; sourceTree = "<group>"; };
+		7A4CE79019A3BE31004B7B53 /* YOContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YOContactViewController.xib; sourceTree = "<group>"; };
+		7A4CE79119A3BE31004B7B53 /* YOLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOLoginViewController.h; sourceTree = "<group>"; };
+		7A4CE79219A3BE31004B7B53 /* YOLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOLoginViewController.m; sourceTree = "<group>"; };
+		7A4CE79319A3BE31004B7B53 /* YOLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YOLoginViewController.xib; sourceTree = "<group>"; };
+		7A4CE79419A3BE31004B7B53 /* YOUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOUserProfileViewController.h; sourceTree = "<group>"; };
+		7A4CE79519A3BE31004B7B53 /* YOUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOUserProfileViewController.m; sourceTree = "<group>"; };
+		7A4CE79619A3BE31004B7B53 /* YOUserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YOUserProfileViewController.xib; sourceTree = "<group>"; };
+		7A4CE7A219A3BE5F004B7B53 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
+		7A4CE7A319A3BE5F004B7B53 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		7A4CE7A419A3BE5F004B7B53 /* NSData+OAuthResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+OAuthResponse.h"; path = "../NSData+OAuthResponse.h"; sourceTree = "<group>"; };
+		7A4CE7A519A3BE5F004B7B53 /* NSData+OAuthResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+OAuthResponse.m"; path = "../NSData+OAuthResponse.m"; sourceTree = "<group>"; };
+		7A4CE7A619A3BE5F004B7B53 /* NSDictionary+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+QueryString.h"; path = "../NSDictionary+QueryString.h"; sourceTree = "<group>"; };
+		7A4CE7A719A3BE5F004B7B53 /* NSDictionary+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+QueryString.m"; path = "../NSDictionary+QueryString.m"; sourceTree = "<group>"; };
+		7A4CE7A819A3BE5F004B7B53 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLEncoding.h"; path = "../NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		7A4CE7A919A3BE5F004B7B53 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLEncoding.m"; path = "../NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		7A4CE7AA19A3BE5F004B7B53 /* YOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOAuth.h; sourceTree = "<group>"; };
+		7A4CE7AB19A3BE5F004B7B53 /* YOAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOAuthConsumer.h; sourceTree = "<group>"; };
+		7A4CE7AC19A3BE5F004B7B53 /* YOAuthConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOAuthConsumer.m; sourceTree = "<group>"; };
+		7A4CE7AD19A3BE5F004B7B53 /* YOAuthRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOAuthRequest.h; sourceTree = "<group>"; };
+		7A4CE7AE19A3BE5F004B7B53 /* YOAuthRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOAuthRequest.m; sourceTree = "<group>"; };
+		7A4CE7AF19A3BE5F004B7B53 /* YOAuthSignatureMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOAuthSignatureMethod.h; sourceTree = "<group>"; };
+		7A4CE7B019A3BE5F004B7B53 /* YOAuthSignatureMethod_HMAC-SHA1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YOAuthSignatureMethod_HMAC-SHA1.h"; sourceTree = "<group>"; };
+		7A4CE7B119A3BE5F004B7B53 /* YOAuthSignatureMethod_HMAC-SHA1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YOAuthSignatureMethod_HMAC-SHA1.m"; sourceTree = "<group>"; };
+		7A4CE7B219A3BE5F004B7B53 /* YOAuthSignatureMethod_PLAINTEXT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOAuthSignatureMethod_PLAINTEXT.h; sourceTree = "<group>"; };
+		7A4CE7B319A3BE5F004B7B53 /* YOAuthSignatureMethod_PLAINTEXT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOAuthSignatureMethod_PLAINTEXT.m; sourceTree = "<group>"; };
+		7A4CE7B419A3BE5F004B7B53 /* YOAuthToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOAuthToken.h; sourceTree = "<group>"; };
+		7A4CE7B519A3BE5F004B7B53 /* YOAuthToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOAuthToken.m; sourceTree = "<group>"; };
+		7A4CE7B619A3BE5F004B7B53 /* YOAuthUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOAuthUtil.h; sourceTree = "<group>"; };
+		7A4CE7B719A3BE5F004B7B53 /* YOAuthUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOAuthUtil.m; sourceTree = "<group>"; };
+		7A4CE7B919A3BE5F004B7B53 /* YahooSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YahooSDK.h; sourceTree = "<group>"; };
+		7A4CE7BB19A3BE5F004B7B53 /* YOSAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOSAccessToken.h; sourceTree = "<group>"; };
+		7A4CE7BC19A3BE5F004B7B53 /* YOSAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOSAccessToken.m; sourceTree = "<group>"; };
+		7A4CE7BD19A3BE5F004B7B53 /* YOSAuthRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOSAuthRequest.h; sourceTree = "<group>"; };
+		7A4CE7BE19A3BE5F004B7B53 /* YOSAuthRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOSAuthRequest.m; sourceTree = "<group>"; };
+		7A4CE7BF19A3BE5F004B7B53 /* YOSBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOSBaseRequest.h; sourceTree = "<group>"; };
+		7A4CE7C019A3BE5F004B7B53 /* YOSBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOSBaseRequest.m; sourceTree = "<group>"; };
+		7A4CE7C119A3BE5F004B7B53 /* YOSOpenSocialRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOSOpenSocialRequest.h; sourceTree = "<group>"; };
+		7A4CE7C219A3BE5F004B7B53 /* YOSOpenSocialRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOSOpenSocialRequest.m; sourceTree = "<group>"; };
+		7A4CE7C319A3BE5F004B7B53 /* YOSRequestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOSRequestClient.h; sourceTree = "<group>"; };
+		7A4CE7C419A3BE5F004B7B53 /* YOSRequestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOSRequestClient.m; sourceTree = "<group>"; };
+		7A4CE7C519A3BE5F004B7B53 /* YOSRequestToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOSRequestToken.h; sourceTree = "<group>"; };
+		7A4CE7C619A3BE5F004B7B53 /* YOSRequestToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOSRequestToken.m; sourceTree = "<group>"; };
+		7A4CE7C719A3BE5F004B7B53 /* YOSResponseData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOSResponseData.h; sourceTree = "<group>"; };
+		7A4CE7C819A3BE5F004B7B53 /* YOSResponseData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOSResponseData.m; sourceTree = "<group>"; };
+		7A4CE7C919A3BE5F004B7B53 /* YahooSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YahooSession.h; sourceTree = "<group>"; };
+		7A4CE7CA19A3BE5F004B7B53 /* YahooSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YahooSession.m; sourceTree = "<group>"; };
+		7A4CE7CB19A3BE5F004B7B53 /* YOSTokenStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOSTokenStore.h; sourceTree = "<group>"; };
+		7A4CE7CC19A3BE5F004B7B53 /* YOSTokenStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOSTokenStore.m; sourceTree = "<group>"; };
+		7A4CE7CD19A3BE5F004B7B53 /* YOSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOSUser.h; sourceTree = "<group>"; };
+		7A4CE7CE19A3BE5F004B7B53 /* YOSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOSUser.m; sourceTree = "<group>"; };
+		7A4CE7CF19A3BE5F004B7B53 /* YOSUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YOSUserRequest.h; sourceTree = "<group>"; };
+		7A4CE7D019A3BE5F004B7B53 /* YOSUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOSUserRequest.m; sourceTree = "<group>"; };
+		7A4CE7D119A3BE5F004B7B53 /* YQLQueryRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQLQueryRequest.h; sourceTree = "<group>"; };
+		7A4CE7D219A3BE5F004B7B53 /* YQLQueryRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQLQueryRequest.m; sourceTree = "<group>"; };
+		7A90EA0D19B9033200967EBB /* button-sign-in-with-yahoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-sign-in-with-yahoo.png"; sourceTree = "<group>"; };
+		7A90EA0E19B9033200967EBB /* profile-150x150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-150x150.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A4CE75719A3BE0A004B7B53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A4CE76019A3BE0A004B7B53 /* CoreGraphics.framework in Frameworks */,
+				7A4CE76219A3BE0A004B7B53 /* UIKit.framework in Frameworks */,
+				7A4CE75E19A3BE0A004B7B53 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A4CE77219A3BE0A004B7B53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A4CE77719A3BE0A004B7B53 /* XCTest.framework in Frameworks */,
+				7A4CE77919A3BE0A004B7B53 /* UIKit.framework in Frameworks */,
+				7A4CE77819A3BE0A004B7B53 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A0E04A819B8D8BB00E407BA /* YOAssets */ = {
+			isa = PBXGroup;
+			children = (
+				7A90EA0D19B9033200967EBB /* button-sign-in-with-yahoo.png */,
+				7A90EA0E19B9033200967EBB /* profile-150x150.png */,
+			);
+			path = YOAssets;
+			sourceTree = "<group>";
+		};
+		7A4CE75119A3BE0A004B7B53 = {
+			isa = PBXGroup;
+			children = (
+				7A4CE79E19A3BE5F004B7B53 /* YahooSDK */,
+				7A4CE76319A3BE0A004B7B53 /* YahooSDKDemo */,
+				7A4CE77C19A3BE0A004B7B53 /* YahooSDKDemoTests */,
+				7A4CE75C19A3BE0A004B7B53 /* Frameworks */,
+				7A4CE75B19A3BE0A004B7B53 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7A4CE75B19A3BE0A004B7B53 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A4CE75A19A3BE0A004B7B53 /* YahooSDKDemo.app */,
+				7A4CE77519A3BE0A004B7B53 /* YahooSDKDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A4CE75C19A3BE0A004B7B53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A4CE75D19A3BE0A004B7B53 /* Foundation.framework */,
+				7A4CE75F19A3BE0A004B7B53 /* CoreGraphics.framework */,
+				7A4CE76119A3BE0A004B7B53 /* UIKit.framework */,
+				7A4CE77619A3BE0A004B7B53 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A4CE76319A3BE0A004B7B53 /* YahooSDKDemo */ = {
+			isa = PBXGroup;
+			children = (
+				7A4CE78C19A3BE31004B7B53 /* YOAppDelegate.h */,
+				7A4CE78D19A3BE31004B7B53 /* YOAppDelegate.m */,
+				7A4CE79119A3BE31004B7B53 /* YOLoginViewController.h */,
+				7A4CE79219A3BE31004B7B53 /* YOLoginViewController.m */,
+				7A4CE79319A3BE31004B7B53 /* YOLoginViewController.xib */,
+				7A4CE78E19A3BE31004B7B53 /* YOContactViewController.h */,
+				7A4CE78F19A3BE31004B7B53 /* YOContactViewController.m */,
+				7A4CE79019A3BE31004B7B53 /* YOContactViewController.xib */,
+				7A4CE79419A3BE31004B7B53 /* YOUserProfileViewController.h */,
+				7A4CE79519A3BE31004B7B53 /* YOUserProfileViewController.m */,
+				7A4CE79619A3BE31004B7B53 /* YOUserProfileViewController.xib */,
+				7A4CE76F19A3BE0A004B7B53 /* Images.xcassets */,
+				7A4CE76419A3BE0A004B7B53 /* Supporting Files */,
+			);
+			path = YahooSDKDemo;
+			sourceTree = "<group>";
+		};
+		7A4CE76419A3BE0A004B7B53 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A4CE76519A3BE0A004B7B53 /* YahooSDKDemo-Info.plist */,
+				7A4CE76619A3BE0A004B7B53 /* InfoPlist.strings */,
+				7A4CE76919A3BE0A004B7B53 /* main.m */,
+				7A4CE76B19A3BE0A004B7B53 /* YahooSDKDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7A4CE77C19A3BE0A004B7B53 /* YahooSDKDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A4CE78219A3BE0A004B7B53 /* YahooSDKDemoTests.m */,
+				7A4CE77D19A3BE0A004B7B53 /* Supporting Files */,
+			);
+			path = YahooSDKDemoTests;
+			sourceTree = "<group>";
+		};
+		7A4CE77D19A3BE0A004B7B53 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A4CE77E19A3BE0A004B7B53 /* YahooSDKDemoTests-Info.plist */,
+				7A4CE77F19A3BE0A004B7B53 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7A4CE79E19A3BE5F004B7B53 /* YahooSDK */ = {
+			isa = PBXGroup;
+			children = (
+				7A0E04A819B8D8BB00E407BA /* YOAssets */,
+				7A4CE7A019A3BE5F004B7B53 /* YOAuth */,
+				7A4CE7B819A3BE5F004B7B53 /* YOSDK */,
+			);
+			path = YahooSDK;
+			sourceTree = "<group>";
+		};
+		7A4CE7A019A3BE5F004B7B53 /* YOAuth */ = {
+			isa = PBXGroup;
+			children = (
+				7A66AA7619A95E6300147C75 /* Categories */,
+				7A4CE7A119A3BE5F004B7B53 /* Crypto */,
+				7A4CE7AA19A3BE5F004B7B53 /* YOAuth.h */,
+				7A4CE7B419A3BE5F004B7B53 /* YOAuthToken.h */,
+				7A4CE7B519A3BE5F004B7B53 /* YOAuthToken.m */,
+				7A4CE7AB19A3BE5F004B7B53 /* YOAuthConsumer.h */,
+				7A4CE7AC19A3BE5F004B7B53 /* YOAuthConsumer.m */,
+				7A4CE7AD19A3BE5F004B7B53 /* YOAuthRequest.h */,
+				7A4CE7AE19A3BE5F004B7B53 /* YOAuthRequest.m */,
+				7A4CE7AF19A3BE5F004B7B53 /* YOAuthSignatureMethod.h */,
+				7A4CE7B019A3BE5F004B7B53 /* YOAuthSignatureMethod_HMAC-SHA1.h */,
+				7A4CE7B119A3BE5F004B7B53 /* YOAuthSignatureMethod_HMAC-SHA1.m */,
+				7A4CE7B219A3BE5F004B7B53 /* YOAuthSignatureMethod_PLAINTEXT.h */,
+				7A4CE7B319A3BE5F004B7B53 /* YOAuthSignatureMethod_PLAINTEXT.m */,
+				7A4CE7B619A3BE5F004B7B53 /* YOAuthUtil.h */,
+				7A4CE7B719A3BE5F004B7B53 /* YOAuthUtil.m */,
+			);
+			path = YOAuth;
+			sourceTree = "<group>";
+		};
+		7A4CE7A119A3BE5F004B7B53 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				7A4CE7A219A3BE5F004B7B53 /* Base64Transcoder.c */,
+				7A4CE7A319A3BE5F004B7B53 /* Base64Transcoder.h */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
+		7A4CE7B819A3BE5F004B7B53 /* YOSDK */ = {
+			isa = PBXGroup;
+			children = (
+				7A4CE7B919A3BE5F004B7B53 /* YahooSDK.h */,
+				7A4CE7C919A3BE5F004B7B53 /* YahooSession.h */,
+				7A4CE7CA19A3BE5F004B7B53 /* YahooSession.m */,
+				7A4CE7CB19A3BE5F004B7B53 /* YOSTokenStore.h */,
+				7A4CE7CC19A3BE5F004B7B53 /* YOSTokenStore.m */,
+				7A4CE7C519A3BE5F004B7B53 /* YOSRequestToken.h */,
+				7A4CE7C619A3BE5F004B7B53 /* YOSRequestToken.m */,
+				7A4CE7BB19A3BE5F004B7B53 /* YOSAccessToken.h */,
+				7A4CE7BC19A3BE5F004B7B53 /* YOSAccessToken.m */,
+				7A4CE7BF19A3BE5F004B7B53 /* YOSBaseRequest.h */,
+				7A4CE7C019A3BE5F004B7B53 /* YOSBaseRequest.m */,
+				7A4CE7BD19A3BE5F004B7B53 /* YOSAuthRequest.h */,
+				7A4CE7BE19A3BE5F004B7B53 /* YOSAuthRequest.m */,
+				7A4CE7C319A3BE5F004B7B53 /* YOSRequestClient.h */,
+				7A4CE7C419A3BE5F004B7B53 /* YOSRequestClient.m */,
+				7A4CE7CF19A3BE5F004B7B53 /* YOSUserRequest.h */,
+				7A4CE7D019A3BE5F004B7B53 /* YOSUserRequest.m */,
+				7A4CE7D119A3BE5F004B7B53 /* YQLQueryRequest.h */,
+				7A4CE7D219A3BE5F004B7B53 /* YQLQueryRequest.m */,
+				7A4CE7C119A3BE5F004B7B53 /* YOSOpenSocialRequest.h */,
+				7A4CE7C219A3BE5F004B7B53 /* YOSOpenSocialRequest.m */,
+				7A4CE7C719A3BE5F004B7B53 /* YOSResponseData.h */,
+				7A4CE7C819A3BE5F004B7B53 /* YOSResponseData.m */,
+				7A4CE7CD19A3BE5F004B7B53 /* YOSUser.h */,
+				7A4CE7CE19A3BE5F004B7B53 /* YOSUser.m */,
+			);
+			path = YOSDK;
+			sourceTree = "<group>";
+		};
+		7A66AA7619A95E6300147C75 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7A4CE7A419A3BE5F004B7B53 /* NSData+OAuthResponse.h */,
+				7A4CE7A519A3BE5F004B7B53 /* NSData+OAuthResponse.m */,
+				7A4CE7A619A3BE5F004B7B53 /* NSDictionary+QueryString.h */,
+				7A4CE7A719A3BE5F004B7B53 /* NSDictionary+QueryString.m */,
+				7A4CE7A819A3BE5F004B7B53 /* NSString+URLEncoding.h */,
+				7A4CE7A919A3BE5F004B7B53 /* NSString+URLEncoding.m */,
+			);
+			name = Categories;
+			path = Crypto;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A4CE75919A3BE0A004B7B53 /* YahooSDKDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A4CE78619A3BE0A004B7B53 /* Build configuration list for PBXNativeTarget "YahooSDKDemo" */;
+			buildPhases = (
+				7A4CE75619A3BE0A004B7B53 /* Sources */,
+				7A4CE75719A3BE0A004B7B53 /* Frameworks */,
+				7A4CE75819A3BE0A004B7B53 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YahooSDKDemo;
+			productName = YahooSDKDemo;
+			productReference = 7A4CE75A19A3BE0A004B7B53 /* YahooSDKDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A4CE77419A3BE0A004B7B53 /* YahooSDKDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A4CE78919A3BE0A004B7B53 /* Build configuration list for PBXNativeTarget "YahooSDKDemoTests" */;
+			buildPhases = (
+				7A4CE77119A3BE0A004B7B53 /* Sources */,
+				7A4CE77219A3BE0A004B7B53 /* Frameworks */,
+				7A4CE77319A3BE0A004B7B53 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A4CE77B19A3BE0A004B7B53 /* PBXTargetDependency */,
+			);
+			name = YahooSDKDemoTests;
+			productName = YahooSDKDemoTests;
+			productReference = 7A4CE77519A3BE0A004B7B53 /* YahooSDKDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A4CE75219A3BE0A004B7B53 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = YO;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = michaelho;
+				TargetAttributes = {
+					7A4CE77419A3BE0A004B7B53 = {
+						TestTargetID = 7A4CE75919A3BE0A004B7B53;
+					};
+				};
+			};
+			buildConfigurationList = 7A4CE75519A3BE0A004B7B53 /* Build configuration list for PBXProject "YahooSDKDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7A4CE75119A3BE0A004B7B53;
+			productRefGroup = 7A4CE75B19A3BE0A004B7B53 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A4CE75919A3BE0A004B7B53 /* YahooSDKDemo */,
+				7A4CE77419A3BE0A004B7B53 /* YahooSDKDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A4CE75819A3BE0A004B7B53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A4CE79919A3BE31004B7B53 /* YOContactViewController.xib in Resources */,
+				7A4CE76819A3BE0A004B7B53 /* InfoPlist.strings in Resources */,
+				7A90EA0F19B9033200967EBB /* button-sign-in-with-yahoo.png in Resources */,
+				7A4CE79B19A3BE31004B7B53 /* YOLoginViewController.xib in Resources */,
+				7A90EA1019B9033200967EBB /* profile-150x150.png in Resources */,
+				7A4CE77019A3BE0A004B7B53 /* Images.xcassets in Resources */,
+				7A4CE79D19A3BE31004B7B53 /* YOUserProfileViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A4CE77319A3BE0A004B7B53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A4CE78119A3BE0A004B7B53 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A4CE75619A3BE0A004B7B53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A4CE7E819A3BE5F004B7B53 /* YOSUserRequest.m in Sources */,
+				7A4CE7D719A3BE5F004B7B53 /* NSString+URLEncoding.m in Sources */,
+				7A4CE7DA19A3BE5F004B7B53 /* YOAuthSignatureMethod_HMAC-SHA1.m in Sources */,
+				7A4CE7D919A3BE5F004B7B53 /* YOAuthRequest.m in Sources */,
+				7A4CE7DB19A3BE5F004B7B53 /* YOAuthSignatureMethod_PLAINTEXT.m in Sources */,
+				7A4CE7E019A3BE5F004B7B53 /* YOSBaseRequest.m in Sources */,
+				7A4CE7E119A3BE5F004B7B53 /* YOSOpenSocialRequest.m in Sources */,
+				7A4CE7E319A3BE5F004B7B53 /* YOSRequestToken.m in Sources */,
+				7A4CE7DF19A3BE5F004B7B53 /* YOSAuthRequest.m in Sources */,
+				7A4CE7D519A3BE5F004B7B53 /* NSData+OAuthResponse.m in Sources */,
+				7A4CE79C19A3BE31004B7B53 /* YOUserProfileViewController.m in Sources */,
+				7A4CE7D419A3BE5F004B7B53 /* Base64Transcoder.c in Sources */,
+				7A4CE7E719A3BE5F004B7B53 /* YOSUser.m in Sources */,
+				7A4CE7E619A3BE5F004B7B53 /* YOSTokenStore.m in Sources */,
+				7A4CE7DC19A3BE5F004B7B53 /* YOAuthToken.m in Sources */,
+				7A4CE79819A3BE31004B7B53 /* YOContactViewController.m in Sources */,
+				7A4CE7E219A3BE5F004B7B53 /* YOSRequestClient.m in Sources */,
+				7A4CE7DE19A3BE5F004B7B53 /* YOSAccessToken.m in Sources */,
+				7A4CE7D819A3BE5F004B7B53 /* YOAuthConsumer.m in Sources */,
+				7A4CE7E519A3BE5F004B7B53 /* YahooSession.m in Sources */,
+				7A4CE7E419A3BE5F004B7B53 /* YOSResponseData.m in Sources */,
+				7A4CE7D619A3BE5F004B7B53 /* NSDictionary+QueryString.m in Sources */,
+				7A4CE7DD19A3BE5F004B7B53 /* YOAuthUtil.m in Sources */,
+				7A4CE79719A3BE31004B7B53 /* YOAppDelegate.m in Sources */,
+				7A4CE79A19A3BE31004B7B53 /* YOLoginViewController.m in Sources */,
+				7A4CE76A19A3BE0A004B7B53 /* main.m in Sources */,
+				7A4CE7E919A3BE5F004B7B53 /* YQLQueryRequest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A4CE77119A3BE0A004B7B53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A4CE78319A3BE0A004B7B53 /* YahooSDKDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A4CE77B19A3BE0A004B7B53 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A4CE75919A3BE0A004B7B53 /* YahooSDKDemo */;
+			targetProxy = 7A4CE77A19A3BE0A004B7B53 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7A4CE76619A3BE0A004B7B53 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A4CE76719A3BE0A004B7B53 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7A4CE77F19A3BE0A004B7B53 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A4CE78019A3BE0A004B7B53 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A4CE78419A3BE0A004B7B53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7A4CE78519A3BE0A004B7B53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A4CE78719A3BE0A004B7B53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YahooSDKDemo/YahooSDKDemo-Prefix.pch";
+				INFOPLIST_FILE = "YahooSDKDemo/YahooSDKDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.0;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7A4CE78819A3BE0A004B7B53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YahooSDKDemo/YahooSDKDemo-Prefix.pch";
+				INFOPLIST_FILE = "YahooSDKDemo/YahooSDKDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.0;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		7A4CE78A19A3BE0A004B7B53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/YahooSDKDemo.app/YahooSDKDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YahooSDKDemo/YahooSDKDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "YahooSDKDemoTests/YahooSDKDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		7A4CE78B19A3BE0A004B7B53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/YahooSDKDemo.app/YahooSDKDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YahooSDKDemo/YahooSDKDemo-Prefix.pch";
+				INFOPLIST_FILE = "YahooSDKDemoTests/YahooSDKDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		E8EAEDCB19A53B3700E4732E /* Wildcard */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Wildcard;
+		};
+		E8EAEDCC19A53B3700E4732E /* Wildcard */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YahooSDKDemo/YahooSDKDemo-Prefix.pch";
+				INFOPLIST_FILE = "YahooSDKDemo/YahooSDKDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.0;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Wildcard;
+		};
+		E8EAEDCD19A53B3700E4732E /* Wildcard */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/YahooSDKDemo.app/YahooSDKDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YahooSDKDemo/YahooSDKDemo-Prefix.pch";
+				INFOPLIST_FILE = "YahooSDKDemoTests/YahooSDKDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Wildcard;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A4CE75519A3BE0A004B7B53 /* Build configuration list for PBXProject "YahooSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A4CE78419A3BE0A004B7B53 /* Debug */,
+				7A4CE78519A3BE0A004B7B53 /* Release */,
+				E8EAEDCB19A53B3700E4732E /* Wildcard */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A4CE78619A3BE0A004B7B53 /* Build configuration list for PBXNativeTarget "YahooSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A4CE78719A3BE0A004B7B53 /* Debug */,
+				7A4CE78819A3BE0A004B7B53 /* Release */,
+				E8EAEDCC19A53B3700E4732E /* Wildcard */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A4CE78919A3BE0A004B7B53 /* Build configuration list for PBXNativeTarget "YahooSDKDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A4CE78A19A3BE0A004B7B53 /* Debug */,
+				7A4CE78B19A3BE0A004B7B53 /* Release */,
+				E8EAEDCD19A53B3700E4732E /* Wildcard */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A4CE75219A3BE0A004B7B53 /* Project object */;
+}
