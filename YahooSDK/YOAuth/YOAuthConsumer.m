@@ -11,7 +11,6 @@
 
 #import "YOAuthConsumer.h"
 
-
 @implementation YOAuthConsumer
 
 #pragma mark - Lifecycle
